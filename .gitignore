@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio Files
+Debug
+Release
+.vs
+*.suo
+*.csproj.user
+*.vbproj.user
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+ipch
+*sdf
