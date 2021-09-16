@@ -3,28 +3,43 @@
 
 class Vector3D {
 
-public :
+private:
 
-    // Public methods
+	double x;
+	double y;
+	double z;
 
-    double norm();
-    double squaredNorm();
-    // Vector3D normalize();
+public:
 
-    friend Vector3D operator*(const double &, const Vector3D &);
-    friend Vector3D operator*(const Vector3D &, const double &);
-    friend Vector3D operator/(const Vector3D &, const double &);
+	// Getters
 
-    // Constructors
+	double getX() const;
+	double getY() const;
+	double getZ() const;
 
-    Vector3D();
-    Vector3D(double x, double y, double z);
+	// Public methods
 
-    // Attributes
+	double norm() const;
+	double squaredNorm() const;
+	Vector3D normalize() const;
+	Vector3D elementWiseProduct(const Vector3D&) const;
+	double scalarProduct(const Vector3D&) const;
+	Vector3D crossProduct(const Vector3D&) const;
 
-    double x;
-    double y;
-    double z;
+	// Operator overloads
+
+	friend Vector3D operator*(const double&, const Vector3D&);
+	friend Vector3D operator*(const Vector3D&, const double&);
+	friend double operator*(const Vector3D&, const Vector3D&);
+	friend Vector3D operator/(const Vector3D&, const double&);
+	friend Vector3D operator+(const Vector3D&, const Vector3D&);
+	friend Vector3D operator-(const Vector3D&, const Vector3D&);
+	friend std::ostream& operator<<(std::ostream&, const Vector3D&);
+
+	// Constructors
+
+	Vector3D();
+	Vector3D(double x, double y, double z);
 
 };
 
