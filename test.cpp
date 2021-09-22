@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Vector3D.h"
+#include<glad/glad.h>
+#include<GLFW/glfw3.h>
 
 using namespace std;
 
@@ -17,4 +19,6 @@ int main() {
     cout << v1.elementWiseProduct(v2) << endl;
     cout << v1 * v2 << endl;
     cout << v1.crossProduct(v2) << endl;
+    system("pause");
+    return 0;
 }
