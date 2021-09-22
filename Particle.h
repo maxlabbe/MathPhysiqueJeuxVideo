@@ -3,11 +3,14 @@
 
 class Particle {
 
-private :
+public :
 
-	double mass; // kg
 
-}
 
+private:
+
+	float mass; // kg
+
+};
 
 #endif
