@@ -38,9 +38,7 @@ Release
 *.suo
 *.csproj.user
 *.vbproj.user
-*.vcxproj
 *.vcxproj.filters
 *.vcxproj.user
-*.sln
 ipch
 *sdf
