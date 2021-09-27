@@ -4,6 +4,7 @@
 #include "Vector3D.h"
 #include "Particle.h"
 #include "Display.h"
+#include"InputsHandler.h"
 #include "DisplayableParticle.h"
 #include <mutex>
 
@@ -49,6 +50,8 @@ void Display::mainLoop()
 
 	// Initialize the camera : width, height of screen, position, direction
 	this->camera = Camera(this->width, this->height, glm::vec3(0, 0, 0), glm::vec3(-2.0f, -2.0f, -5.0f));
+	
+	this->inputs = InputsHandler(window, &camera, this);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -59,7 +62,7 @@ void Display::mainLoop()
 		// Tell OpenGL which Shader Program we want to use
 		shader.Activate();
 		// Handle camera
-		camera.Inputs(window);
+		inputs.handleInputs();
 		camera.Matrix(45.0f, 0.1f, 100.0f, shader, "camMatrix");
 		// Iterates over all displayables and displays them
 
@@ -99,7 +102,6 @@ Display::Display
 	this->vertexShaderFile = vertexShaderFile;
 	this->fragmentShaderFile = fragmentShaderFile;
 	this->window_title = window_title;
-
 }
 
 Camera Display::GetCamera()

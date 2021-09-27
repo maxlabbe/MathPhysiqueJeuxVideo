@@ -64,8 +64,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\include;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -73,8 +73,8 @@
     <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\include;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
@@ -133,6 +133,7 @@
     <ClCompile Include="DisplayableParticle.cpp" />
     <ClCompile Include="EBO.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="InputsHandler.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ShaderClass.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="DisplayableLine.h" />
     <ClInclude Include="DisplayableParticle.h" />
     <ClInclude Include="EBO.h" />
+    <ClInclude Include="InputsHandler.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ShaderClass.h" />
     <ClInclude Include="Sphere.h" />
