@@ -47,11 +47,8 @@ void Display::mainLoop()
 
 	// Enables the Depth Buffer
 	glEnable(GL_DEPTH_TEST);
-
-	// Initialize the camera : width, height of screen, position, direction
-	this->camera = Camera(this->width, this->height, glm::vec3(0, 0, 0), glm::vec3(-2.0f, -2.0f, -5.0f));
 	
-	this->inputs = InputsHandler(window, &camera, this);
+	this->inputs = InputsHandler(window, camera, this);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -63,7 +60,7 @@ void Display::mainLoop()
 		shader.Activate();
 		// Handle camera
 		inputs.handleInputs();
-		camera.Matrix(45.0f, 0.1f, 100.0f, shader, "camMatrix");
+		camera->Matrix(45.0f, 0.1f, 100.0f, shader, "camMatrix");
 		// Iterates over all displayables and displays them
 
 		lock_guard<mutex> guard(displayables_mutex);
@@ -102,9 +99,12 @@ Display::Display
 	this->vertexShaderFile = vertexShaderFile;
 	this->fragmentShaderFile = fragmentShaderFile;
 	this->window_title = window_title;
+
+	// Initialize the camera : width, height of screen, position, direction
+	this->camera = new Camera(this->width, this->height, glm::vec3(0, 0, 0), glm::vec3(-2.0f, -2.0f, -5.0f), glm::vec3(0, 1, 0));
 }
 
-Camera Display::GetCamera()
+Camera* Display::GetCamera()
 {
 	return camera;
 }

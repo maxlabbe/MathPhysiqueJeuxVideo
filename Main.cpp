@@ -4,7 +4,7 @@
 #include"Particle.h"
 #include <thread>
 #include <windows.h>
-#include<GLFW/glfw3.h>
+#include<InputsHandler.h>
 
 bool leftclick(Display* display)
 {
@@ -20,7 +20,9 @@ bool leftclick(Display* display)
 
 int main()
 {
+	
 	Display* display = new Display(800, 800, "MPJV");
+	//InputsHandler inputs(display->GetWindow(), display->GetCamera(), display);
 
 	float g = 0.1f;
 
@@ -38,44 +40,52 @@ int main()
 	// Display thread
 	std::thread th(&Display::mainLoop, display);
 
-	//while (true)
-	//{
-	//	float vx, vy, vz;
-	//	cout << "Enter initial velocity : " << endl;
-	//	cout << "Vx ?" << endl;
-	//	cin >> vx;
-	//	cout << "Vy ?" << endl;
-	//	cin >> vy;
-	//	cout << "Vz ?" << endl;
-	//	cin >> vz;
+	while (true)
+	{
+		bool firstLeftClick = true;
+		//if (inputs.handleLeftClick())
+		//{
+			if (firstLeftClick)
+			{
+				firstLeftClick = false;
+				Vector3D position(display->GetCamera()->Position.x, display->GetCamera()->Position.y, display->GetCamera()->Position.z);
+				Vector3D velocity(display->GetCamera()->Orientation.x, display->GetCamera()->Orientation.y, display->GetCamera()->Orientation.z);
+				Particle p = Particle(1.0f, position, velocity, Vector3D(0, -1 * g, 0), 1.001f);
+				DisplayableParticle* dp = new DisplayableParticle(p, 0.01f, true); // Radius = 1 cm, static = true;
+				display->addDisplayable(dp);
+				cout << "Click " << position << " " << velocity << endl;
 
-	//	Particle p = Particle(1.0f, Vector3D(), Vector3D(vx, vy, vz), Vector3D(0, -1 * g, 0), 1.001f);
-	//	DisplayableParticle* dp = new DisplayableParticle(p, 0.01f); // Radius = 1 cm
-	//	display->addDisplayable(dp);
+				auto start = chrono::high_resolution_clock::now();
+				auto current = chrono::high_resolution_clock::now();
+				std::chrono::duration<float, std::milli> diffTime = current - start;
+				int pos_print_frequence = 1;
+				int count = 0;
+				while (diffTime.count() < 4000.0)
+				{
+					current = chrono::high_resolution_clock::now();
+					diffTime = current - start;
+					float time = diffTime.count();
+					p.integrate(time / 1000.0);
+					cout << "Position : " << p.getPosition() << " | Time : " << time / 1000.0 << "seconds" << endl;
+					if (count > pos_print_frequence)
+					{
+						count = 0;
+						Particle print_p = Particle(1.0f, p.getPosition(), Vector3D(), Vector3D(), 1.001f);
+						DisplayableParticle* d_print_p = new DisplayableParticle(print_p, 0.01f, true); // Radius = 1 cm
+						display->addDisplayable(d_print_p);
+					}
+					std::this_thread::sleep_for(30ms); // About 30 fps
+					count++;
+				}
+			}
 
-	//	auto start = chrono::high_resolution_clock::now();
-	//	auto current = chrono::high_resolution_clock::now();
-	//	std::chrono::duration<float, std::milli> diffTime = current - start;
-	//	int pos_print_frequence = 1;
-	//	int count = 0;
-	//	while (diffTime.count() < 4000.0)
-	//	{
-	//		current = chrono::high_resolution_clock::now();
-	//		diffTime = current - start;
-	//		float time = diffTime.count();
-	//		p.integrate(time / 1000.0);
-	//		cout << "Position : " << p.getPosition() << " | Time : " << time / 1000.0 << "seconds" << endl;
-	//		if (count > pos_print_frequence)
-	//		{
-	//			count = 0;
-	//			Particle print_p = Particle(1.0f, p.getPosition(), Vector3D(), Vector3D(), 1.001f);
-	//			DisplayableParticle* d_print_p = new DisplayableParticle(print_p, 0.01f, true); // Radius = 1 cm
-	//			display->addDisplayable(d_print_p);
-	//		}
-	//		std::this_thread::sleep_for(30ms); // About 30 fps
-	//		count++;
-	//	}
-	//}
+		//}
+
+		//if(inputs.handleLeftClickDepressed())
+		//{
+			//firstLeftClick = true;
+		//}
+	}
 
 
 	th.join();

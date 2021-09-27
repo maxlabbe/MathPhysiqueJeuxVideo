@@ -14,12 +14,14 @@ public :
 	InputsHandler(GLFWwindow* window, Camera* camera, Display* display);
 	InputsHandler() {};
 	void handleInputs();
+	void handleKeyInputs();
+	void handleRightClick();
+	bool handleLeftClick();
+	bool handleLeftClickDepressed();
 
 private :
 
-	void handleKeyInputs();
-	void handleRightClick();
-	void handleLeftClick();
+
 
 	// Prevents the camera from jumping around when first clicking right click
 	bool firstRightClick = true;

@@ -34,11 +34,11 @@ public:
 	// Camera constructor to set up initial values
 	Camera
 	(
-		int width = 800,
-		int height = 800,
-		glm::vec3 position = glm::vec3(0.0f, 0.0f, 2.0f),
-		glm::vec3 orientation = glm::vec3(0.0f, 0.0f, -1.0f),
-		glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f)
+		int width,
+		int height,
+		glm::vec3 position,
+		glm::vec3 orientation,
+		glm::vec3 up
 	);
 
 	// Updates and exports the camera matrix to the Vertex Shader

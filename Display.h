@@ -17,7 +17,7 @@ public :
 
 	void addDisplayable(Displayable*);
 	void mainLoop();
-	Camera GetCamera();
+	Camera* GetCamera();
 	GLFWwindow* GetWindow();
 
 	// Constructors 
@@ -38,7 +38,7 @@ private :
 	unsigned int height;
 	GLFWwindow* window;
 	Shader shader;
-	Camera camera;
+	Camera* camera;
 	string vertexShaderFile;
 	string fragmentShaderFile;
 	char* window_title;

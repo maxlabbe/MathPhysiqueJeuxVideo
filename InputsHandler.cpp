@@ -92,12 +92,14 @@ void InputsHandler::handleRightClick()
 	}
 }
 
-void InputsHandler::handleLeftClick()
+bool InputsHandler::handleLeftClick()
 {
-	float g = 0.1f;
+	//float g = 0.1f;
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 	{
-		if (firstLeftClick)
+		return true;
+	}
+		/*if (firstLeftClick)
 		{
 			firstLeftClick = false;
 			Vector3D position(camera->Position.x, camera->Position.y, camera->Position.z);
@@ -112,5 +114,15 @@ void InputsHandler::handleLeftClick()
 	else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
 	{
 		firstLeftClick = true;
+	}*/
+}
+
+bool InputsHandler::handleLeftClickDepressed()
+{
+	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
+	{
+		return true;
 	}
+
+	return false;
 }
