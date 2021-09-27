@@ -4,6 +4,7 @@
 #include"Particle.h"
 #include <thread>
 #include <windows.h>
+#include<GLFW/glfw3.h>
 
 int main()
 {
@@ -28,7 +29,7 @@ int main()
 	while (true)
 	{
 		bool firstClick = false;
-		if (glfwGetMouseButton(display->GetWindow(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+		if (glfwGetMouseButton(display->GetWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
 		{
 
 			// Prevents camera from jumping on the first click
@@ -65,12 +66,8 @@ int main()
 				}
 			}
 		}
-		else if ()
-		{
-			// Makes sure the next time the camera looks around it doesn't jump
-			firstClick = false;
 
-		}				
+		firstClick = false;
 	}
 	
 	th.join();
