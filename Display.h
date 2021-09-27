@@ -17,6 +17,8 @@ public :
 
 	void addDisplayable(Displayable*);
 	void mainLoop();
+	Camera GetCamera();
+	GLFWwindow* GetWindow();
 
 	// Constructors 
 

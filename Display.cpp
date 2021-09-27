@@ -48,7 +48,7 @@ void Display::mainLoop()
 	glEnable(GL_DEPTH_TEST);
 
 	// Initialize the camera : width, height of screen, position, direction
-	this->camera = Camera(this->width, this->height, glm::vec3(2.0f, 2.0f, 5.0f), glm::vec3(-2.0f, -2.0f, -5.0f));
+	this->camera = Camera(this->width, this->height, glm::vec3(0, 0, 0), glm::vec3(-2.0f, -2.0f, -5.0f));
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -100,4 +100,14 @@ Display::Display
 	this->fragmentShaderFile = fragmentShaderFile;
 	this->window_title = window_title;
 
+}
+
+Camera Display::GetCamera()
+{
+	return camera;
+}
+
+GLFWwindow* Display::GetWindow()
+{
+	return window;
 }
