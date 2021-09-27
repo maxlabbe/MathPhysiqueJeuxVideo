@@ -8,7 +8,7 @@
 #include"shaderClass.h"
 #include"Camera.h"
 #include<GLFW/glfw3.h>
-
+#include"InputsHandler.h"
 
 class Display
 {
@@ -42,6 +42,7 @@ private :
 	string vertexShaderFile;
 	string fragmentShaderFile;
 	char* window_title;
+	InputsHandler inputs;
 };
 
 
