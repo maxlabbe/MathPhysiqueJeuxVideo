@@ -34,12 +34,12 @@ void Particle::UpdateVelocity(const float& time)
 
 Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, float dumping)
 {
-	this->m_mass = mass;
-	this->m_inverseMass = 1 / mass;
-	this->m_position = Vector3D(position);
-	this->m_velocity = Vector3D(velocity);
-	this->m_acceleration = Vector3D(acceleration);
-	this->m_dumping = dumping;
+	m_mass = mass;
+	m_inverseMass = 1 / mass;
+	m_position = Vector3D(position);
+	m_velocity = Vector3D(velocity);
+	m_acceleration = Vector3D(acceleration);
+	m_dumping = dumping;
 }
 
 
