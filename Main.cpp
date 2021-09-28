@@ -1,42 +1,57 @@
 #include"Display.h"
 #include"DisplayableParticle.h"
-#include"DisplayableLine.h"
 #include"Particle.h"
 #include <thread>
 #include <windows.h>
 
-bool leftclick(Display* display)
-{
-	if (glfwGetMouseButton(display->GetWindow(), GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
 
 int main()
 {
-	Display* display = new Display(800, 800, "MPJV");
-	//InputsHandler inputs(display->GetWindow(), display->GetCamera(), display);
+	/* #### INITIALIZE THE WINDOW ##### */
 
-	float g = 0.1f;
+	int width = 800;
+	int height = 800;
+	// Initialize GLFW
+	glfwInit();
+	// GLFW version : 3.3.4
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	// GLFW profile : Core = modern functions
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	GLFWwindow* window = glfwCreateWindow(width, height, "MathsPhysiqueJeuxVideo", NULL, NULL);
+	// Raise an error is the window is not initialized
+	if (window == NULL)
+	{
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+	}
+	// Make the current thread the current context of the window
+	glfwMakeContextCurrent(window);
+	//glfwGetWindowSize(window, &width, &height);
+	// Configures OpenGL
+	gladLoadGL();
+	// Area of the window where OpenGL renders
+	glViewport(0, 0, width, height);
+	// Enables the Depth Buffer
+	glEnable(GL_DEPTH_TEST);
 
-	/* Coordinate system */
-	// x axis = red
-	// y axis = green
-	// z axis = blue
-	DisplayableLine* dlx = new DisplayableLine(Vector3D(-1, 0, 0), Vector3D(1, 0, 0), Vector3D(0.9, 0.0, 0.0));
-	display->addDisplayable(dlx);
-	DisplayableLine* dly = new DisplayableLine(Vector3D(0, -1, 0), Vector3D(0, 1, 0), Vector3D(0.0, 0.9, 0.0));
-	display->addDisplayable(dly);
-	DisplayableLine* dlz = new DisplayableLine(Vector3D(0, 0, -1), Vector3D(0, 0, 1), Vector3D(0.0, 0.0, 0.9));
-	display->addDisplayable(dlz);
-	//std::thread th(&Display::mainLoop, display);
-	display->mainLoop();
-	// th.join();
+
+
+	InputsHandler inputsHandler(window);
+	Logic logic(window, inputsHandler);
+	Display display(window, logic.getCamera(), logic, Shader("noTex.vert", "noTex.frag"));
+
+	// Main loop
+	while (!glfwWindowShouldClose(window))
+	{
+		inputsHandler.UpdateInputs();
+		logic.updateLogic();
+		display.updateDisplay();
+	}
+
+	// Delete window and terminate GLFW
+	glfwDestroyWindow(window);
+	glfwTerminate();
 
 	return 0;
 }
