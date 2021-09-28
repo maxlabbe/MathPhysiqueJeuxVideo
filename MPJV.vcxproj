@@ -64,8 +64,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Libraries\include\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\include;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\lib\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\lib\;$(LibraryPath)</LibraryPath>
     <ExecutablePath>&lt;option différentes&gt;;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -76,8 +76,8 @@
     </ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>.\Libraries\include\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\include;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\lib\;D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\lib\;$(LibraryPath)</LibraryPath>
     <ExecutablePath>&lt;option différentes&gt;;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -93,7 +93,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -123,7 +123,7 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Documents\UQAC\T1\Maths_et_physique_du_JV\Projet;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
