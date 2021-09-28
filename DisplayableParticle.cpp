@@ -3,7 +3,7 @@
 DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : m_particle(p)
 {
 	m_sphere = Sphere(radius, p.getPositionPtr(), color);
-	mode = GL_TRIANGLES;
+	p_mode = GL_TRIANGLES;
 	m_isStatic = isStatic;
 }
 

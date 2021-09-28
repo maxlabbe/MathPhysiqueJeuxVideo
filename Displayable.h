@@ -44,13 +44,13 @@ protected:
 	// Attributes
 
 	// Vertex Array Object : handle vertices and color attributes from the VBO
-	VAO VAO;
+	VAO p_VAO;
 	// Vertex Buffer Object : buffer with values for vertices and color 
-	VBO VBO;
+	VBO p_VBO;
 	// Element Buffer Object : buffer with the indices og the object
-	EBO EBO;
+	EBO p_EBO;
 	// Mode of drawing the objects : can be GL_TRIANGLES, GL_LINES...
-	GLenum mode;
+	GLenum p_mode;
 };
 
 #endif
