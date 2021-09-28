@@ -14,7 +14,10 @@ InputsHandler::InputsHandler(GLFWwindow* window) : m_window(window)
 	m_mouseButtonRight = false;
 	m_mouseButtonLeft = false;
 	m_firstRightClick = false;
-	m_firstLeftClick = false;
+
+	m_keyJ = false;
+	m_keyK = true;
+	m_keyL = false;
 }
 
 void InputsHandler::UpdateInputs()
@@ -36,27 +39,9 @@ void InputsHandler::UpdateInputs()
 
 	// Handle right click
 	m_mouseButtonRight = (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS);
-	if (m_mouseButtonRight && m_firstRightClick)
-	{
-		glfwSetCursorPos(m_window, (m_width / 2), (m_height / 2));
-		m_firstLeftClick = false;
-	}
-	else if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_RELEASE)
-	{
-		m_firstLeftClick = true;
-	}
 	
 	// Handle left click
 	m_mouseButtonLeft =	(glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS);
-	if (m_mouseButtonLeft && m_firstLeftClick)
-	{
-		glfwSetCursorPos(m_window, (m_width / 2), (m_height / 2));
-		m_firstLeftClick = false;
-	}
-	else if (glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE)
-	{
-		m_firstLeftClick = true;
-	}
 
 	// Fetches the coordinates of the cursor
 	glfwGetCursorPos(m_window, &m_mouseX, &m_mouseY);
@@ -110,11 +95,7 @@ bool InputsHandler::ChangeCameraDirection()
 	return m_mouseButtonRight;
 }
 
-bool InputsHandler::Shoot()
-{
-	if (m_mouseButtonLeft && m_firstLeftClick) cout << "SHOOT";
-	return m_mouseButtonLeft && m_firstLeftClick;
-}
+
 
 bool InputsHandler::pressLeft()
 {
