@@ -4,11 +4,17 @@
 #include<glad/glad.h>
 #include"VBO.h"
 
+/// <summary>
+/// Vertex Array Object.
+/// Basically an array of VBO (Vertex Buffer Object).
+/// </summary>
 class VAO
 {
 public :
 	
-	// Default constructor
+	/// <summary>
+	/// Default VAO constructor.
+	/// </summary>
 	VAO() {}
 
 	// Links a VBO Attribute such as a position or color to the VAO

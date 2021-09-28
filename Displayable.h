@@ -4,6 +4,10 @@
 #include "VAO.h"
 #include "EBO.h"
 
+/// <summary>
+/// Abstract class. 
+/// Represents a GL displayable object with buffer handling.
+/// </summary>
 class Displayable
 {
 public : 

@@ -20,9 +20,6 @@ public:
 	glm::vec3 orientation;
 	glm::vec3 up;
 
-	// Prevents the camera from jumping around when first clicking left click
-	bool firstClick = true;
-
 	// Stores the width and height of the window
 	int width;
 	int height;
