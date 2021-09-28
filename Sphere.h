@@ -4,15 +4,28 @@
 #include<GLFW/glfw3.h>
 #include <vector>
 #include "Vector3D.h"
-
+/// <summary>
+/// A sphere built with triangles.
+/// Visit : http://www.songho.ca/opengl/gl_sphere.html for more details.
+/// </summary>
 class Sphere
 {
 public:
     // ctor/dtor
+    
+    /// <summary>
+    /// Constructor of a Sphere.
+    /// </summary>
+    /// <param name="radius">float : radius of the sphere</param>
+    /// <param name="position">Vector3D* : position of the center</param>
+    /// <param name="color">Vector3D* : color RGB (between 0 and 1) of the sphere</param>
+    /// <param name="sectorCount">int : number of sectors (horizontal "lines" of edges)</param>
+    /// <param name="stackCount">int : number of stack (vertical "lines" of edges)</param>
+    /// <param name="smooth">bool : if vertices has to be smooth or not</param>
     Sphere(float radius=1.0f, Vector3D* position = new Vector3D(), Vector3D* color = new Vector3D(1,1,1), int sectorCount=12, int stackCount=6, bool smooth=true);
     ~Sphere() {}
 
-    // getters/setters
+    // Getters and setters
     float getRadius() const                         { return radius; }
     int getSectorCount() const                      { return sectorCount; }
     int getStackCount() const                       { return stackCount; }
@@ -25,7 +38,7 @@ public:
     void setPosition(Vector3D position);
     void setColor(Vector3D color);
 
-    // for vertex data
+    // Getters for vertex data
     unsigned int getVertexCount() const             { return (unsigned int)vertices.size() / 3; }
     unsigned int getNormalCount() const             { return (unsigned int)normals.size() / 3; }
     unsigned int getTexCoordCount() const           { return (unsigned int)texCoords.size() / 2; }
@@ -44,9 +57,26 @@ public:
     const unsigned int* getLineIndices() const      { return lineIndices.data(); }
 
     // Format to GL data
+    
+    /// <summary>
+    /// Update the vertices and their colors for OpenGL.
+    /// Ex : vx, vy, vz, r, g, b, v2x, v2y, v2z, r, g, b
+    /// </summary>
     void updateGLVerticesColor();
+    /// <summary>
+    /// Generate indices for OpenGL
+    /// </summary>
     void generateGLIndices();
+
+    /// <summary>
+    /// Returns vertices and their colors to be used in a Vertex Buffer Object
+    /// </summary>
+    /// <returns>GLfloat* : list of vertices coordinates and colors rgb values</returns>
     GLfloat* getGLVerticesColor() const             { return glVerticesColor; }
+    /// <summary>
+    /// Returns indices to be used in a Element Buffer Object
+    /// </summary>
+    /// <returns>GLuint* : list of indices</returns>
     GLuint* getGLIndices() const                    { return glIndices;}
 
     // for interleaved vertices: V/N/T
@@ -86,10 +116,15 @@ private:
     std::vector<unsigned int> lineIndices;
     
 
-    // Display attributes
+    // Display attributes 
+
+    // Vertices coordinates and color RGB values for VBO
     GLfloat* glVerticesColor;
+    // Indices of the triangles of the sphere
     GLuint* glIndices;
+    // Position of the center of the sphere
     Vector3D* position;
+    // Color RGB of the sphere
     Vector3D* color;
 
     // interleaved
