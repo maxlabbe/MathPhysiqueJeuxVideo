@@ -12,9 +12,15 @@ void Projectile::update(float time)
 {
 	if (m_lifeTime < m_lifespan)
 	{
+		// Compute physic in seconds
 		m_particle.integrate(time / 1000);
+
+		// Create a displayable object for the trajectory
 		DisplayableParticle* particle_trace = new DisplayableParticle(m_particle, 0.01f, true);
+
+		// Add it to the trah=jectory vector
 		m_trace.push_back(particle_trace);
+
 		m_lifeTime += time;
 	}
 }
