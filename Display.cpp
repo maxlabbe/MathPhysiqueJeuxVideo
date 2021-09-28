@@ -38,17 +38,23 @@ void Display::updateDisplay()
 {
 	// Specify the color of the background
 	glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+
 	// Clean the back buffer and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 	// Tell OpenGL which Shader Program we want to use
 	m_shader.Activate();
+
 	// Update camera (FOV angle, nearPlane, farPlane, shader, shaderMatrixVarName)
 	m_camera->Matrix(45.0f, 0.1f, 100.0f, m_shader, "camMatrix");
+
 	// Iterates over all displayables and displays them
 	for (auto it = std::begin(m_displayables); it != std::end(m_displayables); ++it)
 	{
 		(*it)->display();
 	}
+
+	// Iterates over all projectiles and displays them
 	vector<Displayable*> projectiles = m_logic.getDisplayables();
 	for (auto it = std::begin(projectiles); it != std::end(projectiles); ++it)
 	{
@@ -56,17 +62,11 @@ void Display::updateDisplay()
 	}
 	// Swap the back buffer with the front buffer
 	glfwSwapBuffers(m_window);
+
 	// Take care of all GLFW events
 	glfwPollEvents();
 	
 }
-
-//// Delete all the objects we've created
-//for (auto it = std::begin(m_displayables); it != std::end(m_displayables); ++it)
-//{
-//	(*it)->Delete();
-//}
-//m_shader.Delete();
 
 
 

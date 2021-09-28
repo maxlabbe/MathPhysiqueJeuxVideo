@@ -36,27 +36,27 @@ void Logic::moveCamera()
 {
 	if (m_inputsHandler.MoveForward())
 	{
-		m_camera->Position += m_camera->speed * m_camera->Orientation;
+		m_camera->position += m_camera->speed * m_camera->orientation;
 	}
 	if (m_inputsHandler.MoveBack())
 	{
-		m_camera->Position += m_camera->speed * -m_camera->Orientation;
+		m_camera->position += m_camera->speed * -m_camera->orientation;
 	}
 	if (m_inputsHandler.MoveLeft())
 	{
-		m_camera->Position += m_camera->speed * -glm::normalize(glm::cross(m_camera->Orientation, m_camera->Up));
+		m_camera->position += m_camera->speed * -glm::normalize(glm::cross(m_camera->orientation, m_camera->up));
 	}
 	if (m_inputsHandler.MoveRight())
 	{
-		m_camera->Position += m_camera->speed * glm::normalize(glm::cross(m_camera->Orientation, m_camera->Up));
+		m_camera->position += m_camera->speed * glm::normalize(glm::cross(m_camera->orientation, m_camera->up));
 	}
 	if (m_inputsHandler.MoveUp())
 	{
-		m_camera->Position += m_camera->speed * m_camera->Up;
+		m_camera->position += m_camera->speed * m_camera->up;
 	}
 	if (m_inputsHandler.MoveDown())
 	{
-		m_camera->Position += m_camera->speed * -m_camera->Up;
+		m_camera->position += m_camera->speed * -m_camera->up;
 	}
 	if (m_inputsHandler.ChangeCameraDirection())
 	{
@@ -66,16 +66,11 @@ void Logic::moveCamera()
 		// and then "transforms" them into degrees 
 		float rotX = m_camera->sensitivity * (float)(m_inputsHandler.getMouseY() - (m_camera->height / 2)) / m_camera->height;
 		float rotY = m_camera->sensitivity * (float)(m_inputsHandler.getMouseX() - (m_camera->width / 2)) / m_camera->width;
-		// Calculates upcoming vertical change in the Orientation
-		glm::vec3 newOrientation = glm::rotate(m_camera->Orientation, glm::radians(-rotX), glm::normalize(glm::cross(m_camera->Orientation, m_camera->Up)));
-		// Decides whether or not the next vertical Orientation is legal or not
-		/*if(!(glm::angle(newOrientation, Up) >= glm::radians(90.0f) || glm::angle(newOrientation, Up) <= glm::radians(-90.0f)))
-		{
-			Orientation = newOrientation;
-		}*/
-		m_camera->Orientation = newOrientation;
+		// Calculates upcoming vertical change in the orientation
+		glm::vec3 newOrientation = glm::rotate(m_camera->orientation, glm::radians(-rotX), glm::normalize(glm::cross(m_camera->orientation, m_camera->up)));
+		m_camera->orientation = newOrientation;
 		// Rotates the Orientation left and right
-		m_camera->Orientation = glm::rotate(m_camera->Orientation, glm::radians(-rotY), m_camera->Up);
+		m_camera->orientation = glm::rotate(m_camera->orientation, glm::radians(-rotY), m_camera->up);
 		// Sets mouse cursor to the middle of the screen so that it doesn't end up roaming around
 		glfwSetCursorPos(m_window, (m_camera->width / 2), (m_camera->height / 2));
 	}
@@ -110,8 +105,8 @@ void Logic::shoot()
 		if (m_firstLeftClick)
 		{
 			m_firstLeftClick = false;
-			Vector3D position(m_camera->Position.x, m_camera->Position.y, m_camera->Position.z);
-			Vector3D velocity(m_camera->Orientation.x, m_camera->Orientation.y, m_camera->Orientation.z);
+			Vector3D position(m_camera->position.x, m_camera->position.y, m_camera->position.z);
+			Vector3D velocity(m_camera->orientation.x, m_camera->orientation.y, m_camera->orientation.z);
 			float gravity = 0;
 			cout << m_littleProjectile;
 			if (m_littleProjectile)
