@@ -16,16 +16,36 @@ public:
 	/// </summary>
 	EBO() {}
 
+	/// <summary>
+	/// Links the buffer to indices
+	/// </summary>
+	/// <param name="indices">GLuint* : list of indices</param>
+	/// <param name="size">GLsizeiptr : memory size of the list of indices (bytes)</param>
 	void linkToIndices(GLuint* indices, GLsizeiptr size);
+
+	/// <summary>
+	/// Binds the element buffer. Makes it the current buffer of data.
+	/// </summary>
 	void Bind();
+
+	/// <summary>
+	/// Unbinds the element buffer. Binds an empty buffer.
+	/// </summary>
 	void Unbind();
+
+	/// <summary>
+	/// Deletes the buffer and its content.
+	/// </summary>
 	void Delete();
+
 
 private :
 
-	// ID reference of Elements Buffer Object
-	GLuint ID = 0;
-	bool isID = false;
+	// Reference ID of the Element Buffer Object
+	GLuint m_ID = 0;
+
+	// Indicates if the buffer ID has been generated
+	bool m_isID = false;
 };
 
 #endif

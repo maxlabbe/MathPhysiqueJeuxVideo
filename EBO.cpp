@@ -1,13 +1,5 @@
 #include"EBO.h"
 
-// Constructor that generates a Elements Buffer Object and links it to indices
-EBO::EBO(GLuint* indices, GLsizeiptr size)
-{
-	glGenBuffers(1, &ID);
-	linkToIndices(indices, size);
-}
-
-// Link to Indices
 void EBO::linkToIndices(GLuint* indices, GLsizeiptr size)
 {
 	Bind();
@@ -17,12 +9,12 @@ void EBO::linkToIndices(GLuint* indices, GLsizeiptr size)
 // Binds the EBO
 void EBO::Bind()
 {	
-	if (!isID)
+	if (!m_isID)
 	{
-		glGenBuffers(1, &ID);
-		isID = true;
+		glGenBuffers(1, &m_ID);
+		m_isID = true;
 	}
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ID);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ID);
 }
 
 // Unbinds the EBO
@@ -34,8 +26,8 @@ void EBO::Unbind()
 // Deletes the EBO
 void EBO::Delete()
 {
-	if (isID)
+	if (m_isID)
 	{
-		glDeleteBuffers(1, &ID);
+		glDeleteBuffers(1, &m_ID);
 	}
 }
