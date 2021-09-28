@@ -4,7 +4,7 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler) : m_window(window
 {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
-	m_camera = new Camera(width, height, glm::vec3(2.0f, 1.0f, 2.0f), glm::vec3(-2.0f, -2.0f, -5.0f), glm::vec3(0, 1, 0));
+	m_camera = new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
 	m_lastTime = chrono::high_resolution_clock::now();
 	m_firstLeftClick = true;
 	m_firstRightClick = true;
@@ -144,19 +144,20 @@ void Logic::shoot()
 			// Change velocity and gravity depend on the projectile's type
 			if (m_littleProjectile)
 			{
-				velocity = velocity.multiplyByScalar(0.5);
-				gravity = 1.0f;
+				velocity = 4.0 * velocity;
+				gravity = 0.5f;
 			}
 			if (m_mediumProjectile)
 			{
-				gravity = 0.2f;
+				velocity = 2.0 * velocity;
+				gravity = 1.0f;
 			}
 			if (m_bigProjectile)
 			{
-				velocity = velocity.multiplyByScalar(0.1f);
-				gravity = 0.4f;
+				velocity = 1 * velocity;
+				gravity = 2.0f;
 			}
-
+			cout << "Position initiale : " << position << " | Vitesse initiale : " << velocity << " : " << velocity.norm() << " m/s" << endl;
 			addProjectile(position, velocity, gravity);
 		}
 		
@@ -188,6 +189,8 @@ void Logic::updateProjectiles()
 void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity, float lifespan)
 {
 	Projectile p(initPos, initVelocity, gravity, lifespan);
+	if (m_projectiles.size() > 9) 
+		m_projectiles.erase(m_projectiles.begin());
 	m_projectiles.push_back(p);
 }
 
