@@ -8,7 +8,6 @@
 #include"shaderClass.h"
 #include"Camera.h"
 #include<GLFW/glfw3.h>
-#include"InputsHandler.h"
 
 class Display
 {
@@ -19,27 +18,29 @@ public :
 	void mainLoop();
 	Camera* GetCamera();
 	GLFWwindow* GetWindow();
+	void moveParticle(Particle& p);
 
 	// Constructors 
 
 	Display
 	(
-		unsigned int window_width, 
+		unsigned int window_width,
 		unsigned int window_height,
-		char* window_title
+		char* window_title,
+		char* vertexShaderFile = "noTex.vert",
+		char* fragmentShaderFile = "noTex.frag"
 	);
 
 private :
 
-	vector<Displayable*> displayables;
-	unsigned int width;
-	unsigned int height;
-	GLFWwindow* window;
-	Shader shader;
-	Camera* camera;
-	string vertexShaderFile;
-	string fragmentShaderFile;
-	char* window_title;
+	vector<Displayable*> m_displayables;
+	unsigned int m_width;
+	unsigned int m_height;
+	GLFWwindow* m_window;
+	Shader m_shader;
+	Camera* m_camera;
+	char* m_window_title;
+	//Particle m_p;
 };
 
 
