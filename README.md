@@ -21,7 +21,7 @@ Depuis la fenêtre, plusieurs actions sont possibles : AZERTY(QWERTY)
     - D(D= -> Déplace la caméra vers la droite
     - CTRL-Gauche -> Déplace la caméra vers le bas
     - Espace -> Déplace la caméra vers le haut
-    - Déplacer la souris en faisant un clic gauche permet de changer l'orientation de la caméra
+    - Déplacer la souris en faisant un clic droit permet de changer l'orientation de la caméra
   - Lancer un projectile :
     - Clic gauche -> Tir un projectile depuis la position de la caméra et avec une vitesse initiale pointant devant nous
     - J(J) -> Sélectionne le projectile léger
