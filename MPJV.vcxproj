@@ -147,7 +147,6 @@
     <ClCompile Include="ShaderClass.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="stb.cpp" />
-    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
     <ClCompile Include="Vector3D.cpp" />
@@ -166,7 +165,6 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ShaderClass.h" />
     <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Texture.h" />
     <ClInclude Include="VAO.h" />
     <ClInclude Include="VBO.h" />
     <ClInclude Include="Vector3D.h" />
@@ -174,11 +172,6 @@
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
-    <None Include="noTex.frag" />
-    <None Include="noTex.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="bowling.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

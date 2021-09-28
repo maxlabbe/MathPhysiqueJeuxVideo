@@ -39,7 +39,7 @@ int main()
 
 	InputsHandler inputsHandler(window);
 	Logic logic(window, inputsHandler);
-	Display display(window, logic.getCamera(), logic, Shader("noTex.vert", "noTex.frag"));
+	Display display(window, logic.getCamera(), logic, Shader("default.vert", "default.frag"));
 
 	// Main loop
 	while (!glfwWindowShouldClose(window))
