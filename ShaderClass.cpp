@@ -1,6 +1,5 @@
 #include"shaderClass.h"
 
-// Reads a text file and outputs a string with everything in the text file
 std::string get_file_contents(const char* filename)
 {
 	std::ifstream in(filename, std::ios::binary);
@@ -17,7 +16,6 @@ std::string get_file_contents(const char* filename)
 	throw(errno);
 }
 
-// Constructor that build the Shader Program from 2 different shaders
 Shader::Shader(const char* vertexFile, const char* fragmentFile)
 {
 	// Read vertexFile and fragmentFile and store the strings
@@ -30,20 +28,17 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 
 	// Create Vertex Shader Object and get its reference
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	// Attach Vertex Shader source to the Vertex Shader Object
+	//Attach Vertex Shader source to the Vertex Shader Object (shader, number_of_string, string_array, array of string lengths)
 	glShaderSource(vertexShader, 1, &vertexSource, NULL);
 	// Compile the Vertex Shader into machine code
 	glCompileShader(vertexShader);
 	// Checks if Shader compiled succesfully
 	compileErrors(vertexShader, "VERTEX");
 
-	// Create Fragment Shader Object and get its reference
+	// Do exactly the same thing but with the Fragment Shader Object 
 	GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	// Attach Fragment Shader source to the Fragment Shader Object
 	glShaderSource(fragmentShader, 1, &fragmentSource, NULL);
-	// Compile the Vertex Shader into machine code
 	glCompileShader(fragmentShader);
-	// Checks if Shader compiled succesfully
 	compileErrors(fragmentShader, "FRAGMENT");
 
 	// Create Shader Program Object and get its reference
@@ -59,22 +54,19 @@ Shader::Shader(const char* vertexFile, const char* fragmentFile)
 	// Delete the now useless Vertex and Fragment Shader objects
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
-
 }
 
-// Activates the Shader Program
+
 void Shader::Activate()
 {
 	glUseProgram(ID);
 }
 
-// Deletes the Shader Program
 void Shader::Delete()
 {
 	glDeleteProgram(ID);
 }
 
-// Checks if the different Shaders have compiled properly
 void Shader::compileErrors(unsigned int shader, const char* type)
 {
 	// Stores status of compilation
