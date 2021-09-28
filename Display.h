@@ -26,9 +26,7 @@ public :
 	(
 		unsigned int window_width, 
 		unsigned int window_height,
-		char * window_title,
-		string vertexShaderFile="noTex.vert", 
-		string fragmentShaderFile="noTex.frag"
+		char* window_title
 	);
 
 private :
@@ -42,7 +40,6 @@ private :
 	string vertexShaderFile;
 	string fragmentShaderFile;
 	char* window_title;
-	InputsHandler inputs;
 };
 
 

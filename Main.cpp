@@ -43,6 +43,8 @@ int main()
 	while (true)
 	{
 		bool firstLeftClick = true;
+		InputsHandler inputs(display->GetWindow(), display->GetCamera(), display);
+		inputs.handleInputs();
 		//if (inputs.handleLeftClick())
 		//{
 			if (firstLeftClick)

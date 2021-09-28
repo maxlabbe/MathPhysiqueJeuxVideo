@@ -27,8 +27,7 @@ void Display::mainLoop()
 	// GLFW profile : Core = modern functions
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create a window (width, height, name, fullscreen, smthg_not_important)
-	GLFWwindow* window = glfwCreateWindow(this->width, this->height, window_title, NULL, NULL);
+	
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -47,8 +46,6 @@ void Display::mainLoop()
 
 	// Enables the Depth Buffer
 	glEnable(GL_DEPTH_TEST);
-	
-	this->inputs = InputsHandler(window, camera, this);
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -58,8 +55,6 @@ void Display::mainLoop()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Tell OpenGL which Shader Program we want to use
 		shader.Activate();
-		// Handle camera
-		inputs.handleInputs();
 		camera->Matrix(45.0f, 0.1f, 100.0f, shader, "camMatrix");
 		// Iterates over all displayables and displays them
 
@@ -86,22 +81,23 @@ void Display::mainLoop()
 
 // Constructor
 
-Display::Display 
+Display::Display
 (
-	unsigned int width, unsigned int height, 
-	char * window_title, 
-	string vertexShaderFile, 
-	string fragmentShaderFile
+	unsigned int window_width,
+	unsigned int window_height,
+	char* window_title
 )
 {
+	this->displayables = vector<Displayable*>();
 	this->width = width;
 	this->height = height;
-	this->vertexShaderFile = vertexShaderFile;
-	this->fragmentShaderFile = fragmentShaderFile;
-	this->window_title = window_title;
-
-	// Initialize the camera : width, height of screen, position, direction
+	this->window = glfwCreateWindow(this->width, this->height, window_title, NULL, NULL);
+	shader = Shader();
 	this->camera = new Camera(this->width, this->height, glm::vec3(0, 0, 0), glm::vec3(-2.0f, -2.0f, -5.0f), glm::vec3(0, 1, 0));
+	this->vertexShaderFile = "noTex.vert";
+	this->fragmentShaderFile = "noTex.frag";
+	this->window_title = window_title;
+	
 }
 
 Camera* Display::GetCamera()
