@@ -1,34 +1,34 @@
 #include"DisplayableParticle.h"
 
-DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : particle(p)
+DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : m_particle(p)
 {
-	this->sphere = Sphere(radius, p.getPositionPtr(), color);
-	this->mode = GL_TRIANGLES;
-	this->isStatic = isStatic;
+	m_sphere = Sphere(radius, p.getPositionPtr(), color);
+	mode = GL_TRIANGLES;
+	m_isStatic = isStatic;
 }
 
 unsigned int DisplayableParticle::getIndexCount()
 {
-	return sphere.getIndexCount();
+	return m_sphere.getIndexCount();
 }
 
 GLfloat* DisplayableParticle::getVertices()
 {
-	if(!isStatic) sphere.updateGLVerticesColor();
-	return sphere.getGLVerticesColor();
+	if(!m_isStatic) m_sphere.updateGLVerticesColor();
+	return m_sphere.getGLVerticesColor();
 }
 
 GLuint* DisplayableParticle::getIndices()
 {
-	return sphere.getGLIndices();
+	return m_sphere.getGLIndices();
 }
 
 GLsizeiptr DisplayableParticle::getSizeOfVertices()
 {
-	return sizeof(GLfloat) * sphere.getVertexCount() * 6;
+	return sizeof(GLfloat) * m_sphere.getVertexCount() * 6;
 }
 
 GLsizeiptr DisplayableParticle::getSizeOfIndices()
 {
-	return sizeof(GLuint) * sphere.getIndexCount();
+	return sizeof(GLuint) * m_sphere.getIndexCount();
 }
