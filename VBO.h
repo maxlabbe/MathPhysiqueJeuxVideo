@@ -3,6 +3,10 @@
 
 #include<glad/glad.h>
 
+/// <summary>
+/// Vertex Buffer Object.
+/// Handle a buffer of vertices.
+/// </summary>
 class VBO
 {
 public:
@@ -37,7 +41,7 @@ private:
 	// Reference ID of the Vertex Buffer Object
 	GLuint m_ID = 0;
 
-	// Indicates is the buffer ID has been generated
+	// Indicates if the buffer ID has been generated
 	bool m_isID = false;
 };
 

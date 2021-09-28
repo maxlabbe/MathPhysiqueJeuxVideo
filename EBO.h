@@ -3,12 +3,17 @@
 
 #include<glad/glad.h>
 
+/// <summary>
+/// Element Buffer Object.
+/// Handle a buffer of indices.
+/// </summary>
 class EBO
 {
 public:
-	// Constructor that generates a Elements Buffer Object and links it to indices
-	EBO(GLuint* indices, GLsizeiptr size);
-	// Default constructor
+
+	/// <summary>
+	/// Default constructor
+	/// </summary>
 	EBO() {}
 
 	void linkToIndices(GLuint* indices, GLsizeiptr size);
