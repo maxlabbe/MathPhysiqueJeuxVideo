@@ -18,7 +18,7 @@ Depuis la fenêtre, plusieurs actions sont possibles : AZERTY(QWERTY)
     - Z(Q) -> Déplace la caméra vers l'avant
     - S(S) -> Déplace la caméra vers l'arrière
     - Q(A) -> Déplace la caméra vers la gauche
-    - D(D= -> Déplace la caméra vers la droite
+    - D(D) -> Déplace la caméra vers la droite
     - CTRL-Gauche -> Déplace la caméra vers le bas
     - Espace -> Déplace la caméra vers le haut
     - Déplacer la souris en faisant un clic droit permet de changer l'orientation de la caméra
