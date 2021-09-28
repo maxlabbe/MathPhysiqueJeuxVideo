@@ -6,14 +6,30 @@
 
 /// <summary>
 /// Abstract class. 
-/// Represents a GL displayable object with buffer handling.
+/// Represents a GL displayable object and is able to display it.
+/// A displayable object is defined as a set of vertices and a set of indices
+/// that gives the links between the vertices.
 /// </summary>
 class Displayable
 {
 public : 
 
+	/// <summary>
+	/// Displays the object using glDrawElements function in the current context.
+	/// </summary>
 	void display();
+
+	/// <summary>
+	/// Returns the number of indices.
+	/// </summary>
+	/// <returns>
+	/// unsigned int : number of indices of the object.
+	/// </returns>
 	virtual unsigned int getIndexCount() = 0;
+
+	/// <summary>
+	/// Deletes all the buffer objects, VAO, VBO and EBO.
+	/// </summary>
 	void Delete();
 
 protected:
@@ -27,9 +43,13 @@ protected:
 
 	// Attributes
 
+	// Vertex Array Object : handle vertices and color attributes from the VBO
 	VAO VAO;
+	// Vertex Buffer Object : buffer with values for vertices and color 
 	VBO VBO;
+	// Element Buffer Object : buffer with the indices og the object
 	EBO EBO;
+	// Mode of drawing the objects : can be GL_TRIANGLES, GL_LINES...
 	GLenum mode;
 };
 
