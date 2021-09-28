@@ -4,7 +4,7 @@
 ### Sur Windows
 #### Prérequis 
   - Microsoft Visual Studio 2019 / C++
-### Lancer le programme
+#### Lancer le programme
   - Télécharger et décompresser le dossier du code
   - Depuis Visual Studio, "Ouvrir un projet ou une solution".
   - Sélectionner MPJV.sln
