@@ -16,9 +16,9 @@ class Camera
 {
 public:
 	// Stores the main vectors of the camera
-	glm::vec3 Position;
-	glm::vec3 Orientation;
-	glm::vec3 Up;
+	glm::vec3 position;
+	glm::vec3 orientation;
+	glm::vec3 up;
 
 	// Stores the width and height of the window
 	int width;
