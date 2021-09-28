@@ -2,13 +2,13 @@
 
 
 
-Camera::Camera(int camWidth, int camHeight, glm::vec3 camPosition, glm::vec3 camOrientation, glm::vec3 vectorUp)
+Camera::Camera(int width, int height, glm::vec3 position, glm::vec3 orientation, glm::vec3 up)
 {
-	width = width;
-	height = height;
-	position = position;
-	orientation = orientation;
-	up = up;
+	this->width = width;
+	this->height = height;
+	this->Position = position;
+	this->Orientation = orientation;
+	this->Up = up;
 }
 
 void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shader, const char* uniform)
@@ -18,7 +18,7 @@ void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shade
 	glm::mat4 projection = glm::mat4(1.0f);
 
 	// Makes camera look in the right direction from the right position
-	view = glm::lookAt(position, position + orientation, up);
+	view = glm::lookAt(Position, Position + Orientation, Up);
 
 	// Adds perspective to the scene
 	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height, nearPlane, farPlane);
