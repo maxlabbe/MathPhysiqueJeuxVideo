@@ -2,39 +2,44 @@
 
 DisplayableLine::DisplayableLine(Vector3D start, Vector3D end, Vector3D color)
 {
-	this->start = start;
-	this->end = end;
-	this->color = color;
-	this->mode = GL_LINES;
-	vertices[0] = start.getX(); vertices[1] = start.getY(); vertices[2] = start.getZ();
-	vertices[3] = color.getX(); vertices[4] = color.getY(); vertices[5] = color.getZ();
-	vertices[6] = end.getX(); vertices[7] = end.getY(); vertices[8] = end.getZ();
-	vertices[9] = color.getX(); vertices[10] = color.getY(); vertices[11] = color.getZ();
-	indices[0] = 0; indices[1] = 1;
+	m_start = start;
+	m_end = end;
+	m_color = color;
+	mode = GL_LINES;
+
+	m_vertices[0] = start.getX(); m_vertices[1] = start.getY(); m_vertices[2] = start.getZ();
+	m_vertices[3] = color.getX(); m_vertices[4] = color.getY(); m_vertices[5] = color.getZ();
+	m_vertices[6] = end.getX(); m_vertices[7] = end.getY(); m_vertices[8] = end.getZ();
+	m_vertices[9] = color.getX(); m_vertices[10] = color.getY(); m_vertices[11] = color.getZ();
+
+	m_indices[0] = 0; m_indices[1] = 1;
 
 }
 
 unsigned int DisplayableLine::getIndexCount()
 {
+	// There is only 2 index
 	return 2;
 }
 
 GLfloat* DisplayableLine::getVertices()
 {
-	return vertices;
+	return m_vertices;
 }
 
 GLuint* DisplayableLine::getIndices()
 {
-	return indices;
+	return m_indices;
 }
 
 GLsizeiptr DisplayableLine::getSizeOfVertices()
 {
+	// there is 12 vertices
 	return sizeof(GLfloat) * 12;
 }
 
 GLsizeiptr DisplayableLine::getSizeOfIndices()
 {
+	// there is 2 index
 	return sizeof(GLuint) * 2;
 }
