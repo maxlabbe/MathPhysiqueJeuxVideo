@@ -18,6 +18,48 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\include\Common.h" />
+    <ClInclude Include="Engine\include\Logic.h" />
+    <ClInclude Include="Engine\include\Particle.h" />
+    <ClInclude Include="Engine\include\Projectile.h" />
+    <ClInclude Include="Engine\include\Vector3D.h" />
+    <ClInclude Include="Graphics\include\Camera.h" />
+    <ClInclude Include="Graphics\include\Display.h" />
+    <ClInclude Include="Graphics\include\Displayable.h" />
+    <ClInclude Include="Graphics\include\DisplayableLine.h" />
+    <ClInclude Include="Graphics\include\DisplayableParticle.h" />
+    <ClInclude Include="Graphics\include\EBO.h" />
+    <ClInclude Include="Graphics\include\ShaderClass.h" />
+    <ClInclude Include="Graphics\include\Sphere.h" />
+    <ClInclude Include="Graphics\include\VAO.h" />
+    <ClInclude Include="Graphics\include\VBO.h" />
+    <ClInclude Include="Inputs\include\InputsHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Common\src\Main.cpp" />
+    <ClCompile Include="Engine\src\Logic.cpp" />
+    <ClCompile Include="Engine\src\Particle.cpp" />
+    <ClCompile Include="Engine\src\Projectile.cpp" />
+    <ClCompile Include="Engine\src\Vector3D.cpp" />
+    <ClCompile Include="Graphics\src\Camera.cpp" />
+    <ClCompile Include="Graphics\src\Display.cpp" />
+    <ClCompile Include="Graphics\src\Displayable.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableLine.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableParticle.cpp" />
+    <ClCompile Include="Graphics\src\EBO.cpp" />
+    <ClCompile Include="Graphics\src\glad.c" />
+    <ClCompile Include="Graphics\src\ShaderClass.cpp" />
+    <ClCompile Include="Graphics\src\Sphere.cpp" />
+    <ClCompile Include="Graphics\src\stb.cpp" />
+    <ClCompile Include="Graphics\src\VAO.cpp" />
+    <ClCompile Include="Graphics\src\VBO.cpp" />
+    <ClCompile Include="Inputs\src\InputsHandler.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\src\default.frag" />
+    <None Include="Graphics\src\default.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{FCA0E235-3712-4AD6-8F73-608E33E23BC0}</ProjectGuid>
@@ -131,48 +173,6 @@
       <AdditionalIncludeDirectories>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="Displayable.cpp" />
-    <ClCompile Include="DisplayableLine.cpp" />
-    <ClCompile Include="DisplayableParticle.cpp" />
-    <ClCompile Include="EBO.cpp" />
-    <ClCompile Include="glad.c" />
-    <ClCompile Include="InputsHandler.cpp" />
-    <ClCompile Include="Logic.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="Projectile.cpp" />
-    <ClCompile Include="ShaderClass.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="stb.cpp" />
-    <ClCompile Include="VAO.cpp" />
-    <ClCompile Include="VBO.cpp" />
-    <ClCompile Include="Vector3D.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Common.h" />
-    <ClInclude Include="Display.h" />
-    <ClInclude Include="Displayable.h" />
-    <ClInclude Include="DisplayableLine.h" />
-    <ClInclude Include="DisplayableParticle.h" />
-    <ClInclude Include="EBO.h" />
-    <ClInclude Include="InputsHandler.h" />
-    <ClInclude Include="Logic.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="Projectile.h" />
-    <ClInclude Include="ShaderClass.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="VAO.h" />
-    <ClInclude Include="VBO.h" />
-    <ClInclude Include="Vector3D.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="default.frag" />
-    <None Include="default.vert" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
