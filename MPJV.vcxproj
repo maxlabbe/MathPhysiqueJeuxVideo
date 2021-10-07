@@ -106,25 +106,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\lib\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\include\;.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\lib\;$(LibraryPath);$(ProjectDir)\Libraries\lib\</LibraryPath>
     <ExecutablePath>&lt;option différentes&gt;;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\; D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\</IncludePath>
-    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\; D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\</IncludePath>
+    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(ProjectDir)\Libraries\lib\</LibraryPath>
     <ExecutablePath>
     </ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
-    <LibraryPath>.\Libraries\lib\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\include\;.\Libraries\include\;&lt;option différentes&gt;;$(IncludePath)</IncludePath>
+    <LibraryPath>.\Libraries\lib\;$(LibraryPath);$(ProjectDir)\Libraries\lib\</LibraryPath>
     <ExecutablePath>&lt;option différentes&gt;;$(ExecutablePath)</ExecutablePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\; D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\</IncludePath>
-    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\</LibraryPath>
+    <IncludePath>$(ProjectDir)\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\;&lt;option différentes&gt;;$(IncludePath); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\; D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\include\</IncludePath>
+    <LibraryPath>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64); D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\Libraries\lib\;$(ProjectDir)\Libraries\lib\</LibraryPath>
     <ExecutablePath>
     </ExecutablePath>
   </PropertyGroup>
