@@ -135,7 +135,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Common\include\;$(ProjectDir)\Engine\include\;$(ProjectDir)\Graphics\include\;$(ProjectDir)\Inputs\include\;./</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -150,7 +150,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Common\include\;$(ProjectDir)\Engine\include\;$(ProjectDir)\Graphics\include\;$(ProjectDir)\Inputs\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -165,12 +165,12 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ClCompile>
-      <AdditionalIncludeDirectories>./</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Common\include\;$(ProjectDir)\Engine\include\;$(ProjectDir)\Graphics\include\;$(ProjectDir)\Inputs\include\;./</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Common\include\;$(ProjectDir)\Engine\include\;$(ProjectDir)\Graphics\include\;$(ProjectDir)\Inputs\include\;D:\UQAC\Mathématiques et physique des jeux vidéo\MathPhysiqueJeuxVideo\</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
