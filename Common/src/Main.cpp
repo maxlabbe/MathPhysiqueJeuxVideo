@@ -46,7 +46,7 @@ int main()
 	// Create the inputs, logics and display of the game
 	InputsHandler inputsHandler(window);
 	Logic logic(window, inputsHandler);
-	Display display(window, logic.getCamera(), logic, Shader("default.vert", "default.frag"));
+	Display display(window, logic.getCamera(), logic, Shader("./Graphics/src/default.vert", "./Graphics/src/default.frag"));
 
 	// Main loop
 	while (!glfwWindowShouldClose(window))
