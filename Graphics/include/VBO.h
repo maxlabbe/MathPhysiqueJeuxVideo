@@ -20,7 +20,7 @@ public:
 	/// </summary>
 	/// <param name="vertices">Glfloat* : list of vertices</param>
 	/// <param name="size">GLsizeptr : memory size of the list of vertices (bytes)</param>
-	void linkToVertices(GLfloat* vertices, GLsizeiptr size);
+	void LinkToVertices(GLfloat* vertices, GLsizeiptr size);
 
 	/// <summary>
 	/// Binds the vertex buffer. Makes it the current buffer of data.
@@ -37,12 +37,19 @@ public:
 	/// </summary>
 	void Delete();
 
+	// Getters 
+
+	bool IsAllocated() { return m_isAllocated; }
+
 private:
 	// Reference ID of the Vertex Buffer Object
 	GLuint m_ID = 0;
 
 	// Indicates if the buffer ID has been generated
 	bool m_isID = false;
+
+	// Indicates if the buffer is already allocated
+	bool m_isAllocated = false;
 };
 
 #endif

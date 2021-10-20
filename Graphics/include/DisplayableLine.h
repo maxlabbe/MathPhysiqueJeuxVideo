@@ -14,13 +14,14 @@ public :
 	/// <param name="start"> Vector3D : first line's point coordonates </param>
 	/// <param name="end"> Vector3D : last line's point coordonates </param>
 	/// <param name="color"> Vector3D : line's color's coordonates (0-1) </param>
-	DisplayableLine(Vector3D start, Vector3D end, Vector3D color);
+	/// <param name="isStatic"> bool : is the line will have to move or not </param>
+	DisplayableLine(Vector3D start, Vector3D end, Vector3D color, bool isStatic = false);
 
 	/// <summary>
 	/// Return the number of index of the line
 	/// </summary>
 	/// <returns> unsigned int : the number of index </returns>
-	unsigned int getIndexCount();
+	unsigned int GetIndexCount();
 
 protected:
 
@@ -28,25 +29,25 @@ protected:
 	/// Return the line's vertices
 	/// </summary>
 	/// <returns> GLfloat* : the line vertices</returns>
-	GLfloat* getVertices();
+	GLfloat* GetVertices();
 
 	/// <summary>
 	/// Return the line's indices
 	/// </summary>
 	/// <returns> GLunit : the indices </returns>
-	GLuint* getIndices();
+	GLuint* GetIndices();
 
 	/// <summary>
 	/// Return the size of the verticies in memory
 	/// </summary>
 	/// <returns> GLsizeiptr : the size of the vertices </returns>
-	GLsizeiptr getSizeOfVertices();
+	GLsizeiptr GetSizeOfVertices();
 
 	/// <summary>
 	/// return the indices's size in memory
 	/// </summary>
 	/// <returns> GLsizeiptr : the size of the indices </returns>
-	GLsizeiptr getSizeOfIndices();
+	GLsizeiptr GetSizeOfIndices();
 
 private :
 

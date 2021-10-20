@@ -1,10 +1,11 @@
 #include "Logic.h"
 
-Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler) : m_window(window), m_inputsHandler(inputsHandler)
+Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display) : m_window(window), m_inputsHandler(inputsHandler), m_display(display)
 {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
 	m_camera = new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
+	display.setCamera(m_camera);
 	m_lastTime = chrono::high_resolution_clock::now();
 	m_firstLeftClick = true;
 	m_firstRightClick = true;
@@ -19,22 +20,6 @@ void Logic::updateLogic()
 	updateProjectileType();
 	shoot();
 	updateProjectiles();
-}
-
-vector<Displayable*> Logic::getDisplayables()
-{
-	// Iterate over all the projectiles
-	vector<Displayable*> displayables;
-	for (Projectile projectile : m_projectiles)
-	{
-		// Iterate over the trace of the projectile
-		for (Displayable* displayable : projectile.getTrace())
-
-			// Add the displayable part of th projectile to the displayables
-			displayables.push_back(displayable);
-	}
-
-	return displayables;
 }
 
 void Logic::moveCamera()
@@ -189,8 +174,17 @@ void Logic::updateProjectiles()
 void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity, float lifespan)
 {
 	Projectile p(initPos, initVelocity, gravity, lifespan);
-	if (m_projectiles.size() > 9) 
+	
+	if (m_projectiles.size() > 9) {
+		for (Displayable* d : *(*m_projectiles.begin()).getTrace())
+		{
+			d->Delete();
+		}
+		m_display.RemoveDisplayables((*m_projectiles.begin()).getTrace());
 		m_projectiles.erase(m_projectiles.begin());
+	}
+			
 	m_projectiles.push_back(p);
+	m_display.AddDisplayables(p.getTrace());
 }
 

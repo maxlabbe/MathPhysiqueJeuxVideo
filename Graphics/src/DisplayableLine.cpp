@@ -1,11 +1,12 @@
 #include"DisplayableLine.h"
 
-DisplayableLine::DisplayableLine(Vector3D start, Vector3D end, Vector3D color)
+DisplayableLine::DisplayableLine(Vector3D start, Vector3D end, Vector3D color, bool isStatic)
 {
 	m_start = start;
 	m_end = end;
 	m_color = color;
 	p_mode = GL_LINES;
+	p_isStatic = isStatic;
 
 	m_vertices[0] = start.getX(); m_vertices[1] = start.getY(); m_vertices[2] = start.getZ();
 	m_vertices[3] = color.getX(); m_vertices[4] = color.getY(); m_vertices[5] = color.getZ();
@@ -16,29 +17,29 @@ DisplayableLine::DisplayableLine(Vector3D start, Vector3D end, Vector3D color)
 
 }
 
-unsigned int DisplayableLine::getIndexCount()
+unsigned int DisplayableLine::GetIndexCount()
 {
 	// There is only 2 index
 	return 2;
 }
 
-GLfloat* DisplayableLine::getVertices()
+GLfloat* DisplayableLine::GetVertices()
 {
 	return m_vertices;
 }
 
-GLuint* DisplayableLine::getIndices()
+GLuint* DisplayableLine::GetIndices()
 {
 	return m_indices;
 }
 
-GLsizeiptr DisplayableLine::getSizeOfVertices()
+GLsizeiptr DisplayableLine::GetSizeOfVertices()
 {
 	// there is 12 vertices
 	return sizeof(GLfloat) * 12;
 }
 
-GLsizeiptr DisplayableLine::getSizeOfIndices()
+GLsizeiptr DisplayableLine::GetSizeOfIndices()
 {
 	// there is 2 index
 	return sizeof(GLuint) * 2;

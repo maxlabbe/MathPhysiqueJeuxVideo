@@ -4,31 +4,31 @@ DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStati
 {
 	m_sphere = Sphere(radius, p.getPositionPtr(), color);
 	p_mode = GL_TRIANGLES;
-	m_isStatic = isStatic;
+	p_isStatic = isStatic;
 }
 
-unsigned int DisplayableParticle::getIndexCount()
+unsigned int DisplayableParticle::GetIndexCount()
 {
 	return m_sphere.getIndexCount();
 }
 
-GLfloat* DisplayableParticle::getVertices()
+GLfloat* DisplayableParticle::GetVertices()
 {
-	if(!m_isStatic) m_sphere.updateGLVerticesColor();
+	if(!p_isStatic) m_sphere.updateGLVerticesColor();
 	return m_sphere.getGLVerticesColor();
 }
 
-GLuint* DisplayableParticle::getIndices()
+GLuint* DisplayableParticle::GetIndices()
 {
 	return m_sphere.getGLIndices();
 }
 
-GLsizeiptr DisplayableParticle::getSizeOfVertices()
+GLsizeiptr DisplayableParticle::GetSizeOfVertices()
 {
 	return sizeof(GLfloat) * m_sphere.getVertexCount() * 6;
 }
 
-GLsizeiptr DisplayableParticle::getSizeOfIndices()
+GLsizeiptr DisplayableParticle::GetSizeOfIndices()
 {
 	return sizeof(GLuint) * m_sphere.getIndexCount();
 }

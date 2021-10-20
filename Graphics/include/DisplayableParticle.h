@@ -22,7 +22,7 @@ public :
 	/// Give the number of index to draw the particle
 	/// </summary>
 	/// <returns> unisgned int : the number of index </returns>
-	unsigned int getIndexCount();
+	unsigned int GetIndexCount();
 
 protected :
 
@@ -30,25 +30,25 @@ protected :
 	/// Give the vertices to draw the particle
 	/// </summary>
 	/// <returns> GLfloat* : the vertices </returns>
-	GLfloat* getVertices();
+	GLfloat* GetVertices();
 
 	/// <summary>
 	/// Give the indices to draw the particle
 	/// </summary>
 	/// <returns> GLfloat* : the indices </returns>
-	GLuint* getIndices();
+	GLuint* GetIndices();
 
 	/// <summary>
 	/// Give the size of the vertices in the memory
 	/// </summary>
 	/// <returns> GLsizeiptr : the size of the verticies </returns>
-	GLsizeiptr getSizeOfVertices();
+	GLsizeiptr GetSizeOfVertices();
 
 	/// <summary>
 	/// Give the size of the indicies in memory 
 	/// </summary>
 	/// <returns> GLsizeiptr : the size of the indicies </returns>
-	GLsizeiptr getSizeOfIndices();
+	GLsizeiptr GetSizeOfIndices();
 
 private :
 
@@ -57,9 +57,6 @@ private :
 
 	// The sphere to draw to display the particle
 	Sphere m_sphere;
-
-	// The particle's movement flag
-	bool m_isStatic;
 };
 
 #endif

@@ -1,14 +1,20 @@
 #include"Displayable.h"
 
-void Displayable::display()
+void Displayable::Display()
 {
 	// Binds the Vertex Array = makes it the current to GL
 	p_VAO.Bind();
 
 	// Links the vertex buffer to the vertices (and binds it)
-	p_VBO.linkToVertices(getVertices(), getSizeOfVertices());
+	// If the object is static and the VBO already allocated, no need to do it.
+	p_VBO.Bind();
+	if (p_isStatic && !p_VBO.IsAllocated())
+	{
+		p_VBO.LinkToVertices(GetVertices(), GetSizeOfVertices());
+	}
+
 	// Links the element buffer to the indices (and binds it)
-	p_EBO.linkToIndices(getIndices(), getSizeOfIndices());
+	p_EBO.linkToIndices(GetIndices(), GetSizeOfIndices());
 	
 	// Links VBO attributes to the VAO, 
 	// first the vertices coordinates (3 values),
@@ -17,7 +23,7 @@ void Displayable::display()
 	p_VAO.LinkAttrib(p_VBO, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 
 	// Draw the object using the currents binded buffers
-	glDrawElements(p_mode, getIndexCount(), GL_UNSIGNED_INT, 0);
+	glDrawElements(p_mode, GetIndexCount(), GL_UNSIGNED_INT, 0);
 
 	// Unbind all to prevent accidentally modifying them
 	p_VAO.Unbind();

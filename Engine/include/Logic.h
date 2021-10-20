@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include"InputsHandler.h"
 #include"Projectile.h"
+#include"Display.h"
 
 class Logic
 {
@@ -17,18 +18,12 @@ public :
 	/// </summary>
 	/// <param name="window"> window which the logic is call in </param>
 	/// <param name="inputsHandler"> input that the logic need to update actions </param>
-	Logic(GLFWwindow* window, InputsHandler& inputsHandler);
+	Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display);
 
 	/// <summary>
 	/// Update the logic depend on the inuts
 	/// </summary>
 	void updateLogic();
-
-	/// <summary>
-	/// Return all the dislayable objects update by the logic
-	/// </summary>
-	/// <returns> vector<Displayables*> : all the dsplayables objects</returns>
-	vector<Displayable*> getDisplayables();
 
 	/// <summary>
 	/// The camera of the scene
@@ -40,6 +35,9 @@ private :
 
 	// The inputs 
 	InputsHandler& m_inputsHandler;
+
+	// The display
+	Display& m_display;
 
 	// The scene'window
 	GLFWwindow* m_window;
