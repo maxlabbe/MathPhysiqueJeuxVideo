@@ -159,18 +159,21 @@ void Logic::updateProjectiles()
 	auto current = chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
 	
-	// Update the physic of each projectile
-	for (auto it = std::begin(m_projectiles); it != std::end(m_projectiles); ++it)
-	{
-		(*it).update(diffTime.count());
+	if (diffTime.count() > 1000) {
+		// Update the physic of each projectile
+		for (auto it = std::begin(m_projectiles); it != std::end(m_projectiles); ++it)
+		{
+			(*it).update(diffTime.count());
+		}
+		m_lastTime = current;
 	}
-	m_lastTime = current;
+
+	
+	
 }
 
 void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity, float lifespan)
 {
-	Projectile p(initPos, initVelocity, gravity, lifespan);
-	
 	if (m_projectiles.size() > 9) {
 		for (Displayable* d : *(*m_projectiles.begin()).getTrace())
 		{
@@ -179,7 +182,8 @@ void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity
 		m_display.RemoveDisplayables((*m_projectiles.begin()).getTrace());
 		m_projectiles.erase(m_projectiles.begin());
 	}
-			
+
+	Projectile p(initPos, initVelocity, gravity, lifespan);	
 	m_projectiles.push_back(p);
 	m_display.AddDisplayables(p.getTrace());
 }

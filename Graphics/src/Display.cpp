@@ -5,6 +5,7 @@
 #include "Particle.h"
 #include "Display.h"
 #include "DisplayableParticle.h"
+#include <algorithm>
 #include <mutex>
 
 mutex displayables_mutex;
@@ -39,7 +40,7 @@ void Display::AddDisplayables(vector<Displayable*>* displayables)
 
 void Display::RemoveDisplayables(vector<Displayable*>* displayables)
 {
-	remove(m_displayables.begin(), m_displayables.end(), displayables);
+	m_displayables.erase(remove(m_displayables.begin(), m_displayables.end(), displayables));
 }
 
 void Display::UpdateDisplay()
@@ -74,11 +75,11 @@ void Display::UpdateDisplay()
 }
 
 void Display::ClearDisplay() {
-	for (auto vectors_it = std::begin(m_displayables); vectors_it != std::end(m_displayables); ++vectors_it)
+	for (vector<Displayable*>* list : m_displayables)
 	{
-		for (auto displayables_it = std::begin(*(*vectors_it)); displayables_it != std::end(*(*vectors_it)); ++displayables_it)
+		for (Displayable* displayable : *list)
 		{
-			(*displayables_it)->Delete();
+			displayable->Delete();
 		}
 	}
 	m_shader.Delete();
