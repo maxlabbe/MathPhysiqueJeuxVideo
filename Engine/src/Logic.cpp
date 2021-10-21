@@ -158,17 +158,13 @@ void Logic::updateProjectiles()
 	// Compute the difference between current time and the last time the physic was update
 	auto current = chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
-
-	// Update the physic each 16ms (1/60)
-	if (diffTime.count() > 16.0f)
+	
+	// Update the physic of each projectile
+	for (auto it = std::begin(m_projectiles); it != std::end(m_projectiles); ++it)
 	{
-		// Update the physic of each projectile
-		for (auto it = std::begin(m_projectiles); it != std::end(m_projectiles); ++it)
-		{
-			(*it).update(diffTime.count());
-		}
-		m_lastTime = current;
+		(*it).update(diffTime.count());
 	}
+	m_lastTime = current;
 }
 
 void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity, float lifespan)

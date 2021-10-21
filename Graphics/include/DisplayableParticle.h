@@ -50,6 +50,8 @@ protected :
 	/// <returns> GLsizeiptr : the size of the indicies </returns>
 	GLsizeiptr GetSizeOfIndices();
 
+	void Delete();
+
 private :
 
 	// The particle to display

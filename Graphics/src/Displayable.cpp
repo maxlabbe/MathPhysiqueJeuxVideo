@@ -8,19 +8,26 @@ void Displayable::Display()
 	// Links the vertex buffer to the vertices (and binds it)
 	// If the object is static and the VBO already allocated, no need to do it.
 	p_VBO.Bind();
-	if (p_isStatic && !p_VBO.IsAllocated())
+	if (!p_isStatic || !p_VBO.IsAllocated())
 	{
 		p_VBO.LinkToVertices(GetVertices(), GetSizeOfVertices());
 	}
 
 	// Links the element buffer to the indices (and binds it)
-	p_EBO.linkToIndices(GetIndices(), GetSizeOfIndices());
+	if (!p_EBO.IsAllocated())
+	{
+		p_EBO.linkToIndices(GetIndices(), GetSizeOfIndices());
+	}
 	
-	// Links VBO attributes to the VAO, 
-	// first the vertices coordinates (3 values),
-	p_VAO.LinkAttrib(p_VBO, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*)0);
-	// then the colors of the vertices (3 values)
-	p_VAO.LinkAttrib(p_VBO, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	if (!p_isStatic || !p_VAO.IsAttributesLinked())
+	{
+		// Links VBO attributes to the VAO, 
+		// first the vertices coordinates (3 values),
+		p_VAO.LinkAttrib(p_VBO, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*)0);
+		// then the colors of the vertices (3 values)
+		p_VAO.LinkAttrib(p_VBO, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	}
+	
 
 	// Draw the object using the currents binded buffers
 	glDrawElements(p_mode, GetIndexCount(), GL_UNSIGNED_INT, 0);

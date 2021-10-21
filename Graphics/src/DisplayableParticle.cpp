@@ -1,8 +1,8 @@
 #include"DisplayableParticle.h"
 
-DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : m_particle(p)
+DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : m_particle(p), m_sphere(radius, p.getPositionPtr(), color)
 {
-	m_sphere = Sphere(radius, p.getPositionPtr(), color);
+	
 	p_mode = GL_TRIANGLES;
 	p_isStatic = isStatic;
 }
@@ -31,4 +31,10 @@ GLsizeiptr DisplayableParticle::GetSizeOfVertices()
 GLsizeiptr DisplayableParticle::GetSizeOfIndices()
 {
 	return sizeof(GLuint) * m_sphere.getIndexCount();
+}
+
+void DisplayableParticle::Delete()
+{
+	Displayable::Delete();
+	m_sphere.~Sphere();
 }

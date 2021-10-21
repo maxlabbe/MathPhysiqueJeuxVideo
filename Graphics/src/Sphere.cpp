@@ -24,6 +24,13 @@ Sphere::Sphere(float radius, Vector3D* position, Vector3D* color, int sectors, i
     generateGLIndices();
 }
 
+Sphere::~Sphere()
+{
+    delete glVerticesColor;
+    delete glIndices;
+    delete color;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // special getter 
 ///////////////////////////////////////////////////////////////////////////////

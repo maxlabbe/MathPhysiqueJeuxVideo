@@ -30,7 +30,7 @@ public :
 	/// <summary>
 	/// Deletes all the buffer objects, VAO, VBO and EBO.
 	/// </summary>
-	void Delete();
+	virtual void Delete();
 
 protected:
 

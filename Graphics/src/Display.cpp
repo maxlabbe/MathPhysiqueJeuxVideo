@@ -34,12 +34,7 @@ Display::Display(GLFWwindow* window, Shader& shader) : m_shader(shader)
 
 void Display::AddDisplayables(vector<Displayable*>* displayables)
 {
-	cout << "YES" << endl;
 	m_displayables.push_back(displayables);
-	for (vector<Displayable*>* d : m_displayables)
-	{
-		cout << d->size() << endl;
-	}
 }
 
 void Display::RemoveDisplayables(vector<Displayable*>* displayables)
