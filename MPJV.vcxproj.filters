@@ -1,152 +1,155 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Common">
+      <UniqueIdentifier>{ad0e7341-dcd0-4855-8632-82428a2500c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{3c4d73f6-a343-43e9-916a-e6423d4808b5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    <Filter Include="Inputs">
+      <UniqueIdentifier>{0af4238c-7104-4a0d-bca1-a5965714075c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Shaders">
-      <UniqueIdentifier>{9882c388-7c01-4146-9c9b-aba160402e94}</UniqueIdentifier>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{01dc7b4d-ce64-4a6b-b2f9-9d332394db30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Display">
-      <UniqueIdentifier>{16345842-9a95-4bd9-9272-899672177a54}</UniqueIdentifier>
+    <Filter Include="Common\include">
+      <UniqueIdentifier>{57050020-638a-44ab-ad3c-d0b4724356ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Display">
-      <UniqueIdentifier>{1e01d294-a1f4-4b42-8848-ea8a8938d781}</UniqueIdentifier>
+    <Filter Include="Common\src">
+      <UniqueIdentifier>{182c3719-d558-4377-b545-421aca309f05}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Inputs">
-      <UniqueIdentifier>{cf130701-5270-43d1-9b0f-54d41013a016}</UniqueIdentifier>
+    <Filter Include="Engine\include">
+      <UniqueIdentifier>{1ce3fbe3-763c-4497-b919-b8c60d579f5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Inputs">
-      <UniqueIdentifier>{81e52c6f-e1f0-4657-b9b1-496e46722a1e}</UniqueIdentifier>
+    <Filter Include="Engine\src">
+      <UniqueIdentifier>{a437594a-81f9-48fe-8235-615ee44e0aaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Logic">
-      <UniqueIdentifier>{ffd33e54-3080-45e2-8d70-3395218ded7b}</UniqueIdentifier>
+    <Filter Include="Graphics\include">
+      <UniqueIdentifier>{afa95ebc-a8a3-4c1c-a9e4-39ffb0658aa8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Logic">
-      <UniqueIdentifier>{efbf7449-c1d0-4c9c-82da-678e3fa74e88}</UniqueIdentifier>
+    <Filter Include="Graphics\src">
+      <UniqueIdentifier>{2d9a3df7-bed1-402f-862c-02ef7b7337a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inputs\include">
+      <UniqueIdentifier>{9793a6a5-4118-4828-9f47-5f32956336ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inputs\src">
+      <UniqueIdentifier>{f82d8904-a904-450b-ba00-ebff9d6ab954}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Particle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EBO.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderClass.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="stb.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="VAO.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="VBO.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Display.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Displayable.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="DisplayableParticle.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="DisplayableLine.cpp">
-      <Filter>Source Files\Display</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputsHandler.cpp">
-      <Filter>Source Files\Inputs</Filter>
-    </ClCompile>
-    <ClCompile Include="Logic.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-    <ClCompile Include="Projectile.cpp">
-      <Filter>Source Files\Logic</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Vector3D.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Common\include\Common.h">
+      <Filter>Common\include</Filter>
     </ClInclude>
-    <ClInclude Include="Particle.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Engine\include\Logic.h">
+      <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Common.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Engine\include\Particle.h">
+      <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="EBO.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Engine\include\Projectile.h">
+      <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderClass.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Engine\include\Vector3D.h">
+      <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\Camera.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="VAO.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\Display.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="VBO.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\Displayable.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="Display.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\DisplayableLine.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\DisplayableParticle.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="Displayable.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\EBO.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="DisplayableParticle.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\ShaderClass.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="DisplayableLine.h">
-      <Filter>Header Files\Display</Filter>
+    <ClInclude Include="Graphics\include\Sphere.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="InputsHandler.h">
-      <Filter>Header Files\Inputs</Filter>
+    <ClInclude Include="Graphics\include\VAO.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="Logic.h">
-      <Filter>Header Files\Logic</Filter>
+    <ClInclude Include="Graphics\include\VBO.h">
+      <Filter>Graphics\include</Filter>
     </ClInclude>
-    <ClInclude Include="Projectile.h">
-      <Filter>Header Files\Logic</Filter>
+    <ClInclude Include="Inputs\include\InputsHandler.h">
+      <Filter>Inputs\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.vert">
-      <Filter>Resource Files\Shaders</Filter>
+    <ClCompile Include="Common\src\Main.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Logic.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Particle.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Projectile.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Vector3D.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Camera.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Display.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Displayable.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayableLine.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayableParticle.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\EBO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\glad.c">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\ShaderClass.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Sphere.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\stb.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\VAO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\VBO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\src\InputsHandler.cpp">
+      <Filter>Inputs\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Graphics\src\default.frag">
+      <Filter>Graphics\src</Filter>
     </None>
-    <None Include="default.frag">
-      <Filter>Resource Files\Shaders</Filter>
+    <None Include="Graphics\src\default.vert">
+      <Filter>Graphics\src</Filter>
     </None>
   </ItemGroup>
 </Project>
