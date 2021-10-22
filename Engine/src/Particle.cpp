@@ -11,6 +11,16 @@ void Particle::integrate(const float time)
 	UpdateVelocity(time);
 }
 
+void Particle::addForce(Vector3D force)
+{
+	m_accumForces = m_accumForces + force;
+}
+
+void Particle::clearForce()
+{
+	m_accumForces.set(0, 0, 0);
+}
+
 void Particle::UpdatePosition(const float& time)
 {
 	// p' = new position
@@ -28,18 +38,18 @@ void Particle::UpdateVelocity(const float& time)
 	// a = acceleration
 	// D = dumping
 	// v' = v.d^time + a.time
-	Vector3D newVelocity = ( m_velocity * powf(m_dumping, time) ) + (m_acceleration * time);
+	Vector3D newVelocity = m_velocity + (m_acceleration * time);
 	m_velocity.set(newVelocity.getX(), newVelocity.getY(), newVelocity.getZ());
 }
 
-Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, float dumping)
+Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces)
 {
 	m_mass = mass;
 	m_inverseMass = 1 / mass;
 	m_position = Vector3D(position);
 	m_velocity = Vector3D(velocity);
 	m_acceleration = Vector3D(acceleration);
-	m_dumping = dumping;
+	m_accumForces = forces;
 }
 
 
