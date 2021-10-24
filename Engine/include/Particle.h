@@ -38,6 +38,12 @@ public :
 	Vector3D getVelocity() const { return m_velocity;  }
 
 	/// <summary>
+	/// Give the forces applicated to the particle
+	/// </summary>
+	/// <returns>Vector3D : the particle's forces </returns>
+	Vector3D getAccumForces() const { return m_accumForces; }
+
+	/// <summary>
 	/// simulate the particle's physic by updating her position her velocity each call
 	/// </summary>
 	/// <param name="time"> float : the current time when the function is call</param>
