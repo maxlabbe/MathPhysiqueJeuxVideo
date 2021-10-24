@@ -1,6 +1,7 @@
 #ifndef PARTICLEFORCEGENERATOR_H
 #define PARTICLEFORCEGENERATOR_H
 
+#include<Common.h>
 #include <Particle.h>
 
 class IParticleForceGenerator

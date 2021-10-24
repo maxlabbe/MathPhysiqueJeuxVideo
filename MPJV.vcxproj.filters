@@ -89,6 +89,7 @@
     </ClInclude>
     <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
+    <ClInclude Include="Engine\include\DragGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp">
@@ -146,6 +147,7 @@
       <Filter>Inputs\src</Filter>
     </ClCompile>
     <ClCompile Include="Engine\src\GravityGenerator.cpp" />
+    <ClCompile Include="Engine\src\DragGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag">

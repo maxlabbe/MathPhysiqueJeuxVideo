@@ -22,14 +22,20 @@ public :
 	/// <summary>
 	/// Give the particle's position
 	/// </summary>
-	/// <returns> float : the particle's position </returns>
+	/// <returns> Vector3D : the particle's position </returns>
 	Vector3D getPosition() const { return m_position; }
 
 	/// <summary>
 	/// Give the particle's position pointer
 	/// </summary>
-	/// <returns> float : the particle's position's pointer </returns>
+	/// <returns> Vector3D : the particle's position's pointer </returns>
 	Vector3D* getPositionPtr() { return &m_position; }
+
+	/// <summary>
+	/// Give the particle velocity
+	/// </summary>
+	/// <returns>Vector3D : the particle's velocity </returns>
+	Vector3D getVelocity() const { return m_velocity;  }
 
 	/// <summary>
 	/// simulate the particle's physic by updating her position her velocity each call

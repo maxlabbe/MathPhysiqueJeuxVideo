@@ -3,16 +3,17 @@
 
 #include<ParticleForceGenerator.h>
 
-
-class GravityGenerator : IParticleForceGenerator
+class DragGenerator : IParticleForceGenerator
 {
-public: 
-	GravityGenerator();
-	GravityGenerator(float gravityValue);
+public:
+	DragGenerator();
+	DragGenerator(float k1, float k2);
+
 	void updateForce(Particle* particle, float duration);
 
 private:
-	Vector3D m_gravityValues;
+	float m_k1;
+	float m_k2;
 };
 
 #endif

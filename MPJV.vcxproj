@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
+    <ClInclude Include="Engine\include\DragGenerator.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\Particle.h" />
@@ -40,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp" />
+    <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\Particle.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
