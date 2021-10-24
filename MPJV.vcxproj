@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
+    <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\Particle.h" />
     <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
@@ -55,6 +56,7 @@
     <ClCompile Include="Graphics\src\stb.cpp" />
     <ClCompile Include="Graphics\src\VAO.cpp" />
     <ClCompile Include="Graphics\src\VBO.cpp" />
+    <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Inputs\src\InputsHandler.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,11 @@
-#ifndef PARTICLEGENERATOR_H
-#define PARTICLEGENERATOR_H
+#ifndef PARTICLEFORCEGENERATOR_H
+#define PARTICLEFORCEGENERATOR_H
 
 #include <Particle.h>
 
-class IParticleGenerator
+class IParticleForceGenerator
 {
+public:
 	virtual void updateForce(Particle* particle, float duration) = 0;
 };
 
