@@ -87,6 +87,7 @@
     <ClInclude Include="Inputs\include\InputsHandler.h">
       <Filter>Inputs\include</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp">

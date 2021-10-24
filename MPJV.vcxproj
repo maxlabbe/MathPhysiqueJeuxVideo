@@ -22,6 +22,7 @@
     <ClInclude Include="Common\include\Common.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\Particle.h" />
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\Vector3D.h" />
     <ClInclude Include="Graphics\include\Camera.h" />
