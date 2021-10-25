@@ -90,7 +90,13 @@
     <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\DragGenerator.h" />
+<<<<<<< HEAD
     <ClInclude Include="Engine\include\ParticleSpring.h" />
+=======
+    <ClInclude Include="Engine\include\ForceRegister.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+>>>>>>> ac44c54a499ddfd8eb078cb835f3462680e28ced
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp">
@@ -149,7 +155,13 @@
     </ClCompile>
     <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Engine\src\ParticleSpring.cpp" />
+=======
+    <ClCompile Include="Engine\src\ForceRegister.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+>>>>>>> ac44c54a499ddfd8eb078cb835f3462680e28ced
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag">
