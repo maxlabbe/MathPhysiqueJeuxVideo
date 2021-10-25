@@ -37,7 +37,7 @@ void Particle::UpdateVelocity(const float& time)
 	// v = current velocity
 	// a = acceleration
 	// D = dumping
-	// v' = v.d^time + a.time
+	// v' = v + a.time
 	Vector3D newVelocity = m_velocity + (m_acceleration * time);
 	m_velocity.set(newVelocity.getX(), newVelocity.getY(), newVelocity.getZ());
 }
