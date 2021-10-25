@@ -25,6 +25,7 @@
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\Particle.h" />
     <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
+    <ClInclude Include="Engine\include\ParticleSpring.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\Vector3D.h" />
     <ClInclude Include="Graphics\include\Camera.h" />
@@ -44,6 +45,7 @@
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\Particle.cpp" />
+    <ClCompile Include="Engine\src\ParticleSpring.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
     <ClCompile Include="Engine\src\Vector3D.cpp" />
     <ClCompile Include="Graphics\src\Camera.cpp" />
