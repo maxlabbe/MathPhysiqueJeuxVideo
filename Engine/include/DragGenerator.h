@@ -1,5 +1,5 @@
-#ifndef GRAVITYGENERATOR_H
-#define GRAVITYGENERATOR_H
+#ifndef DRAGGENERATOR_H
+#define DRAGGENERATOR_H
 
 #include<ParticleForceGenerator.h>
 

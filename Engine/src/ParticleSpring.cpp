@@ -5,13 +5,11 @@ ParticleSpring::ParticleSpring(const Particle& particle, float k, float l0) : m_
 
 void ParticleSpring::updateForce(Particle* particle, float duration)
 {
-	//F = k(l0 - l)
 	// l is the spring stretching so the distance beetween the two particles
 	Vector3D distance = particle->getPosition() - m_particle.getPosition();
 
 	// Now we compute the value of the force add it to the particle
 	// To compute the force we calculate the force's value and apply it to the distance's unit vector
+	//F = k(l0 - l)
 	particle->addForce(distance.normalize() * (m_k * (m_l0 - distance.norm())));
-
-
 }
