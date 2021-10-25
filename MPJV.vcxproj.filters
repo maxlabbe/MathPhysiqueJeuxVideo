@@ -26,6 +26,8 @@
     <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
     <ClCompile Include="Engine\src\BungeeElastic.cpp" />
     <ClCompile Include="Engine\src\Buoyancy.cpp" />
+    <ClCompile Include="Engine\src\HarmonicMovement.cpp" />
+    <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -52,6 +54,8 @@
     <ClInclude Include="Engine\include\AnchoredSpring.h" />
     <ClInclude Include="Engine\include\BungeeElastic.h" />
     <ClInclude Include="Engine\include\Buoyancy.h" />
+    <ClInclude Include="Engine\include\HarmonicMovement.h" />
+    <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
