@@ -79,6 +79,15 @@
     <ClCompile Include="Graphics\src\VAO.cpp">
       <Filter>Graphics\src</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\src\World.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Plane.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayablePlane.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h">
@@ -96,25 +105,10 @@
     <ClInclude Include="Engine\include\DampedHarmonicMovement.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\include\GravityGenerator.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\include\Logic.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\include\Particle.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\include\ParticleForceGenerator.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\include\ParticleSpring.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\include\Projectile.h">
-      <Filter>Engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\include\Vector3D.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\include\Camera.h">
@@ -150,13 +144,34 @@
     <ClInclude Include="Inputs\include\InputsHandler.h">
       <Filter>Inputs\include</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\include\DisplayablePlane.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\include\DragGenerator.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
     <ClInclude Include="Engine\include\ForceRegister.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\include\HarmonicMovement.h">
+    <ClInclude Include="Engine\include\GravityGenerator.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Particle.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Plane.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Projectile.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Vector3D.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\World.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
   </ItemGroup>
