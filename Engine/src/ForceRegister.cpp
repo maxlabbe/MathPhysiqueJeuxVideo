@@ -8,17 +8,17 @@ void ForceRegister::registerForce(Particle* particle, IParticleForceGenerator* f
 
 void ForceRegister::updateAllForces(float duration)
 {
-	float forcesNormBeforeUpdate;
-	float forcesNormAfterUpdate;
+	Vector3D forcesBeforeUpdate;
+	Vector3D forcesAfterUpdate;
 
 	// Iterate over all the forces registered
 	for (auto it = m_register.begin(); it != m_register.end(); ) {
-		forcesNormBeforeUpdate = it->m_particle->getAccumForces().squaredNorm();
+		forcesBeforeUpdate = it->m_particle->getAccumForces();
 		it->m_forceGenerator->updateForce(it->m_particle, duration);
-		forcesNormAfterUpdate = it->m_particle->getAccumForces().squaredNorm();
+		forcesAfterUpdate = it->m_particle->getAccumForces();
 
 		// If the force didn't have any effects an the particule, the force is erased from the registered forces
-		if (abs(forcesNormBeforeUpdate-forcesNormAfterUpdate) == 0.0) {
+		if ((forcesBeforeUpdate.getX() == forcesAfterUpdate.getX()) && (forcesBeforeUpdate.getY() == forcesAfterUpdate.getY()) && (forcesBeforeUpdate.getZ() == forcesAfterUpdate.getZ())) {
 			it = m_register.erase(it);
 		}
 		else {
