@@ -1,7 +1,7 @@
 #include"Projectile.h"
 
 Projectile::Projectile(Vector3D initPos, Vector3D initVelocity, float gravity,float lifespan) :
-	m_particle(1.0f, initPos, initVelocity, Vector3D(0.0f, -gravity, 0.0f), 1.01)
+	m_particle(1.0f, initPos, initVelocity, Vector3D(0.0f, -gravity, 0.0f), Vector3D())
 {
 	m_gravity = gravity;
 	m_lifespan = lifespan;

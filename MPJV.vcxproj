@@ -20,8 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
+    <ClInclude Include="Engine\include\AnchoredSpring.h" />
+    <ClInclude Include="Engine\include\BungeeElastic.h" />
+    <ClInclude Include="Engine\include\Buoyancy.h" />
+    <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
+    <ClInclude Include="Engine\include\DragGenerator.h" />
+    <ClInclude Include="Engine\include\ForceRegister.h" />
+    <ClInclude Include="Engine\include\GravityGenerator.h" />
+    <ClInclude Include="Engine\include\HarmonicMovement.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\Particle.h" />
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
+    <ClInclude Include="Engine\include\ParticleSpring.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\Vector3D.h" />
     <ClInclude Include="Graphics\include\Camera.h" />
@@ -38,8 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp" />
+    <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
+    <ClCompile Include="Engine\src\BungeeElastic.cpp" />
+    <ClCompile Include="Engine\src\Buoyancy.cpp" />
+    <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
+    <ClCompile Include="Engine\src\DragGenerator.cpp" />
+    <ClCompile Include="Engine\src\ForceRegister.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\Particle.cpp" />
+    <ClCompile Include="Engine\src\ParticleSpring.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
     <ClCompile Include="Engine\src\Vector3D.cpp" />
     <ClCompile Include="Graphics\src\Camera.cpp" />
@@ -54,6 +71,7 @@
     <ClCompile Include="Graphics\src\stb.cpp" />
     <ClCompile Include="Graphics\src\VAO.cpp" />
     <ClCompile Include="Graphics\src\VBO.cpp" />
+    <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Inputs\src\InputsHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
