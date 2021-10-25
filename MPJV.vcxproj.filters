@@ -28,6 +28,7 @@
     <ClCompile Include="Engine\src\Buoyancy.cpp" />
     <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
     <ClCompile Include="Engine\src\ParticleContact.cpp" />
+    <ClCompile Include="Engine\src\ParticleContactGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="Engine\include\HarmonicMovement.h" />
     <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
     <ClInclude Include="Engine\include\ParticleContact.h" />
+    <ClInclude Include="Engine\include\ParticleContactGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
