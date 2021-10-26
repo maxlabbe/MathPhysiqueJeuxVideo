@@ -5,13 +5,13 @@
 #include "Particle.h"
 #include "Display.h"
 #include "DisplayableParticle.h"
+#include <algorithm>
 #include <mutex>
 
 mutex displayables_mutex;
 
-Display::Display(GLFWwindow* window, Camera* camera, Logic& logic, Shader& shader) : m_logic(logic), m_shader(shader)
+Display::Display(GLFWwindow* window, Shader& shader) : m_shader(shader)
 {
-	m_camera = camera;
 	m_window = window;
 
 	int width, height;
@@ -21,20 +21,29 @@ Display::Display(GLFWwindow* window, Camera* camera, Logic& logic, Shader& shade
 	// x axis = red
 	// y axis = green
 	// z axis = blue
-	DisplayableLine* dlx = new DisplayableLine(Vector3D(-1, 0, 0), Vector3D(1, 0, 0), Vector3D(0.9, 0.0, 0.0));
-	addDisplayable(dlx);
-	DisplayableLine* dly = new DisplayableLine(Vector3D(0, -1, 0), Vector3D(0, 1, 0), Vector3D(0.0, 0.9, 0.0));
-	addDisplayable(dly);
-	DisplayableLine* dlz = new DisplayableLine(Vector3D(0, 0, -1), Vector3D(0, 0, 1), Vector3D(0.0, 0.0, 0.9));
-	addDisplayable(dlz);
+	DisplayableLine* dlx = new DisplayableLine(Vector3D(-1, 0, 0), Vector3D(1, 0, 0), Vector3D(0.9, 0.0, 0.0), true);
+	DisplayableLine* dly = new DisplayableLine(Vector3D(0, -1, 0), Vector3D(0, 1, 0), Vector3D(0.0, 0.9, 0.0), true);
+	DisplayableLine* dlz = new DisplayableLine(Vector3D(0, 0, -1), Vector3D(0, 0, 1), Vector3D(0.0, 0.0, 0.9), true);
+
+	vector<Displayable*>* axes = new vector<Displayable*>;
+	axes->push_back(dlx);
+	axes->push_back(dly);
+	axes->push_back(dlz);
+
+	AddDisplayables(axes);
 }
 
-void Display::addDisplayable(Displayable* d)
+void Display::AddDisplayables(vector<Displayable*>* displayables)
 {
-	m_displayables.push_back(d);
+	m_displayables.push_back(displayables);
 }
 
-void Display::updateDisplay()
+void Display::RemoveDisplayables(vector<Displayable*>* displayables)
+{
+	m_displayables.erase(remove(m_displayables.begin(), m_displayables.end(), displayables));
+}
+
+void Display::UpdateDisplay()
 {
 	// Specify the color of the background
 	glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
@@ -46,26 +55,34 @@ void Display::updateDisplay()
 	m_shader.Activate();
 
 	// Update camera (FOV angle, nearPlane, farPlane, shader, shaderMatrixVarName)
-	m_camera->Matrix(45.0f, 0.1f, 100.0f, m_shader, "camMatrix");
+	m_camera->Matrix(60.0f, 0.1f, 100.0f, m_shader, "camMatrix");
 
 	// Iterates over all displayables and displays them
-	for (auto it = std::begin(m_displayables); it != std::end(m_displayables); ++it)
+	for (auto vectors_it = std::begin(m_displayables); vectors_it != std::end(m_displayables); ++vectors_it)
 	{
-		(*it)->display();
+		for (auto displayables_it = std::begin(*(*vectors_it)); displayables_it != std::end(*(*vectors_it)); ++displayables_it)
+		{
+			(*displayables_it)->Display();
+		}
 	}
 
-	// Iterates over all projectiles and displays them
-	vector<Displayable*> projectiles = m_logic.getDisplayables();
-	for (auto it = std::begin(projectiles); it != std::end(projectiles); ++it)
-	{
-		(*it)->display();
-	}
 	// Swap the back buffer with the front buffer
 	glfwSwapBuffers(m_window);
 
 	// Take care of all GLFW events
 	glfwPollEvents();
 	
+}
+
+void Display::ClearDisplay() {
+	for (vector<Displayable*>* list : m_displayables)
+	{
+		for (Displayable* displayable : *list)
+		{
+			displayable->Delete();
+		}
+	}
+	m_shader.Delete();
 }
 
 

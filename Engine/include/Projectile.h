@@ -23,7 +23,7 @@ public :
 	/// Return a displayable trajectory of the projectile 
 	/// </summary>
 	/// <returns> vector<Displayables*> : the trajectory </returns>
-	vector<Displayable*> getTrace() { return m_trace; }
+	vector<Displayable*>* getTrace() { return m_trace; }
 
 	/// <summary>
 	/// Update the physic of the projectile when call
@@ -43,7 +43,7 @@ private :
 	float m_lifespan; //ms
 
 	// The displayable trajectory of the projectile 
-	vector<Displayable*> m_trace;
+	vector<Displayable*>* m_trace;
 
 	// The life of the particle at t moment
 	float m_lifeTime; //ms

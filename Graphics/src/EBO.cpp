@@ -4,6 +4,7 @@ void EBO::linkToIndices(GLuint* indices, GLsizeiptr size)
 {
 	Bind();
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, GL_STATIC_DRAW);
+	m_isAllocated = true;
 }
 
 void EBO::Bind()
@@ -26,5 +27,6 @@ void EBO::Delete()
 	if (m_isID)
 	{
 		glDeleteBuffers(1, &m_ID);
+		m_isAllocated = false;
 	}
 }

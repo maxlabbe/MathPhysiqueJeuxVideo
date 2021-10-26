@@ -3,7 +3,7 @@
 
 #include<ParticleForceGenerator.h>
 
-class ParticleSpring : IParticleForceGenerator
+class ParticleSpring : public IParticleForceGenerator
 {
 public:
 	/// <summary>

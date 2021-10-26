@@ -1,63 +1,224 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Common\src\Main.cpp" />
-    <ClCompile Include="Engine\src\DragGenerator.cpp" />
-    <ClCompile Include="Engine\src\ForceRegister.cpp" />
-    <ClCompile Include="Engine\src\Logic.cpp" />
-    <ClCompile Include="Engine\src\Particle.cpp" />
-    <ClCompile Include="Engine\src\ParticleSpring.cpp" />
-    <ClCompile Include="Engine\src\Projectile.cpp" />
-    <ClCompile Include="Engine\src\Vector3D.cpp" />
-    <ClCompile Include="Graphics\src\Camera.cpp" />
-    <ClCompile Include="Graphics\src\Display.cpp" />
-    <ClCompile Include="Graphics\src\Displayable.cpp" />
-    <ClCompile Include="Graphics\src\DisplayableLine.cpp" />
-    <ClCompile Include="Graphics\src\DisplayableParticle.cpp" />
-    <ClCompile Include="Graphics\src\EBO.cpp" />
-    <ClCompile Include="Graphics\src\glad.c" />
-    <ClCompile Include="Graphics\src\ShaderClass.cpp" />
-    <ClCompile Include="Graphics\src\Sphere.cpp" />
-    <ClCompile Include="Graphics\src\stb.cpp" />
-    <ClCompile Include="Graphics\src\VAO.cpp" />
-    <ClCompile Include="Graphics\src\VBO.cpp" />
-    <ClCompile Include="Engine\src\GravityGenerator.cpp" />
-    <ClCompile Include="Inputs\src\InputsHandler.cpp" />
-    <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
-    <ClCompile Include="Engine\src\BungeeElastic.cpp" />
-    <ClCompile Include="Engine\src\Buoyancy.cpp" />
-    <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
+    <ClCompile Include="Common\src\Main.cpp">
+      <Filter>Common\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\AnchoredSpring.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\BungeeElastic.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Buoyancy.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\DragGenerator.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\ForceRegister.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\GravityGenerator.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Logic.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Particle.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\ParticleSpring.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Projectile.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Vector3D.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Camera.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Display.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Displayable.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayableLine.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayableParticle.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\EBO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\ShaderClass.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\Sphere.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\glad.c">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\stb.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Inputs\src\InputsHandler.cpp">
+      <Filter>Inputs\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\VBO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\VAO.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\World.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\src\Plane.cpp">
+      <Filter>Engine\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\src\DisplayablePlane.cpp">
+      <Filter>Graphics\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common\include\Common.h" />
-    <ClInclude Include="Engine\include\DragGenerator.h" />
-    <ClInclude Include="Engine\include\ForceRegister.h" />
-    <ClInclude Include="Engine\include\GravityGenerator.h" />
-    <ClInclude Include="Engine\include\Logic.h" />
-    <ClInclude Include="Engine\include\Particle.h" />
-    <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
-    <ClInclude Include="Engine\include\ParticleSpring.h" />
-    <ClInclude Include="Engine\include\Projectile.h" />
-    <ClInclude Include="Engine\include\Vector3D.h" />
-    <ClInclude Include="Graphics\include\Camera.h" />
-    <ClInclude Include="Graphics\include\Display.h" />
-    <ClInclude Include="Graphics\include\Displayable.h" />
-    <ClInclude Include="Graphics\include\DisplayableLine.h" />
-    <ClInclude Include="Graphics\include\DisplayableParticle.h" />
-    <ClInclude Include="Graphics\include\EBO.h" />
-    <ClInclude Include="Graphics\include\ShaderClass.h" />
-    <ClInclude Include="Graphics\include\Sphere.h" />
-    <ClInclude Include="Graphics\include\VAO.h" />
-    <ClInclude Include="Graphics\include\VBO.h" />
-    <ClInclude Include="Inputs\include\InputsHandler.h" />
-    <ClInclude Include="Engine\include\AnchoredSpring.h" />
-    <ClInclude Include="Engine\include\BungeeElastic.h" />
-    <ClInclude Include="Engine\include\Buoyancy.h" />
-    <ClInclude Include="Engine\include\HarmonicMovement.h" />
-    <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
+    <ClInclude Include="Common\include\Common.h">
+      <Filter>Common\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\AnchoredSpring.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\BungeeElastic.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Buoyancy.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\DampedHarmonicMovement.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Logic.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\ParticleSpring.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\Camera.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\Display.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\Displayable.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\DisplayableLine.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\DisplayableParticle.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\EBO.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\ShaderClass.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\Sphere.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\VAO.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\VBO.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Inputs\include\InputsHandler.h">
+      <Filter>Inputs\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\include\DisplayablePlane.h">
+      <Filter>Graphics\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\DragGenerator.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\ForceRegister.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\GravityGenerator.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Particle.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Plane.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Projectile.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\Vector3D.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\include\World.h">
+      <Filter>Engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\src\default.frag" />
-    <None Include="Graphics\src\default.vert" />
+    <None Include="Graphics\src\default.frag">
+      <Filter>Graphics\src</Filter>
+    </None>
+    <None Include="Graphics\src\default.vert">
+      <Filter>Graphics\src</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{ac67a45c-1850-4273-97b2-567aa2add3b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\include">
+      <UniqueIdentifier>{0e192e93-315a-44f6-8f26-9f3ca5c3661b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\src">
+      <UniqueIdentifier>{f47788c1-4b5c-4fee-8429-ff1a8dd7c08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{603beb43-fc15-4bcb-b7c9-c86a0a326354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{7f258fa8-2e30-4de2-a805-c73dba9f5893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\include">
+      <UniqueIdentifier>{bb16264f-48af-4b8c-9893-893914acefb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\src">
+      <UniqueIdentifier>{d8925845-bf0b-4a0a-b9a9-78ecb2b1f189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\include">
+      <UniqueIdentifier>{dde660f1-102d-4b60-8ec4-d8ae2234dd3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\src">
+      <UniqueIdentifier>{d28c2f2c-90f4-4efa-8119-25fb43c5e208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inputs">
+      <UniqueIdentifier>{9a1a7cb6-4076-4537-965a-2a211714dfc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inputs\include">
+      <UniqueIdentifier>{96aa52d2-649f-481b-b720-c854ccb48196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Inputs\src">
+      <UniqueIdentifier>{61d42703-95eb-4449-9672-e9858aa7a428}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
