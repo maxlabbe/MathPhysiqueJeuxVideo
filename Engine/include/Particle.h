@@ -62,6 +62,18 @@ public :
 	Vector3D getAccumForces() const { return m_accumForces; }
 
 	/// <summary>
+	/// Give the particle's radius
+	/// </summary>
+	/// <returns> float : the particle's radius</returns>
+	float getRadius() const { return m_radius; }
+
+	/// <summary>
+	/// Set the radius to the given value
+	/// </summary>
+	/// <param name="radius"> float : the given value </param>
+	void setRadius(float radius) { m_radius = radius; }
+
+	/// <summary>
 	/// simulate the particle's physic by updating her position her velocity each call
 	/// </summary>
 	/// <param name="time"> float : the current time when the function is call</param>
@@ -108,6 +120,9 @@ private:
 
 	// Implementation of all the forces applicate on the particle
 	Vector3D m_accumForces;
+
+	// Radius of the sphere that simulate the particle
+	float m_radius;
 
 	/// <summary>
 	/// compute the particle's position depending on the time
