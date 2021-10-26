@@ -30,6 +30,8 @@ public:
 	/// <param name="duration">float : duration</param>
 	void updateWorld(float duration);
 
+	void createBlob(float gravity = 9.81f, float dragK1 = 0.1f, float dragK2 = 0.2f, float springK = 1.0f, float springL = 1.0f);
+
 	// Getters
 
 	Plane GetPlane() { return m_plane; }
@@ -37,6 +39,7 @@ public:
 
 private:
 
+	Particle* m_mainParticle;
 	vector<Particle*> m_blob;
 	Plane m_plane;
 
