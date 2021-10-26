@@ -3,7 +3,7 @@
 
 #include<ParticleForceGenerator.h>
 
-class AnchoredSpring : IParticleForceGenerator
+class AnchoredSpring : public IParticleForceGenerator
 {
 public:
 
@@ -19,7 +19,7 @@ public:
 	/// <param name="anchorPoint"> Vector3D : The anchor point at the opposite of the spring</param>
 	/// <param name="k"> float : Spring's elasticity constant</param>
 	/// <param name="l0"> float : Spring's rest size</param>
-	AnchoredSpring(Vector3D anchorPoint, float k, float l0);
+	AnchoredSpring(Vector3D* anchorPoint, float k, float l0);
 
 	/// <summary>
 	/// Compute the force and add it to the forces applied on the particle
@@ -30,7 +30,7 @@ public:
 
 private:
 	// The spring anchor point
-	Vector3D m_anchorPoint;
+	Vector3D* m_anchorPoint;
 	
 	// Spring's elasticity constant
 	float m_k;

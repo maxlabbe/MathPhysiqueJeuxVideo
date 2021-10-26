@@ -31,6 +31,7 @@
     <ClInclude Include="Engine\include\Particle.h" />
     <ClInclude Include="Engine\include\ParticleContact.h" />
     <ClInclude Include="Engine\include\ParticleContactGenerator.h" />
+    <ClInclude Include="Engine\include\ParticleContactResolver.h" />
     <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
     <ClInclude Include="Engine\include\ParticleSpring.h" />
     <ClInclude Include="Engine\include\Plane.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="Engine\src\Particle.cpp" />
     <ClCompile Include="Engine\src\ParticleContact.cpp" />
     <ClCompile Include="Engine\src\ParticleContactGenerator.cpp" />
+    <ClCompile Include="Engine\src\ParticleContactResolver.cpp" />
     <ClCompile Include="Engine\src\ParticleSpring.cpp" />
     <ClCompile Include="Engine\src\Plane.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />

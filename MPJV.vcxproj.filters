@@ -1,6 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
+    <ClCompile Include="Common\src\Main.cpp" />
+    <ClCompile Include="Engine\src\DragGenerator.cpp" />
+    <ClCompile Include="Engine\src\ForceRegister.cpp" />
+    <ClCompile Include="Engine\src\Logic.cpp" />
+    <ClCompile Include="Engine\src\Particle.cpp" />
+    <ClCompile Include="Engine\src\ParticleSpring.cpp" />
+    <ClCompile Include="Engine\src\Projectile.cpp" />
+    <ClCompile Include="Engine\src\Vector3D.cpp" />
+    <ClCompile Include="Graphics\src\Camera.cpp" />
+    <ClCompile Include="Graphics\src\Display.cpp" />
+    <ClCompile Include="Graphics\src\Displayable.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableLine.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableParticle.cpp" />
+    <ClCompile Include="Graphics\src\EBO.cpp" />
+    <ClCompile Include="Graphics\src\glad.c" />
+    <ClCompile Include="Graphics\src\ShaderClass.cpp" />
+    <ClCompile Include="Graphics\src\Sphere.cpp" />
+    <ClCompile Include="Graphics\src\stb.cpp" />
+    <ClCompile Include="Graphics\src\VAO.cpp" />
+    <ClCompile Include="Graphics\src\VBO.cpp" />
+    <ClCompile Include="Engine\src\GravityGenerator.cpp" />
+    <ClCompile Include="Inputs\src\InputsHandler.cpp" />
+    <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
+    <ClCompile Include="Engine\src\BungeeElastic.cpp" />
+    <ClCompile Include="Engine\src\Buoyancy.cpp" />
+    <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
+    <ClCompile Include="Engine\src\ParticleContact.cpp" />
+    <ClCompile Include="Engine\src\ParticleContactGenerator.cpp" />
+    <ClCompile Include="Engine\src\ParticleContactResolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common\include\Common.h" />
+    <ClInclude Include="Engine\include\DragGenerator.h" />
+    <ClInclude Include="Engine\include\ForceRegister.h" />
+    <ClInclude Include="Engine\include\GravityGenerator.h" />
+    <ClInclude Include="Engine\include\Logic.h" />
+    <ClInclude Include="Engine\include\Particle.h" />
+    <ClInclude Include="Engine\include\ParticleForceGenerator.h" />
+    <ClInclude Include="Engine\include\ParticleSpring.h" />
+    <ClInclude Include="Engine\include\Projectile.h" />
+    <ClInclude Include="Engine\include\Vector3D.h" />
+    <ClInclude Include="Graphics\include\Camera.h" />
+    <ClInclude Include="Graphics\include\Display.h" />
+    <ClInclude Include="Graphics\include\Displayable.h" />
+    <ClInclude Include="Graphics\include\DisplayableLine.h" />
+    <ClInclude Include="Graphics\include\DisplayableParticle.h" />
+    <ClInclude Include="Graphics\include\EBO.h" />
+    <ClInclude Include="Graphics\include\ShaderClass.h" />
+    <ClInclude Include="Graphics\include\Sphere.h" />
+    <ClInclude Include="Graphics\include\VAO.h" />
+    <ClInclude Include="Graphics\include\VBO.h" />
+    <ClInclude Include="Inputs\include\InputsHandler.h" />
+    <ClInclude Include="Engine\include\AnchoredSpring.h" />
+    <ClInclude Include="Engine\include\BungeeElastic.h" />
+    <ClInclude Include="Engine\include\Buoyancy.h" />
+    <ClInclude Include="Engine\include\HarmonicMovement.h" />
+    <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
+    <ClInclude Include="Engine\include\ParticleContact.h" />
+    <ClInclude Include="Engine\include\ParticleContactGenerator.h" />
+    <ClInclude Include="Engine\include\ParticleContactResolver.h" />
+=======
     <ClCompile Include="Common\src\Main.cpp">
       <Filter>Common\src</Filter>
     </ClCompile>
@@ -174,6 +236,7 @@
     <ClInclude Include="Engine\include\World.h">
       <Filter>Engine\include</Filter>
     </ClInclude>
+>>>>>>> 28c78497950a997e6f134581a8eea2a97397199a
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag">

@@ -1,4 +1,4 @@
-#include "ParticleContact.h"
+#include <ParticleContact.h>
 
 ParticleContact::ParticleContact(Particle* particles[2])
 	: m_particles(), m_restitutionCoef(0), m_contactPointNormal(Vector3D()), m_penetration(0)
@@ -75,9 +75,9 @@ void ParticleContact::resolveInterpenetration()
 	m_particles[0]->setPosition(m_contactPointNormal.multiplyByScalar(movementCoef));
 	
 	// The movement for the second particle is
-	// deltaP0 = m0/m1+m0 * d . normal
+	// deltaP1 = m0/m1+m0 * d . normal
 	movementCoef = (m_particles[0]->getMass() / (m_particles[1]->getMass() + m_particles[0]->getMass())) * m_penetration;
-	m_particles[0]->setPosition(m_contactPointNormal.multiplyByScalar(movementCoef));
+	m_particles[1]->setPosition(m_contactPointNormal.multiplyByScalar(movementCoef));
 
 }
 
@@ -93,7 +93,7 @@ void ParticleContact::resolveVelocity(float duration)
 	for (int particleIndex = 0; particleIndex < 2; particleIndex++)
 	{
 		// g = m*deltaVs
-		float impulsionValue = m_particles[particleIndex]->getMass() * approcheVelocityDelta;
+		float impulsionValue = m_particles[particleIndex]->getMass() * approcheVelocityDelta + (m_particles[particleIndex]->getAccumForces() * duration).norm();
 
 		//Put it in the normal direction
 		Vector3D impulsion = impulsionValue * m_contactPointNormal;
