@@ -18,15 +18,16 @@ void ForceRegister::updateAllForces(float duration)
 		forcesAfterUpdate = it->m_particle->getAccumForces();
 
 		// If the force didn't have any effects an the particule, the force is erased from the registered forces
-		if ((forcesBeforeUpdate.getX() == forcesAfterUpdate.getX()) && (forcesBeforeUpdate.getY() == forcesAfterUpdate.getY()) && (forcesBeforeUpdate.getZ() == forcesAfterUpdate.getZ())) {
+		/*if ((forcesBeforeUpdate.getX() == forcesAfterUpdate.getX()) && (forcesBeforeUpdate.getY() == forcesAfterUpdate.getY()) && (forcesBeforeUpdate.getZ() == forcesAfterUpdate.getZ())) {
 			it = m_register.erase(it);
 		}
 		else {
-			it++;
-		}
+			
+		}*/
+		it++;
 	}
 }
 
-ForceRegister::ForceRegister(): m_register(Register(10))
+ForceRegister::ForceRegister(): m_register(Register(0))
 {
 }

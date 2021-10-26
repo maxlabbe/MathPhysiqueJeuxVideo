@@ -4,7 +4,7 @@
 #include<ParticleForceGenerator.h>
 
 
-class GravityGenerator : IParticleForceGenerator
+class GravityGenerator : public IParticleForceGenerator
 {
 public: 
 	/// <summary>

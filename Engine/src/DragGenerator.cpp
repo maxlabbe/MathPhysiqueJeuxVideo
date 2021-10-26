@@ -11,6 +11,6 @@ void DragGenerator::updateForce(Particle* particle, float duration)
 	// We need a unit vector in the same direction as the velocity to compute the force
 	// Drag coef = k1 * ||v|| + k2 * ||v||²
 	// Add the force to the particle
-	particle->addForce(particle->getVelocity().normalize() * (m_k1 * velocityNorm + m_k2 * velocityNorm * velocityNorm));
+	particle->addForce(particle->getVelocity().normalize() * (m_k1 * velocityNorm + m_k2 * velocityNorm * velocityNorm) * -1);
 	
 }

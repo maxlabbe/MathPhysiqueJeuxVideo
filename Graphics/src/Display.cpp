@@ -55,7 +55,7 @@ void Display::UpdateDisplay()
 	m_shader.Activate();
 
 	// Update camera (FOV angle, nearPlane, farPlane, shader, shaderMatrixVarName)
-	m_camera->Matrix(45.0f, 0.1f, 100.0f, m_shader, "camMatrix");
+	m_camera->Matrix(60.0f, 0.1f, 100.0f, m_shader, "camMatrix");
 
 	// Iterates over all displayables and displays them
 	for (auto vectors_it = std::begin(m_displayables); vectors_it != std::end(m_displayables); ++vectors_it)

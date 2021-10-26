@@ -6,7 +6,10 @@
 #include"Plane.h"
 #include"DisplayablePlane.h"
 #include"DisplayableParticle.h"
-#include<stdlib.h>
+#include"ForceRegister.h"
+#include <GravityGenerator.h>
+#include <DragGenerator.h>
+#include <ParticleSpring.h>
 
 class World
 {
@@ -15,7 +18,17 @@ public:
 
 	World(Plane& plane);
 
-	void AddParticle(Particle& particle);
+	/// <summary>
+	/// Adds a particle to the blob
+	/// </summary>
+	/// <param name="particle">Particle* : particle to add to the blob</param>
+	void AddParticle(Particle* particle);
+
+	/// <summary>
+	/// Updates the world by computing all forces and integrating all particles
+	/// </summary>
+	/// <param name="duration">float : duration</param>
+	void updateWorld(float duration);
 
 	// Getters
 
@@ -24,10 +37,11 @@ public:
 
 private:
 
-	vector<Particle> m_blob;
+	vector<Particle*> m_blob;
 	Plane m_plane;
 
 	vector<Displayable*>* m_displayables;
+	ForceRegister m_forceRegister;
 
 };
 

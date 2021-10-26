@@ -4,7 +4,7 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display,
 {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
-	m_camera = new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
+	m_camera = new Camera(width, height, glm::vec3(0.0f, 1.0f, 10.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
 	display.setCamera(m_camera);
 	m_lastTime = chrono::high_resolution_clock::now();
 	m_firstLeftClick = true;
@@ -16,7 +16,14 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display,
 
 void Logic::updateLogic()
 {
+	// Compute the difference between current time and the last time the physic was update
+	auto current = chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
+
 	moveCamera();
+	m_world.updateWorld(diffTime.count());
+
+	m_lastTime = current;
 }
 
 void Logic::moveCamera()
