@@ -44,7 +44,7 @@ public :
 	Vector3D getVelocity() const { return m_velocity;  }
 
 	/// <summary>
-	/// Set the particel velocity to the one given in parameters
+	/// Set the particle velocity to the one given in parameters
 	/// </summary>
 	/// <param name="velocity"> Vector3D : the wanted velocity </param>
 	void setVelocity(Vector3D velocity) {m_velocity = velocity; }
@@ -54,6 +54,12 @@ public :
 	/// </summary>
 	/// <returns>Vector3D : The particle's acceleration</returns>
 	Vector3D getAcceleration() const { return m_acceleration; }
+
+	/// <summary>
+	/// Set the particle acceleration to the one given in parameters 
+	/// </summary>
+	/// <param name="acceleration"> Vector3D : the wanted acceleration </param>
+	void setAcceleration(Vector3D acceleration) { m_acceleration = acceleration;  }
 
 	/// <summary>
 	/// Give the forces applicated to the particle
