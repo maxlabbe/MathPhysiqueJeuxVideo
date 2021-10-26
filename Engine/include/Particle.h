@@ -99,7 +99,7 @@ public :
 	/// <param name="velocity"> Vector3 : the particle's initial velocity </param>
 	/// <param name="acceleration">Vector3 : the particle's initial acceleration </param>
 	/// <param name="forces"> Vector3D : the forces applied on the particle on the particle </param>
-	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces);
+	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces, float radius = 0.5f);
 
 private:
 

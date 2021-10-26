@@ -17,11 +17,11 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 
 	// Special color for the main particle
 	m_blob.push_back(p1);
-	DisplayableParticle* dp = new DisplayableParticle(*p1, 0.5, false, new Vector3D(0.6, 0.6, 0.6));
+	DisplayableParticle* dp = new DisplayableParticle(*p1, false, new Vector3D(0.6, 0.6, 0.6));
 	m_displayables->push_back(dp);
 
 
-	Particle* p2 = new Particle(1.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
+	Particle* p2 = new Particle(5.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
 	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
 	Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
 	Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
@@ -69,6 +69,6 @@ void World::updateWorld(float duration)
 void World::AddParticle(Particle* particle) 
 {
 	m_blob.push_back(particle);
-	DisplayableParticle* dp = new DisplayableParticle(*particle, 0.5);
+	DisplayableParticle* dp = new DisplayableParticle(*particle);
 	m_displayables->push_back(dp);
 }

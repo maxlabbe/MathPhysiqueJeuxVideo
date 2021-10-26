@@ -45,7 +45,7 @@ void Particle::UpdateVelocity(const float& time)
 	m_velocity.set(newVelocity.getX(), newVelocity.getY(), newVelocity.getZ());
 }
 
-Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces)
+Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces, float radius)
 {
 	m_mass = mass;
 	m_inverseMass = 1 / mass;
@@ -53,6 +53,7 @@ Particle::Particle(float mass, Vector3D position, Vector3D velocity, Vector3D ac
 	m_velocity = Vector3D(velocity);
 	m_acceleration = Vector3D(acceleration);
 	m_accumForces = forces;
+	m_radius = radius;
 }
 
 

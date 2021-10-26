@@ -1,6 +1,6 @@
 #include"DisplayableParticle.h"
 
-DisplayableParticle::DisplayableParticle(Particle& p, float radius, bool isStatic, Vector3D* color) : m_particle(p), m_sphere(radius, p.getPositionPtr(), color)
+DisplayableParticle::DisplayableParticle(Particle& p, bool isStatic, Vector3D* color) : m_particle(p), m_sphere(p.getRadius(), p.getPositionPtr(), color)
 {
 	
 	p_mode = GL_TRIANGLES;
