@@ -7,18 +7,24 @@ World::World(Plane& plane) : m_plane(plane)
 	//m_displayables->push_back(dPlane);
 
 	m_forceRegister = ForceRegister();
-	createBlob();
+	createBlob(1.0, 0.1, 0.1, 5.0, 1.0);
 
 }
 
 void World::createBlob(float gravity, float dragK1, float dragK2, float springK, float springL)
 {
-	Particle* p1 = new Particle(1.0f, Vector3D(0, 0, 0), Vector3D(0, 5, 0), Vector3D(), Vector3D());
+	Particle* p1 = new Particle(1.0f, Vector3D(0, 0, 0), Vector3D(0, 20, 0), Vector3D(), Vector3D());
+
+	// Special color for the main particle
+	m_blob.push_back(p1);
+	DisplayableParticle* dp = new DisplayableParticle(*p1, 0.5, false, new Vector3D(0.6, 0.6, 0.6));
+	m_displayables->push_back(dp);
+
+
 	Particle* p2 = new Particle(1.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
 	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
 	Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
 	Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
-	AddParticle(p1);
 	AddParticle(p2);
 	AddParticle(p3);
 	AddParticle(p4);
@@ -42,6 +48,13 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 			}
 		}
 	}	
+
+	m_mainParticle = p1;
+}
+
+void World::moveMainParticle(Vector3D velocity)
+{
+	m_mainParticle->setVelocity(velocity);
 }
 
 void World::updateWorld(float duration)

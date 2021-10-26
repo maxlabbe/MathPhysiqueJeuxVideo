@@ -21,7 +21,7 @@ void Logic::updateLogic()
 	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
 
 	moveCamera();
-	m_world.updateWorld(diffTime.count());
+	updateWorld(diffTime.count());
 
 	m_lastTime = current;
 }
@@ -67,8 +67,6 @@ void Logic::moveCamera()
 	// Allow direction modifications if the direction key is pressed
 	if (m_inputsHandler.ChangeCameraDirection())
 	{
-		// Hides mouse cursor
-		glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
 		// Normalizes and shifts the coordinates of the cursor such that they begin in the middle of the screen
 		// and then "transforms" them into degrees 
@@ -87,3 +85,40 @@ void Logic::moveCamera()
 	}
 }
 
+void Logic::updateWorld(float duration)
+{
+	float mvtCoeff = 5;
+	bool move = false;
+	Vector3D newSpeed = Vector3D();
+	Vector3D camUp = Vector3D(m_camera->up.x, m_camera->up.y, m_camera->up.z);
+	Vector3D camDir = Vector3D(m_camera->orientation.x, m_camera->orientation.y, m_camera->orientation.z);
+	// Left click to move the main particle of the blob
+	if (m_inputsHandler.pressLeft())
+	{	
+		// Move Up or Down
+		newSpeed = newSpeed - (m_inputsHandler.getMouseY() - (m_camera->height / 2)) * camUp;
+		// Move Left or Right
+		newSpeed = newSpeed - (m_inputsHandler.getMouseX() - (m_camera->width / 2)) * (camUp.crossProduct(camDir));
+		newSpeed = newSpeed.normalize();
+		move = true;
+	}
+
+	if (m_inputsHandler.pressJ())
+	{
+		newSpeed = newSpeed + camDir;
+		move = true;
+	}
+
+	if (m_inputsHandler.pressK())
+	{
+		newSpeed = newSpeed - camDir;
+		move = true;
+	}
+	newSpeed = newSpeed.normalize();
+	
+	if (move)
+	{
+		m_world.moveMainParticle(mvtCoeff * newSpeed);
+	}
+	m_world.updateWorld(duration);
+}
