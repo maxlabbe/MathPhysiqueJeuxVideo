@@ -14,4 +14,5 @@ float ParticleLink::currentLength() const
 
 void ParticleLink::addContact()
 {
+
 }

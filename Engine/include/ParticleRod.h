@@ -4,8 +4,9 @@
 
 class ParticleRod : public ParticleLink
 {
+public:
+	ParticleRod(Particle* v_particle[2], float f_length);
 	float length; //Longueur de la tige
-
 	void addContact();
 };
 

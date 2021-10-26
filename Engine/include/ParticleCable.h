@@ -4,9 +4,10 @@
 
 class ParticleCable : public ParticleLink
 {
+public:
+	ParticleCable(Particle* particle[2], float f_maxlength, float f_restituation);
 	float maxlength; //Longueur max du câble
-	float restituation; //Coefficient de restitution
-
+	float restitution; //Coefficient de restitution
 	void addContact();
 };
 
