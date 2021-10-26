@@ -4,11 +4,14 @@
 
 void Particle::integrate(const float time)
 {
+	m_acceleration = m_accumForces * m_inverseMass;
+
 	// Update the comput position
 	UpdatePosition(time);
 
 	// Update the comput velocity
 	UpdateVelocity(time);
+	clearForce();
 }
 
 void Particle::addForce(Vector3D force)

@@ -5,6 +5,7 @@ void VAO::LinkAttrib(VBO& VBO, GLuint layout, GLuint numComponents, GLenum type,
 	VBO.Bind();
 	glVertexAttribPointer(layout, numComponents, type, GL_FALSE, stride, offset);
 	glEnableVertexAttribArray(layout);
+	m_isAttributesLinked = true;
 	VBO.Unbind();
 }
 
@@ -28,5 +29,6 @@ void VAO::Delete()
 	if (m_isID)
 	{
 		glDeleteVertexArrays(1, &m_ID);
+		m_isAttributesLinked = false;
 	}
 }

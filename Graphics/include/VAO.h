@@ -45,6 +45,9 @@ public :
 	/// </summary>
 	void Delete();
 
+	// Getters
+	bool IsAttributesLinked() { return m_isAttributesLinked;  }
+
 private :
 
 	// ID reference for the Vertex Array Object
@@ -52,6 +55,9 @@ private :
 	
 	// Indicates if the buffer ID has been generated
 	bool m_isID = false;
+
+	// Indicates if the method LinkAttrib has been called
+	bool m_isAttributesLinked = false;
 
 };
 #endif

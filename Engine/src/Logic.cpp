@@ -1,40 +1,29 @@
 #include "Logic.h"
 
-Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler) : m_window(window), m_inputsHandler(inputsHandler)
+Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display, World& world) : m_window(window), m_inputsHandler(inputsHandler), m_display(display), m_world(world)
 {
 	int width, height;
 	glfwGetWindowSize(window, &width, &height);
-	m_camera = new Camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
+	m_camera = new Camera(width, height, glm::vec3(0.0f, 1.0f, 10.0f), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0, 1, 0));
+	display.setCamera(m_camera);
 	m_lastTime = chrono::high_resolution_clock::now();
 	m_firstLeftClick = true;
 	m_firstRightClick = true;
-	m_littleProjectile = true;
-	m_mediumProjectile = false;
-	m_bigProjectile = false;
+
+	m_display.AddDisplayables(m_world.GetDisplayables());
+
 }
 
 void Logic::updateLogic()
 {
+	// Compute the difference between current time and the last time the physic was update
+	auto current = chrono::high_resolution_clock::now();
+	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
+
 	moveCamera();
-	updateProjectileType();
-	shoot();
-	updateProjectiles();
-}
+	m_world.updateWorld(diffTime.count());
 
-vector<Displayable*> Logic::getDisplayables()
-{
-	// Iterate over all the projectiles
-	vector<Displayable*> displayables;
-	for (Projectile projectile : m_projectiles)
-	{
-		// Iterate over the trace of the projectile
-		for (Displayable* displayable : projectile.getTrace())
-
-			// Add the displayable part of th projectile to the displayables
-			displayables.push_back(displayable);
-	}
-
-	return displayables;
+	m_lastTime = current;
 }
 
 void Logic::moveCamera()
@@ -96,101 +85,5 @@ void Logic::moveCamera()
 		// Sets mouse cursor to the middle of the screen so that it doesn't end up roaming around
 		glfwSetCursorPos(m_window, (m_camera->width / 2), (m_camera->height / 2));
 	}
-}
-
-void Logic::updateProjectileType()
-{
-	// Select the litle projectile if J is press
-	if (m_inputsHandler.pressJ())
-	{
-		m_littleProjectile = true;
-		m_mediumProjectile = false;
-		m_bigProjectile = false;
-	}
-
-	// Select the medium projectile if K is press
-	if (m_inputsHandler.pressK())
-	{
-		m_littleProjectile = false;
-		m_mediumProjectile = true;
-		m_bigProjectile = false;
-	}
-
-	// Select the big projectile if L is press
-	if (m_inputsHandler.pressL())
-	{
-		m_littleProjectile = false;
-		m_mediumProjectile = false;
-		m_bigProjectile = true;
-	}
-}
-
-void Logic::shoot()
-{
-	// If the mousse's left button is press create a projectile
-	if (m_inputsHandler.pressLeft())
-	{
-		// Avoid the creation of other projectile of the button is hold
-		if (m_firstLeftClick)
-		{
-			m_firstLeftClick = false;
-
-			// The projectile start with the position of the camera and a velocity in the same direction of the camera
-			Vector3D position(m_camera->position.x, m_camera->position.y, m_camera->position.z);
-			Vector3D velocity(m_camera->orientation.x, m_camera->orientation.y, m_camera->orientation.z);
-
-			float gravity = 0;
-
-			// Change velocity and gravity depend on the projectile's type
-			if (m_littleProjectile)
-			{
-				velocity = 4.0 * velocity;
-				gravity = 0.5f;
-			}
-			if (m_mediumProjectile)
-			{
-				velocity = 2.0 * velocity;
-				gravity = 1.0f;
-			}
-			if (m_bigProjectile)
-			{
-				velocity = 1 * velocity;
-				gravity = 2.0f;
-			}
-			cout << "Position initiale : " << position << " | Vitesse initiale : " << velocity << " : " << velocity.norm() << " m/s" << endl;
-			addProjectile(position, velocity, gravity);
-		}
-		
-	} 
-	else
-	{
-		m_firstLeftClick = true;
-	}
-}
-
-void Logic::updateProjectiles()
-{
-	// Compute the difference between current time and the last time the physic was update
-	auto current = chrono::high_resolution_clock::now();
-	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
-
-	// Update the physic each 16ms (1/60)
-	if (diffTime.count() > 16.0f)
-	{
-		// Update the physic of each projectile
-		for (auto it = std::begin(m_projectiles); it != std::end(m_projectiles); ++it)
-		{
-			(*it).update(diffTime.count());
-		}
-		m_lastTime = current;
-	}
-}
-
-void Logic::addProjectile(Vector3D initPos, Vector3D initVelocity, float gravity, float lifespan)
-{
-	Projectile p(initPos, initVelocity, gravity, lifespan);
-	if (m_projectiles.size() > 9) 
-		m_projectiles.erase(m_projectiles.begin());
-	m_projectiles.push_back(p);
 }
 

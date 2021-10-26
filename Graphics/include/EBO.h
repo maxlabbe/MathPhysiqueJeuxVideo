@@ -38,6 +38,10 @@ public:
 	/// </summary>
 	void Delete();
 
+	// Getters 
+
+	bool IsAllocated() { return m_isAllocated; }
+
 
 private :
 
@@ -46,6 +50,9 @@ private :
 
 	// Indicates if the buffer ID has been generated
 	bool m_isID = false;
+
+	// Indicates if the buffer is already allocated
+	bool m_isAllocated = false;
 };
 
 #endif

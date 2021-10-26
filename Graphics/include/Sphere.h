@@ -23,7 +23,7 @@ public:
     /// <param name="stackCount">int : number of stack (vertical "lines" of edges)</param>
     /// <param name="smooth">bool : if vertices has to be smooth or not</param>
     Sphere(float radius=1.0f, Vector3D* position = new Vector3D(), Vector3D* color = new Vector3D(1,1,1), int sectorCount=12, int stackCount=6, bool smooth=true);
-    ~Sphere() {}
+    ~Sphere();
 
     // Getters and setters
     float getRadius() const                         { return radius; }
