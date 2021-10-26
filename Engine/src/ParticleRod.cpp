@@ -9,5 +9,6 @@ ParticleRod::ParticleRod(Particle* v_particle[2], float f_length)
 
 void ParticleRod::addContact()
 {
-
+	ParticleContact contact = ParticleContact(particle, 0, 0);
+	contact.oppositeNormal();
 }

@@ -11,4 +11,8 @@ ParticleCable::ParticleCable(Particle* v_particle[2], float f_maxlength, float f
 
 void ParticleCable::addContact()
 {
+	if (currentLength() >= maxlength)
+	{
+		ParticleContact contact = ParticleContact(particle, restitution, 0);
+	}
 }
