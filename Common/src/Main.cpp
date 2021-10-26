@@ -46,7 +46,7 @@ int main()
 	// Create the inputs, logics and display of the game
 	InputsHandler inputsHandler(window);
 	Display display(window, Shader("./Graphics/src/default.vert", "./Graphics/src/default.frag"));
-	World world(Plane(1, Vector3D(-100, 0, -100), Vector3D(100, 0, 100)));
+	World world(Plane(1, Vector3D(-20, 0, -20), Vector3D(20, 0, 20)));
 	Logic logic(window, inputsHandler, display, world);
 	
 

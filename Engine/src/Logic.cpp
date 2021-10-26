@@ -10,11 +10,7 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display,
 	m_firstLeftClick = true;
 	m_firstRightClick = true;
 
-	// Planes (à mettre dans la classe World)
-	vector<Displayable*>* planes = new vector<Displayable*>;
-	DisplayablePlane* plane = new DisplayablePlane(m_world.GetPlane());
-	//planes->push_back(plane);
-	m_display.AddDisplayables(planes);
+	m_display.AddDisplayables(m_world.GetDisplayables());
 
 }
 

@@ -4,7 +4,7 @@
 #include"Plane.h"
 #include"Displayable.h"
 
-class DisplayablePlane : Displayable
+class DisplayablePlane : public Displayable
 {
 public :
 
@@ -19,7 +19,7 @@ public :
 	/// Give the number of index to draw the particle
 	/// </summary>
 	/// <returns> unisgned int : the number of index </returns>
-	unsigned int GetIndexCount() { return 2; }
+	unsigned int GetIndexCount() { return 6; }
 
 protected:
 
@@ -27,7 +27,7 @@ protected:
 	/// Give the vertices to draw the particle
 	/// </summary>
 	/// <returns> GLfloat* : the vertices </returns>
-	GLfloat* GetVertices() { return m_vertices; }
+	GLfloat* GetVertices() { cout << "test" << endl;  return m_vertices; }
 
 	/// <summary>
 	/// Give the indices to draw the particle
@@ -45,7 +45,7 @@ protected:
 	/// Give the size of the indicies in memory 
 	/// </summary>
 	/// <returns> GLsizeiptr : the size of the indicies </returns>
-	GLsizeiptr GetSizeOfIndices() { return sizeof(GLuint) * 4; }
+	GLsizeiptr GetSizeOfIndices() { return sizeof(GLuint) * 6; }
 
 	void Delete() {}
 

@@ -6,7 +6,7 @@ DisplayablePlane::DisplayablePlane(Plane& plane, Vector3D color) : m_plane(plane
 	p_isStatic = true;
 	
 	m_indices[0] = 0; m_indices[1] = 1; m_indices[2] = 2;
-	m_indices[3] = 0; m_indices[4] = 3; m_indices[2] = 2;
+	m_indices[3] = 0; m_indices[4] = 3; m_indices[5] = 2;
 
 	m_vertices[0] = plane.GetUpLeft().getX(); m_vertices[1] = plane.GetUpLeft().getY(); m_vertices[2] = plane.GetUpLeft().getZ();
 	m_vertices[3] = color.getX(); m_vertices[4] = color.getY(); m_vertices[5] = color.getZ();
