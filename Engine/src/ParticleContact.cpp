@@ -24,8 +24,41 @@ ParticleContact::ParticleContact(Particle* particles[2], float restitutionCoef, 
 
 void ParticleContact::resolve(float duration) 
 {
-	resolveVelocity(duration);
+	//Resolve the interpenetretion
 	resolveInterpenetration();
+
+	//We will need the velocity and the acceleration to know if the particle is at rest
+	float velocity = m_particles[0]->getVelocity().norm();
+	float acceleration = m_particles[0]->getAcceleration().norm();
+
+	//If the velocity is in the same direction as the normal thei are supposed to be colinear v = kn
+	float xCoef = m_particles[0]->getVelocity().getX() / m_contactPointNormal.getX();
+	float yCoef = m_particles[0]->getVelocity().getY() / m_contactPointNormal.getY();
+	float zCoef = m_particles[0]->getVelocity().getZ() / m_contactPointNormal.getZ();
+	
+	// If there are not colinear
+	if (xCoef != yCoef || xCoef != zCoef || yCoef != zCoef)
+	{
+		// Calculate the relative velocity and acceleration in the n's direction
+		velocity = m_particles[0]->getVelocity() * m_contactPointNormal;
+		acceleration = m_particles[0]->getAcceleration() * m_contactPointNormal;
+
+		// If the velocity is due to the acceleration then there is a collision -> apply impulsion
+		if (acceleration * duration < velocity)
+		{
+			resolveVelocity(duration);
+		}
+	}
+
+	// we are in the same direction of the normal
+	else
+	{
+		// If the velocity is due by the forces applied on the object we comput the impulsion
+		if (m_particles[0]->getAccumForces().multiplyByScalar(duration).norm() < m_particles[0]->getVelocity().norm())
+		{
+			resolveVelocity(duration);
+		}
+	}
 }
 
 float ParticleContact::computeApproachVelocity() const 

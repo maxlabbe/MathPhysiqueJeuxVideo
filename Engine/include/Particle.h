@@ -50,6 +50,12 @@ public :
 	void setVelocity(Vector3D velocity) {m_velocity = velocity; }
 
 	/// <summary>
+	/// Give the particle's acceleration
+	/// </summary>
+	/// <returns>Vector3D : The particle's acceleration</returns>
+	Vector3D getAcceleration() const { return m_acceleration; }
+
+	/// <summary>
 	/// Give the forces applicated to the particle
 	/// </summary>
 	/// <returns>Vector3D : the particle's forces </returns>
