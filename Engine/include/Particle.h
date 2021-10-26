@@ -26,6 +26,12 @@ public :
 	Vector3D getPosition() const { return m_position; }
 
 	/// <summary>
+	/// Set the particle position to the one given in parameters
+	/// </summary>
+	/// <param name="position"> Vector3D : the wanted position </param>
+	void setPosition(Vector3D position) { m_position = position; }
+
+	/// <summary>
 	/// Give the particle's position pointer
 	/// </summary>
 	/// <returns> Vector3D : the particle's position's pointer </returns>
@@ -36,6 +42,12 @@ public :
 	/// </summary>
 	/// <returns>Vector3D : the particle's velocity </returns>
 	Vector3D getVelocity() const { return m_velocity;  }
+
+	/// <summary>
+	/// Set the particel velocity to the one given in parameters
+	/// </summary>
+	/// <param name="velocity"> Vector3D : the wanted velocity </param>
+	void setVelocity(Vector3D velocity) {m_velocity = velocity; }
 
 	/// <summary>
 	/// Give the forces applicated to the particle

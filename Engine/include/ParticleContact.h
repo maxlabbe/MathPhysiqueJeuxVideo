@@ -16,10 +16,10 @@ public:
 	/// </summary>
 	/// <param name="particles"> Particle*[] : the particles involved in the collision </param>
 	/// <param name="restitutionCoef"> float : The restitution coef of the collision </param>
-	ParticleContact(Particle* particles[2], float restitutionCoef);
+	ParticleContact(Particle* particles[2], float restitutionCoef, float penetration);
 
 	/// <summary>
-	/// Resolve the collision by adding an imoulsion to the particles
+	/// Resolve the collision by adding an impulsion to the particles
 	/// </summary>
 	/// <param name="duration"> float : the time </param>
 	void resolve(float duration);
@@ -27,13 +27,7 @@ public:
 	/// <summary>
 	/// Compute the total velocity of the particles
 	/// </summary>
-	void computeApproachVelocity() const;
-
-	/// <summary>
-	/// Compute the impulsion whih is the result of the collision
-	/// </summary>
-	/// <param name="duration"> float : the time </param>
-	void ResolveImpulsion(float duration);
+	float computeApproachVelocity() const;
 
 	/// <summary>
 	/// Deconnect the particles if there is interpenetration
@@ -46,11 +40,17 @@ public:
 	/// <param name="duration"></param>
 	void resolveVelocity(float duration);
 private:
+	// The particles involve in the collision
 	Particle* m_particles[2];
+
+	// the restitution coef that simulate the losses
 	float m_restitutionCoef;
+
+	// The normal vector of the contact point
 	Vector3D m_contactPointNormal;
-	Vector3D m_penetration;
-	Vector3D m_impulsion;
+
+	// The distance of penetration between the two particles
+	float m_penetration;
 };
 
 #endif
