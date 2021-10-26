@@ -10,6 +10,7 @@
 #include <GravityGenerator.h>
 #include <DragGenerator.h>
 #include <ParticleSpring.h>
+#include<AnchoredSpring.h>
 
 class World
 {

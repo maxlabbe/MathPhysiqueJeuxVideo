@@ -9,15 +9,15 @@ World::World(Plane& plane) : m_plane(plane)
 	m_forceRegister = ForceRegister();
 
 	// Blob creation
-	Particle* p1 = new Particle(1.0f, Vector3D(0, 0, 0), Vector3D(0, 0, 1), Vector3D(), Vector3D());
+	Particle* p1 = new Particle(1.0f, Vector3D(0, 0, 0), Vector3D(0, 0, 2), Vector3D(), Vector3D());
 	Particle* p2 = new Particle(1.0f, Vector3D(0, 0, 2), Vector3D(0, 0, -1), Vector3D(), Vector3D());
-	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
+	Particle* p3 = new Particle(1.0f, Vector3D(1, 1.5, -0.5), Vector3D(), Vector3D(), Vector3D());
 	Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
 	Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
 	AddParticle(p1);
 	AddParticle(p2);
-	/*AddParticle(p3);
-	AddParticle(p4);
+	AddParticle(p3);
+	/*AddParticle(p4);
 	AddParticle(p5);*/
 
 	// Spring forces
@@ -26,10 +26,14 @@ World::World(Plane& plane) : m_plane(plane)
 	ParticleSpring* ps21 = new ParticleSpring(*p1, 4.0f, 1.0f);
 	m_forceRegister.registerForce(p2, ps21);
 
-	// Drag forces
-	DragGenerator* drag = new DragGenerator();
-	m_forceRegister.registerForce(p1, drag);
+	
 
+	AnchoredSpring* as31 = new AnchoredSpring(p1->getPositionPtr(), 4.0f, 1.0f);
+	m_forceRegister.registerForce(p3, as31);
+
+	// Drag forces
+	DragGenerator* drag = new DragGenerator(0.1f, 0.1f);
+	m_forceRegister.registerForce(p3, drag);
 	/*ParticleSpring* ps23 = new ParticleSpring(*p3);
 	m_forceRegister.registerForce(p2, ps23);
 	ParticleSpring* ps34 = new ParticleSpring(*p4);

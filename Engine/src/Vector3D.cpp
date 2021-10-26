@@ -25,7 +25,13 @@ Vector3D Vector3D::normalize() const
 {
 	// Normalize a vector is equal to multiply it by his norme inverse
 	float norm = this->norm();
-	return *this / norm;
+	if (norm != 0)
+	{
+		return *this / norm;
+	}
+
+	return Vector3D();
+	
 }
 
 Vector3D Vector3D::multiplyByScalar(const float& c) const
