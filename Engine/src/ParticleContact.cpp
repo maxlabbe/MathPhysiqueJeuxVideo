@@ -27,6 +27,13 @@ void ParticleContact::resolve(float duration)
 	//Resolve the interpenetretion
 	resolveInterpenetration();
 
+	// If the velocity is due by the forces applied on the object we comput the impulsion
+	if (m_particles[0]->getAccumForces().multiplyByScalar(duration).norm() < m_particles[0]->getVelocity().norm())
+	{
+		resolveVelocity(duration);
+	}
+
+	/*
 	//We will need the velocity and the acceleration to know if the particle is at rest
 	float velocity = m_particles[0]->getVelocity().norm();
 	float acceleration = m_particles[0]->getAcceleration().norm();
@@ -58,7 +65,7 @@ void ParticleContact::resolve(float duration)
 		{
 			resolveVelocity(duration);
 		}
-	}
+	}*/
 }
 
 float ParticleContact::computeApproachVelocity() const 
@@ -89,16 +96,26 @@ void ParticleContact::resolveVelocity(float duration)
 	// => delatsVs = -Vs(C+1)
 	float approcheVelocityDelta = -1 * computeApproachVelocity() * (m_restitutionCoef + 1);
 
-	// Compute impulsion
-	for (int particleIndex = 0; particleIndex < 2; particleIndex++)
-	{
-		// g = m*deltaVs
-		float impulsionValue = m_particles[particleIndex]->getMass() * approcheVelocityDelta + (m_particles[particleIndex]->getAccumForces() * duration).norm();
+	//We need the system's mass
+	float systMass = m_particles[0]->getMass() + m_particles[1]->getMass();
 
-		//Put it in the normal direction
-		Vector3D impulsion = impulsionValue * m_contactPointNormal;
+	//Compute impulsions values
 
-		// v'(t) = v(t) + (g*normal)/m
-		m_particles[particleIndex]->setVelocity(m_particles[particleIndex]->getVelocity() + impulsion * m_particles[particleIndex]->getInverseMass());
-	}
+	// g = m_autreParticule/mass_systeme * deltaVs
+	float impulsionValue = m_particles[1]->getMass()/systMass * approcheVelocityDelta;
+
+	//Put it in the normal direction
+	Vector3D impulsion = impulsionValue * m_contactPointNormal;
+
+	// v'(t) = v(t) + (g*normal)/m
+	m_particles[0]->setVelocity(m_particles[0]->getVelocity() + impulsion);
+
+	// g = m_autreParticule/mass_systeme * deltaVs
+	impulsionValue = m_particles[0]->getMass() / systMass * approcheVelocityDelta;
+
+	//Put it in the normal direction
+	impulsion = impulsionValue * m_contactPointNormal;
+
+	// v'(t) = v(t) + (g*normal)/m
+	m_particles[1]->setVelocity(m_particles[1]->getVelocity() + impulsion);
 }

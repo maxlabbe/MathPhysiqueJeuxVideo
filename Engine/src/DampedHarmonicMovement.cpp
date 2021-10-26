@@ -4,7 +4,7 @@ DampedHarmonicMovement::DampedHarmonicMovement() : DampedHarmonicMovement(1.0f, 
 DampedHarmonicMovement::DampedHarmonicMovement(float k, float dumping)
 	: m_k(k), m_dumping(dumping) {}
 
-void DampedHarmonicMovement::updateForce(Particle* particle, float duration)
+void DampedHarmonicMovement::updateAcceleration(Particle* particle, float duration)
 {
 	// F = sqrt(k/m)/2pi
 	// angular frequency(w) = 2pi * F
@@ -59,5 +59,5 @@ void DampedHarmonicMovement::updateForce(Particle* particle, float duration)
 	Vector3D accelertionValue = -1 * pow(angularFrequency, 2) * posFunction - 2 * dumpingCoef * angularFrequency * velocityFunction;
 
 	//F = m*a(t)
-	particle->addForce(particle->getMass() * accelertionValue);
+	particle->setAcceleration(accelertionValue);
 }

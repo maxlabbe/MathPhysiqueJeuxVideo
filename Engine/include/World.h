@@ -11,6 +11,7 @@
 #include <DragGenerator.h>
 #include <ParticleSpring.h>
 #include<AnchoredSpring.h>
+#include <DampedHarmonicMovement.h>
 
 class World
 {

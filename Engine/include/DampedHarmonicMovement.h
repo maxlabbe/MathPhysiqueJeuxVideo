@@ -3,7 +3,7 @@
 
 #include<ParticleForceGenerator.h>
 #include<math.h>
-class DampedHarmonicMovement : IParticleForceGenerator
+class DampedHarmonicMovement
 {
 public:
 
@@ -24,7 +24,7 @@ public:
 	/// </summary>
 	/// <param name="particle"> Particle: the particle on wich th force is applied </param>
 	/// <param name="duration"> Duration on which the force is applied </param>
-	void updateForce(Particle* particle, float duration);
+	void updateAcceleration(Particle* particle, float duration);
 
 private:
 
