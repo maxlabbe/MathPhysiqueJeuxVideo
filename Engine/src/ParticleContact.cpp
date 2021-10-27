@@ -25,13 +25,13 @@ ParticleContact::ParticleContact(Particle* particles[2], float restitutionCoef, 
 void ParticleContact::resolve(float duration) 
 {
 	//Resolve the interpenetretion
-	//resolveInterpenetration();
-	resolveVelocity(duration);
+	resolveInterpenetration();
+
 	// If the velocity is due by the forces applied on the object we comput the impulsion
-	/*if (m_particles[0]->getAccumForces().multiplyByScalar(duration).norm() < m_particles[0]->getVelocity().norm())
+	if (m_particles[0]->getAccumForces().multiplyByScalar(duration).norm() < m_particles[0]->getVelocity().norm())
 	{
 		resolveVelocity(duration);
-	}*/
+	}
 
 	/*
 	//We will need the velocity and the acceleration to know if the particle is at rest
@@ -79,12 +79,12 @@ void ParticleContact::resolveInterpenetration()
 	// The movement for the first particle is
 	// deltaP0 = m1/m1+m0 * d . normal
 	float movementCoef = (m_particles[1]->getMass() / (m_particles[1]->getMass() + m_particles[0]->getMass())) * m_penetration;
-	m_particles[0]->setPosition(m_contactPointNormal.multiplyByScalar(movementCoef));
-	
+	m_particles[0]->setPosition(m_particles[0]->getPosition() - m_contactPointNormal.multiplyByScalar(movementCoef));
+
 	// The movement for the second particle is
 	// deltaP1 = m0/m1+m0 * d . normal
 	movementCoef = (m_particles[0]->getMass() / (m_particles[1]->getMass() + m_particles[0]->getMass())) * m_penetration;
-	m_particles[1]->setPosition(m_contactPointNormal.multiplyByScalar(movementCoef));
+	m_particles[1]->setPosition(m_particles[1]->getPosition() + m_contactPointNormal.multiplyByScalar(movementCoef));
 
 }
 
@@ -120,5 +120,5 @@ void ParticleContact::resolveVelocity(float duration)
 	impulsion = impulsionValue * m_contactPointNormal;
 
 	// v'(t) = v(t) + (g*normal)/m
-	m_particles[1]->setVelocity(m_particles[1]->getVelocity() + impulsion);
+	m_particles[1]->setVelocity(m_particles[1]->getVelocity() - impulsion);
 }
