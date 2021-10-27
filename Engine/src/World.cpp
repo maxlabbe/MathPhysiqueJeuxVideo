@@ -7,7 +7,7 @@ World::World(Plane& plane) : m_plane(plane)
 	//m_displayables->push_back(dPlane);
 
 	m_forceRegister = ForceRegister();
-	createBlob(1.0, 0.1, 0.1, 5.0, 1.0);
+	createBlob(1.0, 0.1, 0.1, 1, 1.0);
 	m_detector = ColisionDetector(m_blob, vector<ParticleLink>());
 
 }
@@ -22,7 +22,7 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 	m_displayables->push_back(dp);
 
 
-	Particle* p2 = new Particle(5.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
+	Particle* p2 = new Particle(1.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
 	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
 	//Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
 	//Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
@@ -67,6 +67,10 @@ void World::updateWorld(float duration)
 		particle->integrate(duration/1000);
 	}
 	detecteAndResolveColisions(duration / 1000);
+	for (Particle* particle : m_blob)
+	{
+		particle->UpdatePosition(duration/1000);
+	}
 }
 
 void World::AddParticle(Particle* particle) 
