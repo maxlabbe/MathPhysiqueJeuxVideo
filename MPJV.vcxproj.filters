@@ -33,6 +33,10 @@
     <ClCompile Include="Graphics\src\VBO.cpp" />
     <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Inputs\src\InputsHandler.cpp" />
+    <ClCompile Include="Engine\src\ColisionDetector.cpp" />
+    <ClCompile Include="Engine\src\ParticleCable.cpp" />
+    <ClCompile Include="Engine\src\ParticleLink.cpp" />
+    <ClCompile Include="Engine\src\ParticleRod.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -66,6 +70,10 @@
     <ClInclude Include="Graphics\include\VAO.h" />
     <ClInclude Include="Graphics\include\VBO.h" />
     <ClInclude Include="Inputs\include\InputsHandler.h" />
+    <ClInclude Include="Engine\include\ColisionDetector.h" />
+    <ClInclude Include="Engine\include\ParticleCable.h" />
+    <ClInclude Include="Engine\include\ParticleLink.h" />
+    <ClInclude Include="Engine\include\ParticleRod.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

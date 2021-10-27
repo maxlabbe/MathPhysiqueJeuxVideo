@@ -39,6 +39,12 @@ public:
 	/// </summary>
 	/// <param name="duration"></param>
 	void resolveVelocity(float duration);
+
+	/// <summary>
+	/// Modifies the value of m_contactPointNormal to its opposite
+	/// </summary>
+	void oppositeNormal() { m_contactPointNormal = m_contactPointNormal * (-1);}
+
 private:
 	// The particles involve in the collision
 	Particle* m_particles[2];
