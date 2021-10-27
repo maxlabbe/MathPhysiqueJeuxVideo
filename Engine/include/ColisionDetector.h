@@ -25,7 +25,7 @@ public:
 	/// <summary>
 	/// Detect the collision in the scene
 	/// </summary>
-	void detectCollisions();
+	vector<ParticleContact*> detectCollisions();
 
 private:
 	// All the particles in the scene
@@ -33,7 +33,7 @@ private:
 
 	// All the contact 
 	vector<ParticleLink> m_specialContacts;
-	vector<ParticleContact> m_detectedContacts;
+	vector<ParticleContact*> m_detectedContacts;
 };
 
 #endif

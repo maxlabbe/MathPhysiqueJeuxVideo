@@ -4,9 +4,9 @@ ColisionDetector::ColisionDetector()
 	: ColisionDetector(vector<Particle*>(), vector<ParticleLink>()) {}
 
 ColisionDetector::ColisionDetector(vector<Particle*> particles, vector<ParticleLink> specialContacts)
-	: m_particles(particles), m_specialContacts(specialContacts), m_detectedContacts(vector<ParticleContact>()) {}
+	: m_particles(particles), m_specialContacts(specialContacts), m_detectedContacts(vector<ParticleContact*>()) {}
 
-void ColisionDetector::detectCollisions()
+vector<ParticleContact*> ColisionDetector::detectCollisions()
 {
 	srand(time(0));
 
@@ -20,7 +20,7 @@ void ColisionDetector::detectCollisions()
 			float tangDistance = m_particles[particleIndex]->getRadius() + m_particles[otherParticleIndex]->getRadius();
 
 			// actual distance between the particles
-			float distance = m_particles[particleIndex]->getPosition().norm() + m_particles[otherParticleIndex]->getPosition().norm();
+			float distance = m_particles[particleIndex]->getPosition().norm() - m_particles[otherParticleIndex]->getPosition().norm();
 
 			// If the distance is less than the tangeant distance => colision
 			if (distance <= tangDistance)
@@ -37,7 +37,7 @@ void ColisionDetector::detectCollisions()
 				float restitutionCoef = (float)randomNum / 100;
 
 				// Add the contact to the list of detected contacts
-				m_detectedContacts.push_back(ParticleContact(particles, restitutionCoef, interpenetration));
+				m_detectedContacts.push_back(new ParticleContact(particles, restitutionCoef, interpenetration));
 			}
 		}
 	}
@@ -47,4 +47,6 @@ void ColisionDetector::detectCollisions()
 	{
 		m_specialContacts[linkIndex].addContact(m_detectedContacts);
 	}
+
+	return m_detectedContacts;
 }

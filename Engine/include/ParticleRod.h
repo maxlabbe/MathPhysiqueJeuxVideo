@@ -18,7 +18,7 @@ public:
 	/// Add contact to the list of contacts to maintain the rod between the particles
 	/// </summary>
 	/// <param name="contacts">vector<ParticleContact>&: the list of contact to resolve</param>
-	void addContact(vector<ParticleContact>& contacts);
+	void addContact(vector<ParticleContact*> contacts);
 
 private:
 

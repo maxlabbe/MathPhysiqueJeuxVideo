@@ -18,7 +18,7 @@ public:
 	/// Add contact to the list of contacts to compute the cable behavior between the particles
 	/// </summary>
 	/// <param name="contacts">vector<ParticleContact>&: the list of contact to resolve</param>
-	void addContact(vector<ParticleContact>& contacts);
+	void addContact(vector<ParticleContact*> contacts);
 
 private:
 

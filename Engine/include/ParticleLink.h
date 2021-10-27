@@ -16,7 +16,7 @@ public:
 	/// define in daughters classes
 	/// </summary>
 	/// <param name="contacts"> vector<ParticleContact>& : list of contact to update </param>
-	void addContact(vector<ParticleContact>& contacts);
+	void addContact(vector<ParticleContact*> contacts);
 
 protected :
 

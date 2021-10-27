@@ -8,7 +8,7 @@
 class IParticleContactGenerator
 {
 public:
-	virtual void addContact(vector<ParticleContact>& contacts) = 0;
+	virtual void addContact(vector<ParticleContact*> contacts) = 0;
 };
 
 #endif

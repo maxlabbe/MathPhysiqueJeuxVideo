@@ -12,6 +12,8 @@
 #include <ParticleSpring.h>
 #include<AnchoredSpring.h>
 #include <DampedHarmonicMovement.h>
+#include <ColisionDetector.h>
+#include <ParticleContactResolver.h>
 
 class World
 {
@@ -42,6 +44,8 @@ public:
 	/// <param name="springL"></param>
 	void createBlob(float gravity = 9.81f, float dragK1 = 0.1f, float dragK2 = 0.2f, float springK = 1.0f, float springL = 1.0f);
 
+	void detecteAndResolveColisions(float duration);
+
 	void moveMainParticle(Vector3D velocity);
 
 	// Getters
@@ -58,6 +62,7 @@ private:
 
 	vector<Displayable*>* m_displayables;
 	ForceRegister m_forceRegister;
+	ColisionDetector m_detector;
 
 };
 

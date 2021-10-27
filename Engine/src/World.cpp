@@ -8,6 +8,7 @@ World::World(Plane& plane) : m_plane(plane)
 
 	m_forceRegister = ForceRegister();
 	createBlob(1.0, 0.1, 0.1, 5.0, 1.0);
+	m_detector = ColisionDetector(m_blob, vector<ParticleLink>());
 
 }
 
@@ -22,13 +23,13 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 
 
 	Particle* p2 = new Particle(5.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
-	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
-	Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
-	Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
+	//Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
+	//Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
+	//Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
 	AddParticle(p2);
-	AddParticle(p3);
+	/*AddParticle(p3);
 	AddParticle(p4);
-	AddParticle(p5);
+	AddParticle(p5);*/
 
 	for (Particle* particle1 : m_blob)
 	{
@@ -37,7 +38,7 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 		m_forceRegister.registerForce(particle1, drag);
 		// Gravity force
 		GravityGenerator* gravityGen = new GravityGenerator(gravity);
-		m_forceRegister.registerForce(particle1, gravityGen);
+		//m_forceRegister.registerForce(particle1, gravityGen);
 		// Particle spring force
 		for (Particle* particle2 : m_blob)
 		{
@@ -64,6 +65,8 @@ void World::updateWorld(float duration)
 	{
 		particle->integrate(duration/1000);
 	}
+
+	detecteAndResolveColisions(duration / 1000);
 }
 
 void World::AddParticle(Particle* particle) 
@@ -71,4 +74,12 @@ void World::AddParticle(Particle* particle)
 	m_blob.push_back(particle);
 	DisplayableParticle* dp = new DisplayableParticle(*particle);
 	m_displayables->push_back(dp);
+}
+
+void World::detecteAndResolveColisions(float duration)
+{
+	vector<ParticleContact*> contacts = m_detector.detectCollisions();
+	int iterations = 2 * contacts.size();
+	ParticleContactResolver resolver(iterations);
+	resolver.resolveContact(contacts, duration);
 }

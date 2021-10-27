@@ -11,6 +11,6 @@ float ParticleLink::currentLength() const
     return (p_particle[0]->getPosition() - p_particle[1]->getPosition()).norm();
 }
 
-void ParticleLink::addContact(vector<ParticleContact>& contacts)
+void ParticleLink::addContact(vector<ParticleContact*> contacts)
 {
 }
