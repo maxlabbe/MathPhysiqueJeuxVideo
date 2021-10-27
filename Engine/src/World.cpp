@@ -1,10 +1,10 @@
 #include"World.h"
 
-World::World(Plane& plane) : m_plane(plane) 
+World::World(Particle& earth) : m_earth(earth) 
 {
-	DisplayablePlane* dPlane = new DisplayablePlane(plane);
+	DisplayableParticle* dEarth = new DisplayableParticle(earth);
 	m_displayables = new vector<Displayable*>;
-	//m_displayables->push_back(dPlane);
+	m_displayables->push_back(dEarth);
 
 	m_forceRegister = ForceRegister();
 	createBlob(1.0, 0.1, 0.1, 1, 1.0);
@@ -78,6 +78,9 @@ void World::AddParticle(Particle* particle)
 
 void World::detecteAndResolveColisions(float duration)
 {
+	vector<Particle*> allParticleInScene = m_blob;
+	Particle* earthPtr = &m_earth;
+	allParticleInScene.push_back(earthPtr);
 	ColisionDetector colisionDetector = ColisionDetector(m_blob, vector<ParticleLink>());
 	vector<ParticleContact*> contacts = colisionDetector.detectCollisions();
 	int iterations = contacts.size();

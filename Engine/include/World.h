@@ -20,7 +20,7 @@ class World
 public:
 
 
-	World(Plane& plane);
+	World(Particle& earth);
 
 	/// <summary>
 	/// Adds a particle to the blob
@@ -50,7 +50,7 @@ public:
 
 	// Getters
 
-	Plane GetPlane() { return m_plane; }
+	Particle GetEarth() { return m_earth; }
 	vector<Displayable*>* GetDisplayables() { return m_displayables; }
 	Vector3D getMainParticlePosition() { return m_mainParticle->getPosition(); }
 
@@ -58,7 +58,7 @@ private:
 
 	Particle* m_mainParticle;
 	vector<Particle*> m_blob;
-	Plane m_plane;
+	Particle m_earth;
 
 	vector<Displayable*>* m_displayables;
 	ForceRegister m_forceRegister;
