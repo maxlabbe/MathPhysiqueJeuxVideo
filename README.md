@@ -1,4 +1,4 @@
-# Construction d’un moteur physique de jeux vidéo - Phase 1
+# Construction d’un moteur physique de jeux vidéo - Phase 2
 
 ## Compiler et faire fonctionner le programme
 ### Sur Windows
