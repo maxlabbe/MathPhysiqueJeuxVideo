@@ -79,7 +79,7 @@ void World::AddParticle(Particle* particle)
 void World::detecteAndResolveColisions(float duration)
 {
 	vector<ParticleContact*> contacts = m_detector.detectCollisions();
-	int iterations = 2 * contacts.size();
+	int iterations = contacts.size();
 	ParticleContactResolver resolver(iterations);
 	resolver.resolveContact(contacts, duration);
 }
