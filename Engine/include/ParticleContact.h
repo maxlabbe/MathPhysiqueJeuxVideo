@@ -39,6 +39,7 @@ public:
 	/// </summary>
 	/// <param name="duration"></param>
 	void resolveVelocity(float duration);
+
 private:
 	// The particles involve in the collision
 	Particle* m_particles[2];
