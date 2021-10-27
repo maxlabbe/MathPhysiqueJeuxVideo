@@ -38,7 +38,7 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 		m_forceRegister.registerForce(particle1, drag);
 		// Gravity force
 		GravityGenerator* gravityGen = new GravityGenerator(gravity);
-		//m_forceRegister.registerForce(particle1, gravityGen);
+		m_forceRegister.registerForce(particle1, gravityGen);
 		// Particle spring force
 		for (Particle* particle2 : m_blob)
 		{
@@ -81,7 +81,7 @@ void World::detecteAndResolveColisions(float duration)
 	vector<Particle*> allParticleInScene = m_blob;
 	Particle* earthPtr = &m_earth;
 	allParticleInScene.push_back(earthPtr);
-	ColisionDetector colisionDetector = ColisionDetector(m_blob, vector<ParticleLink>());
+	ColisionDetector colisionDetector = ColisionDetector(allParticleInScene, vector<ParticleLink>());
 	vector<ParticleContact*> contacts = colisionDetector.detectCollisions();
 	int iterations = contacts.size();
 	ParticleContactResolver resolver(iterations);
