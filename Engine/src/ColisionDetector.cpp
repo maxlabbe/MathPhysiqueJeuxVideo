@@ -20,7 +20,7 @@ vector<ParticleContact*> ColisionDetector::detectCollisions()
 			float tangDistance = m_particles[particleIndex]->getRadius() + m_particles[otherParticleIndex]->getRadius();
 
 			// actual distance between the particles
-			float distance = m_particles[particleIndex]->getPosition().norm() - m_particles[otherParticleIndex]->getPosition().norm();
+			float distance = (m_particles[particleIndex]->getPosition() - m_particles[otherParticleIndex]->getPosition()).norm();
 
 			// If the distance is less than the tangeant distance => colision
 			if (distance <= tangDistance)
