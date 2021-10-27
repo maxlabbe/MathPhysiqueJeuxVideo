@@ -53,6 +53,7 @@ public:
 	Plane GetPlane() { return m_plane; }
 	vector<Displayable*>* GetDisplayables() { return m_displayables; }
 	Vector3D getMainParticlePosition() { return m_mainParticle->getPosition(); }
+	Vector3D getBlobCenterOfGravity();
 
 private:
 

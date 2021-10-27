@@ -38,7 +38,7 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 		m_forceRegister.registerForce(particle1, drag);
 		// Gravity force
 		GravityGenerator* gravityGen = new GravityGenerator(gravity);
-		//m_forceRegister.registerForce(particle1, gravityGen);
+		m_forceRegister.registerForce(particle1, gravityGen);
 		// Particle spring force
 		for (Particle* particle2 : m_blob)
 		{
@@ -74,6 +74,19 @@ void World::AddParticle(Particle* particle)
 	m_blob.push_back(particle);
 	DisplayableParticle* dp = new DisplayableParticle(*particle);
 	m_displayables->push_back(dp);
+}
+
+Vector3D World::getBlobCenterOfGravity()
+{
+	Vector3D center = Vector3D();
+	int count = 0;
+	for (Particle* particle : m_blob)
+	{
+		center = center + particle->getPosition();
+		count++;
+	}
+	center = center / count;
+	return center;
 }
 
 void World::detecteAndResolveColisions(float duration)
