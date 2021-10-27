@@ -53,6 +53,7 @@ public:
 	Particle GetEarth() { return m_earth; }
 	vector<Displayable*>* GetDisplayables() { return m_displayables; }
 	Vector3D getMainParticlePosition() { return m_mainParticle->getPosition(); }
+	Vector3D getBlobCenterOfGravity();
 
 private:
 

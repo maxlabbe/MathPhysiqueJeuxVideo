@@ -76,6 +76,19 @@ void World::AddParticle(Particle* particle)
 	m_displayables->push_back(dp);
 }
 
+Vector3D World::getBlobCenterOfGravity()
+{
+	Vector3D center = Vector3D();
+	int count = 0;
+	for (Particle* particle : m_blob)
+	{
+		center = center + particle->getPosition();
+		count++;
+	}
+	center = center / count;
+	return center;
+}
+
 void World::detecteAndResolveColisions(float duration)
 {
 	vector<Particle*> allParticleInScene = m_blob;

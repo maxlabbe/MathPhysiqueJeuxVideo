@@ -28,7 +28,7 @@ void Logic::updateLogic()
 
 void Logic::moveCamera()
 {
-	Vector3D blobPos = m_world.getMainParticlePosition();
+	Vector3D blobPos = m_world.getBlobCenterOfGravity();
 	glm::vec3 newCamPos = glm::vec3(blobPos.getX(), blobPos.getY(), blobPos.getZ());
 	newCamPos = newCamPos - (m_camera->orientation * 10.0f);
 	m_camera->position = newCamPos;
