@@ -5,8 +5,8 @@
 
 class ParticleLink : public IParticleContactGenerator
 {
+public :
 	Particle* particle[2];
-
 	float currentLength() const;
 
 public:
