@@ -1,14 +1,16 @@
 #include "ParticleRod.h"
 
-ParticleRod::ParticleRod(Particle* v_particle[2], float f_length) 
-{
-	length = f_length;
-	particle[0] = v_particle[0];
-	particle[1] = v_particle[1];
-}
+ParticleRod::ParticleRod(Particle* v_particle[2], float f_length)
+	: ParticleLink(v_particle), length(f_length) {}
 
-void ParticleRod::addContact()
+void ParticleRod::addContact(vector<ParticleContact>& contacts)
 {
-	ParticleContact contact = ParticleContact(particle, 0, 0);
+	// Create a contact
+	ParticleContact contact = ParticleContact(p_particle, 0, 0);
+
+	// The contact is in the opposite of the contact point normal
 	contact.oppositeNormal();
+
+	// Add the contact to the list
+	contacts.push_back(contact);
 }

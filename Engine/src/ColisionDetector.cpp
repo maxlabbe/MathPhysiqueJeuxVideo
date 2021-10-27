@@ -45,6 +45,6 @@ void ColisionDetector::detectCollisions()
 	//Now that the reel colision are detected we have to detecte the link colisions
 	for (int linkIndex = 0; linkIndex < m_specialContacts.size(); linkIndex++)
 	{
-		m_specialContacts[linkIndex].addContact();
+		m_specialContacts[linkIndex].addContact(m_detectedContacts);
 	}
 }

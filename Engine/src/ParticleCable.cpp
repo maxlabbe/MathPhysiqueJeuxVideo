@@ -1,18 +1,15 @@
 #include "ParticleCable.h"
 
-ParticleCable::ParticleCable(Particle* v_particle[2], float f_maxlength, float f_restitution)
-{
-	particle[0] = v_particle[0];
-	particle[1] = v_particle[1];
+ParticleCable::ParticleCable(Particle* v_particle[2], float f_maxlength, float f_restitution) 
+	: ParticleLink(v_particle), maxlength(f_maxlength), restitution(f_restitution) {}
 
-	maxlength = f_maxlength;
-	restitution = f_restitution;
-}
-
-void ParticleCable::addContact()
+void ParticleCable::addContact(vector<ParticleContact>& contacts)
 {
+	// We add a contact only if the cable is tense
 	if (currentLength() >= maxlength)
 	{
-		ParticleContact contact = ParticleContact(particle, restitution, 0);
+		// Create and add the contact
+		ParticleContact contact = ParticleContact(p_particle, restitution, 0);
+		contacts.push_back(contact);
 	}
 }

@@ -11,7 +11,6 @@
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\Particle.cpp" />
     <ClCompile Include="Engine\src\ParticleContact.cpp" />
-    <ClCompile Include="Engine\src\ParticleContactGenerator.cpp" />
     <ClCompile Include="Engine\src\ParticleContactResolver.cpp" />
     <ClCompile Include="Engine\src\ParticleSpring.cpp" />
     <ClCompile Include="Engine\src\Plane.cpp" />
@@ -34,9 +33,9 @@
     <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Inputs\src\InputsHandler.cpp" />
     <ClCompile Include="Engine\src\ColisionDetector.cpp" />
-    <ClCompile Include="ParticleCable.cpp" />
-    <ClCompile Include="ParticleLink.cpp" />
-    <ClCompile Include="ParticleRod.cpp" />
+    <ClCompile Include="Engine\src\ParticleCable.cpp" />
+    <ClCompile Include="Engine\src\ParticleLink.cpp" />
+    <ClCompile Include="Engine\src\ParticleRod.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -71,9 +70,9 @@
     <ClInclude Include="Graphics\include\VBO.h" />
     <ClInclude Include="Inputs\include\InputsHandler.h" />
     <ClInclude Include="Engine\include\ColisionDetector.h" />
-    <ClInclude Include="ParticleCable.h" />
-    <ClInclude Include="ParticleLink.h" />
-    <ClInclude Include="ParticleRod.h" />
+    <ClInclude Include="Engine\include\ParticleCable.h" />
+    <ClInclude Include="Engine\include\ParticleLink.h" />
+    <ClInclude Include="Engine\include\ParticleRod.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

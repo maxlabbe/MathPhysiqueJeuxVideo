@@ -1,17 +1,16 @@
 #include "ParticleLink.h"
 
-float ParticleLink::currentLength() const
+ParticleLink::ParticleLink(Particle* particle[2]) : p_particle()
 {
-    float length = 0;
-    Vector3D position1 = particle[0]->getPosition();
-    Vector3D position2 = particle[1]->getPosition();
-
-    Vector3D v_length = position1 - position2;
-    length = v_length.norm();
-
-    return length;
+    p_particle[0] = particle[0];
+    p_particle[1] = particle[1];
 }
 
-void ParticleLink::addContact()
+float ParticleLink::currentLength() const
+{
+    return (p_particle[0]->getPosition() - p_particle[1]->getPosition()).norm();
+}
+
+void ParticleLink::addContact(vector<ParticleContact>& contacts)
 {
 }
