@@ -25,7 +25,7 @@ ParticleContact::ParticleContact(Particle* particles[2], float restitutionCoef, 
 void ParticleContact::resolve(float duration) 
 {
 	//Resolve the interpenetretion
-	//resolveInterpenetration();
+	resolveInterpenetration();
 	resolveVelocity(duration);
 	// If the velocity is due by the forces applied on the object we comput the impulsion
 	/*if (m_particles[0]->getAccumForces().multiplyByScalar(duration).norm() < m_particles[0]->getVelocity().norm())

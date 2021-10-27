@@ -97,6 +97,13 @@ public :
 	void clearForce();
 
 	/// <summary>
+	/// compute the particle's position depending on the time
+	/// </summary>
+	/// <param name="time"> float : the time when the function is call </param>
+	/// <returns> Vector3 : the new particle's position </returns>
+	void UpdatePosition(const float& time);
+
+	/// <summary>
 	/// Ctor
 	/// Create a personalize particle
 	/// </summary>
@@ -129,13 +136,6 @@ private:
 	
 	// Radius of the sphere that simulate the particle
 	float m_radius;
-
-	/// <summary>
-	/// compute the particle's position depending on the time
-	/// </summary>
-	/// <param name="time"> float : the time when the function is call </param>
-	/// <returns> Vector3 : the new particle's position </returns>
-	void UpdatePosition(const float& time);
 
 	/// <summary>
 	/// compute the particle's velocity depending on the time
