@@ -111,7 +111,7 @@ void ParticleContact::resolveVelocity(float duration)
 	Vector3D impulsion = impulsionValue * m_contactPointNormal;
 
 	// v'(t) = v(t) + (g*normal)/m
-	m_particles[0]->setVelocity(m_particles[0]->getVelocity() + impulsion);
+	m_particles[0]->setVelocity(m_particles[0]->getVelocity() - impulsion);
 
 	// g = m_autreParticule/mass_systeme * deltaVs
 	impulsionValue = m_particles[0]->getMass() / systMass * approcheVelocityDelta;
@@ -120,5 +120,5 @@ void ParticleContact::resolveVelocity(float duration)
 	impulsion = impulsionValue * m_contactPointNormal;
 
 	// v'(t) = v(t) + (g*normal)/m
-	m_particles[1]->setVelocity(m_particles[1]->getVelocity() - impulsion);
+	m_particles[1]->setVelocity((m_particles[1]->getVelocity() + impulsion));
 }
