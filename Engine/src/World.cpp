@@ -24,12 +24,12 @@ void World::createBlob(float gravity, float dragK1, float dragK2, float springK,
 
 	Particle* p2 = new Particle(1.0f, Vector3D(0, 0, 2), Vector3D(), Vector3D(), Vector3D());
 	Particle* p3 = new Particle(1.0f, Vector3D(-1, 1.5, 1), Vector3D(), Vector3D(), Vector3D());
-	//Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
-	//Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
+	Particle* p4 = new Particle(1.0f, Vector3D(1, 1, -1), Vector3D(), Vector3D(), Vector3D());
+	Particle* p5 = new Particle(1.0f, Vector3D(1, 2, -1), Vector3D(), Vector3D(), Vector3D());
 	AddParticle(p2);
 	AddParticle(p3);
-	/*AddParticle(p4);
-	AddParticle(p5);*/
+	AddParticle(p4);
+	AddParticle(p5);
 
 	for (Particle* particle1 : m_blob)
 	{
@@ -66,11 +66,7 @@ void World::updateWorld(float duration)
 	{
 		particle->integrate(duration/1000);
 	}
-	detecteAndResolveColisions(duration / 1000);/*
-	for (Particle* particle : m_blob)
-	{
-		particle->UpdatePosition(duration/1000);
-	}*/
+	detecteAndResolveColisions(duration / 1000);
 }
 
 void World::AddParticle(Particle* particle) 
