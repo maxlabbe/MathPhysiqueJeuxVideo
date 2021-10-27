@@ -90,11 +90,14 @@ void ParticleContact::resolveInterpenetration()
 
 void ParticleContact::resolveVelocity(float duration) 
 {
-	//Vs' = -C * Vs
+	// Vs = pa-pb
+	float vs = (m_particles[0]->getPosition() - m_particles[1]->getPosition()) * m_contactPointNormal;
+
+	//Vs' = -C Vs
+	float vs1 =  - m_restitutionCoef * vs;
+
 	// deltaVs = Vs' - Vs
-	// => -C*Vs - Vs => Vs * (-C - 1)
-	// => delatsVs = -Vs(C+1)
-	float approcheVelocityDelta = -1 * computeApproachVelocity() * (m_restitutionCoef + 1);
+	float approcheVelocityDelta = vs1 - vs;
 
 	//We need the system's mass
 	float systMass = m_particles[0]->getMass() + m_particles[1]->getMass();
