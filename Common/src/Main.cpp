@@ -54,7 +54,11 @@ int main()
 	while (!glfwWindowShouldClose(window))
 	{
 		inputsHandler.UpdateInputs();
-		logic.updateLogic();
+		for (int i = 0; i < 10; i++)
+		{
+			logic.updateLogic();
+		}
+		
 		display.UpdateDisplay();
 	}
 
