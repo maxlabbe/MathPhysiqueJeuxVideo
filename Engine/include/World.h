@@ -32,13 +32,27 @@ public:
 	/// <param name="duration">float : duration</param>
 	void updateWorld(float duration);
 
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="gravity"></param>
+	/// <param name="dragK1"></param>
+	/// <param name="dragK2"></param>
+	/// <param name="springK"></param>
+	/// <param name="springL"></param>
+	void createBlob(float gravity = 9.81f, float dragK1 = 0.1f, float dragK2 = 0.2f, float springK = 1.0f, float springL = 1.0f);
+
+	void moveMainParticle(Vector3D velocity);
+
 	// Getters
 
 	Plane GetPlane() { return m_plane; }
 	vector<Displayable*>* GetDisplayables() { return m_displayables; }
+	Vector3D getMainParticlePosition() { return m_mainParticle->getPosition(); }
 
 private:
 
+	Particle* m_mainParticle;
 	vector<Particle*> m_blob;
 	Plane m_plane;
 

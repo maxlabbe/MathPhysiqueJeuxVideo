@@ -64,6 +64,11 @@ private :
 	/// </summary>
 	void moveCamera();
 
+	/// <summary>
+	/// Update the game world
+	/// </summary>
+	void updateWorld(float duration);
+
 
 };
 

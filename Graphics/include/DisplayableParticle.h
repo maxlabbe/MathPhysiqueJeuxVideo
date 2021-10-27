@@ -16,7 +16,7 @@ public :
 	/// <param name="radius"> float : the particle radius </param>
 	/// <param name="isStatic"> bool : particle movement flag </param>
 	/// <param name="color"> Vector3D* : the particle's color </param>
-	DisplayableParticle(Particle& p, float radius, bool isStatic = false, Vector3D* color = new Vector3D(0.8f,0.8f,0.8f));
+	DisplayableParticle(Particle& p, bool isStatic = false, Vector3D* color = new Vector3D(0.8f,0.8f,0.8f));
 
 	/// <summary>
 	/// Give the number of index to draw the particle

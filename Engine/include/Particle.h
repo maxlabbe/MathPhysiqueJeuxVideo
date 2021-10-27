@@ -80,6 +80,18 @@ public :
 	void setRadius(float radius) { m_radius = radius; }
 
 	/// <summary>
+	/// Give the particle's radius
+	/// </summary>
+	/// <returns> float : the particle's radius</returns>
+	float getRadius() const { return m_radius; }
+
+	/// <summary>
+	/// Set the radius to the given value
+	/// </summary>
+	/// <param name="radius"> float : the given value </param>
+	void setRadius(float radius) { m_radius = radius; }
+
+	/// <summary>
 	/// simulate the particle's physic by updating her position her velocity each call
 	/// </summary>
 	/// <param name="time"> float : the current time when the function is call</param>
@@ -105,7 +117,7 @@ public :
 	/// <param name="velocity"> Vector3 : the particle's initial velocity </param>
 	/// <param name="acceleration">Vector3 : the particle's initial acceleration </param>
 	/// <param name="forces"> Vector3D : the forces applied on the particle on the particle </param>
-	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces);
+	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces, float radius = 0.5f);
 
 private:
 
@@ -127,6 +139,9 @@ private:
 	// Implementation of all the forces applicate on the particle
 	Vector3D m_accumForces;
 	
+	// Radius of the sphere that simulate the particle
+	float m_radius;
+
 	// Radius of the sphere that simulate the particle
 	float m_radius;
 

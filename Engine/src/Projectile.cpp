@@ -6,7 +6,7 @@ Projectile::Projectile(Vector3D initPos, Vector3D initVelocity, float gravity,fl
 	m_gravity = gravity;
 	m_lifespan = lifespan;
 	m_lifeTime = 0.0f;
-	DisplayableParticle* particle = new DisplayableParticle(m_particle, 0.01f, false);
+	DisplayableParticle* particle = new DisplayableParticle(m_particle, false);
 	m_trace = new vector<Displayable*>;
 	m_trace->push_back(particle);
 }
@@ -20,7 +20,7 @@ void Projectile::update(float time)
 
 		
 		// Create a displayable object for the trajectory
-		DisplayableParticle* particle_trace = new DisplayableParticle(m_particle, 0.01f, true);
+		DisplayableParticle* particle_trace = new DisplayableParticle(m_particle, true);
 		// Add it to the trah=jectory vector
 		m_trace->push_back(particle_trace);
 		
