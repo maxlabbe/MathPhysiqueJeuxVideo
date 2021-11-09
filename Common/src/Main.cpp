@@ -1,6 +1,6 @@
-#include"Display.h"
 #include"DisplayableParticle.h"
 #include"Particle.h"
+#include"Logic.h"
 #include <thread>
 #include <windows.h>
 
@@ -45,16 +45,25 @@ int main()
 
 	// Create the inputs, logics and display of the game
 	InputsHandler inputsHandler(window);
-	Logic logic(window, inputsHandler);
-	Display display(window, logic.getCamera(), logic, Shader("./Graphics/src/default.vert", "./Graphics/src/default.frag"));
+	Display display(window, Shader("./Graphics/src/default.vert", "./Graphics/src/default.frag"));
+	World world(Particle(5.9f * pow(10, 24), Vector3D(0, -1001, 0), Vector3D(), Vector3D(), Vector3D(), 1000.0f));
+	Logic logic(window, inputsHandler, display, world);
+	
 
 	// Main loop
 	while (!glfwWindowShouldClose(window))
 	{
 		inputsHandler.UpdateInputs();
-		logic.updateLogic();
-		display.updateDisplay();
+		for (int i = 0; i < 10; i++)
+		{
+			logic.updateLogic();
+		}
+		
+		display.UpdateDisplay();
 	}
+
+	// Delete all the objects created for the display
+	display.ClearDisplay();
 
 	// Delete window and terminate GLFW
 	glfwDestroyWindow(window);

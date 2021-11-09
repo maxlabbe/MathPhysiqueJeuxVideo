@@ -44,7 +44,7 @@ public :
 	Vector3D getVelocity() const { return m_velocity;  }
 
 	/// <summary>
-	/// Set the particel velocity to the one given in parameters
+	/// Set the particle velocity to the one given in parameters
 	/// </summary>
 	/// <param name="velocity"> Vector3D : the wanted velocity </param>
 	void setVelocity(Vector3D velocity) {m_velocity = velocity; }
@@ -56,10 +56,28 @@ public :
 	Vector3D getAcceleration() const { return m_acceleration; }
 
 	/// <summary>
+	/// Set the particle acceleration to the one given in parameters 
+	/// </summary>
+	/// <param name="acceleration"> Vector3D : the wanted acceleration </param>
+	void setAcceleration(Vector3D acceleration) { m_acceleration = acceleration;  }
+
+	/// <summary>
 	/// Give the forces applicated to the particle
 	/// </summary>
 	/// <returns>Vector3D : the particle's forces </returns>
-	Vector3D getAccumForces() const { return m_accumForces; }
+	Vector3D getAccumForces() const { return m_accumForces;	}
+
+	/// <summary>
+	/// Give the particle's radius
+	/// </summary>
+	/// <returns> float : the particle's radius</returns>
+	float getRadius() const { return m_radius; }
+
+	/// <summary>
+	/// Set the radius to the given value
+	/// </summary>
+	/// <param name="radius"> float : the given value </param>
+	void setRadius(float radius) { m_radius = radius; }
 
 	/// <summary>
 	/// simulate the particle's physic by updating her position her velocity each call
@@ -79,6 +97,13 @@ public :
 	void clearForce();
 
 	/// <summary>
+	/// compute the particle's position depending on the time
+	/// </summary>
+	/// <param name="time"> float : the time when the function is call </param>
+	/// <returns> Vector3 : the new particle's position </returns>
+	void UpdatePosition(const float& time);
+
+	/// <summary>
 	/// Ctor
 	/// Create a personalize particle
 	/// </summary>
@@ -87,7 +112,7 @@ public :
 	/// <param name="velocity"> Vector3 : the particle's initial velocity </param>
 	/// <param name="acceleration">Vector3 : the particle's initial acceleration </param>
 	/// <param name="forces"> Vector3D : the forces applied on the particle on the particle </param>
-	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces);
+	Particle (float mass, Vector3D position, Vector3D velocity, Vector3D acceleration, Vector3D forces, float radius = 0.5f);
 
 private:
 
@@ -108,13 +133,9 @@ private:
 
 	// Implementation of all the forces applicate on the particle
 	Vector3D m_accumForces;
-
-	/// <summary>
-	/// compute the particle's position depending on the time
-	/// </summary>
-	/// <param name="time"> float : the time when the function is call </param>
-	/// <returns> Vector3 : the new particle's position </returns>
-	void UpdatePosition(const float& time);
+	
+	// Radius of the sphere that simulate the particle
+	float m_radius;
 
 	/// <summary>
 	/// compute the particle's velocity depending on the time

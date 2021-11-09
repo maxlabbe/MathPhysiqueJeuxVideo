@@ -17,7 +17,7 @@ public :
 	/// <summary>
 	/// Displays the object using glDrawElements function in the current context.
 	/// </summary>
-	void display();
+	void Display();
 
 	/// <summary>
 	/// Returns the number of indices.
@@ -25,21 +25,21 @@ public :
 	/// <returns>
 	/// unsigned int : number of indices of the object.
 	/// </returns>
-	virtual unsigned int getIndexCount() = 0;
+	virtual unsigned int GetIndexCount() = 0;
 
 	/// <summary>
 	/// Deletes all the buffer objects, VAO, VBO and EBO.
 	/// </summary>
-	void Delete();
+	virtual void Delete();
 
 protected:
 
 	// Getters 
 
-	virtual GLfloat* getVertices() = 0;
-	virtual GLuint* getIndices() = 0;
-	virtual GLsizeiptr getSizeOfVertices() = 0;
-	virtual GLsizeiptr getSizeOfIndices() = 0;
+	virtual GLfloat* GetVertices() = 0;
+	virtual GLuint* GetIndices() = 0;
+	virtual GLsizeiptr GetSizeOfVertices() = 0;
+	virtual GLsizeiptr GetSizeOfIndices() = 0;
 
 	// Attributes
 
@@ -51,6 +51,9 @@ protected:
 	EBO p_EBO;
 	// Mode of drawing the objects : can be GL_TRIANGLES, GL_LINES...
 	GLenum p_mode;
+	// Indicates if the object do not move. Needed for optimizations.
+	bool p_isStatic;
+
 };
 
 #endif

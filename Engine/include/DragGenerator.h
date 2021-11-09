@@ -3,7 +3,7 @@
 
 #include<ParticleForceGenerator.h>
 
-class DragGenerator : IParticleForceGenerator
+class DragGenerator : public IParticleForceGenerator
 {
 public:
 	/// <summary>
