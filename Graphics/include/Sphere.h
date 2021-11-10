@@ -3,7 +3,7 @@
 
 #include<GLFW/glfw3.h>
 #include <vector>
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 /// <summary>
 /// A sphere built with triangles.
 /// Visit : http://www.songho.ca/opengl/gl_sphere.html for more details.
