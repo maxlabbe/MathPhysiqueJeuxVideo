@@ -11,7 +11,8 @@ void Particle::integrate(const float time)
 
 	// Update the comput velocity
 	UpdateVelocity(time);
-	clearForce();
+
+	//clearForce();
 }
 
 void Particle::addForce(Vector3D force)

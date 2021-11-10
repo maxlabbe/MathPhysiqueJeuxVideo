@@ -65,8 +65,15 @@ void World::updateWorld(float duration)
 	for (Particle* particle : m_blob)
 	{
 		particle->integrate(duration/1000);
+		
 	}
 	detecteAndResolveColisions(duration / 1000);
+	
+	for (Particle* particle : m_blob)
+	{
+		particle->clearForce();
+
+	}
 }
 
 void World::AddParticle(Particle* particle) 
