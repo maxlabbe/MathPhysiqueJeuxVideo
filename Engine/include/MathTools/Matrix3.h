@@ -16,8 +16,9 @@ public:
 	// Setter
 	void setMatrix(array<array<float, 3>, 3> matrix) { m_matrix = matrix; }
 
-	Vector3D productVector(Vector3D vector);
-	Matrix3 productMatrix(Matrix3 matrix);
+	Matrix3 multiplyByScalar(const float& c);
+	Vector3D multiplyByVector(Vector3D vector);
+	Matrix3 multiplyByMatrix(Matrix3 matrix);
 	Matrix3 inverse();
 	Matrix3 transpose();
 	float determinant();

@@ -37,6 +37,7 @@
     <ClCompile Include="Engine\src\ParticleLink.cpp" />
     <ClCompile Include="Engine\src\ParticleRod.cpp" />
     <ClCompile Include="Engine\src\MathTools\Quaternion.cpp" />
+    <ClCompile Include="Engine\src\MathTools\Matrix3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -75,6 +76,7 @@
     <ClInclude Include="Engine\include\ParticleLink.h" />
     <ClInclude Include="Engine\include\ParticleRod.h" />
     <ClInclude Include="Engine\include\MathTools\Quaternion.h" />
+    <ClInclude Include="Engine\include\MathTools\Matrix3.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
