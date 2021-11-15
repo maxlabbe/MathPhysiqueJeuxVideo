@@ -19,8 +19,3 @@ OrientationMatrix::OrientationMatrix(float p1, float q1, float r1, float p2, flo
 }
 
 OrientationMatrix::~OrientationMatrix() {}
-
-const array<array<float, 3>, 3> OrientationMatrix::GetMatrix()
-{
-	return m_matrix;
-}

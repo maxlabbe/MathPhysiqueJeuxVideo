@@ -26,7 +26,7 @@ public:
 	Matrix3();
 	Matrix3(array<array<float, 3>, 3> matrix);
 
-private:
+protected:
 	
 	// matrix
 	array<array<float, 3>, 3> m_matrix;
