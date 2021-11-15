@@ -1,6 +1,6 @@
 #include "Common.h"
 
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 
 void Vector3D::set(float x, float y, float z)
 {

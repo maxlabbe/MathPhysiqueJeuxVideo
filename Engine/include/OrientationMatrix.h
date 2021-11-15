@@ -1,7 +1,8 @@
 #pragma once
 #include<array>
-#include <Vector3D.h>
-class OrientationMatrix : public Vector3D
+#include<Common.h>
+
+class OrientationMatrix
 {
 	//tab[]i[j] i = ligne j = colonne
 public:

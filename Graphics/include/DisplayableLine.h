@@ -1,7 +1,7 @@
 #ifndef DISPLAYABLE_LINE_H
 #define DISPLAYABLE_LINE_H
 
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 #include "Displayable.h"
 
 class DisplayableLine : public Displayable
