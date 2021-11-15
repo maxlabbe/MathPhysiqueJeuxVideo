@@ -29,6 +29,7 @@
     <ClInclude Include="Engine\include\ForceRegister.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
+    <ClInclude Include="Engine\include\OrientationMatrix.h" />
     <ClInclude Include="Engine\include\Particle.h" />
     <ClInclude Include="Engine\include\ParticleCable.h" />
     <ClInclude Include="Engine\include\ParticleContact.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
+    <ClCompile Include="Engine\src\OrientationMatrix.cpp" />
     <ClCompile Include="Engine\src\Particle.cpp" />
     <ClCompile Include="Engine\src\ParticleCable.cpp" />
     <ClCompile Include="Engine\src\ParticleContact.cpp" />
