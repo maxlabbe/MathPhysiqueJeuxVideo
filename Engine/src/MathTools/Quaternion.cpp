@@ -63,6 +63,17 @@ Quaternion Quaternion::Inverse() const
 	return Conjugate() / Norm();
 }
 
+Matrix3 Quaternion::ToMatrix3() const
+{
+	array<array<float, 3>, 3> matrix;
+	
+	matrix[0] = { 1 - 2 * (Get(2) * Get(2) + Get(3) * Get(3)),	2 * (Get(1) * Get(2) + Get(3) * Get(0))	    , 2 * (Get(1) * Get(3) - Get(2) * Get(0)) };
+	matrix[1] = { 2 * (Get(1) * Get(2) - Get(3) * Get(0))	 ,	1 - 2 * (Get(1) * Get(1) + Get(3) * Get(3)) , 2 * (Get(2) * Get(3) + Get(1) * Get(0)) }; 
+	matrix[2] = { 2 * (Get(1) * Get(3) + Get(2) * Get(0))	 ,	2 * (Get(2) * Get(3) - Get(1) * Get(0))		, 1 - 2 * (Get(1) * Get(1) + Get(2) * Get(2)) };
+
+	return Matrix3(matrix);
+}
+
 Quaternion operator*(const float& c, const Quaternion& q)
 {
 	return Quaternion(c * q.Get(0), c * q.Get(1), c * q.Get(2), c * q.Get(3));

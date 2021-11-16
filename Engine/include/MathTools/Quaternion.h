@@ -3,6 +3,7 @@
 
 #include <Common.h>
 #include <MathTools/Vector3D.h>
+#include <MathTools/Matrix3.h>
 #include <array>
 
 class Quaternion
@@ -22,6 +23,7 @@ public :
 	Quaternion Normalize() const;
 	Quaternion Conjugate() const;
 	Quaternion Inverse() const;
+	Matrix3 ToMatrix3() const;
 
 	friend Quaternion operator*(const float&, const Quaternion&);
 	friend Quaternion operator*(const Quaternion&, const float&);
