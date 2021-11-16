@@ -14,10 +14,25 @@ public :
 	Quaternion(float w, Vector3D vector);
 	Quaternion(array<float, 4> quaternion);
 
-	Quaternion MultiplyByQuaternion(Quaternion q);
+	static Quaternion Identity();
+
+	float Norm() const;
+
+	Quaternion MultiplyByQuaternion(Quaternion q) const;
+	Quaternion Normalize() const;
+	Quaternion Conjugate() const;
+	Quaternion Inverse() const;
+
+	friend Quaternion operator*(const float&, const Quaternion&);
+	friend Quaternion operator*(const Quaternion&, const float&);
+	friend Quaternion operator*(const Quaternion&, const Quaternion&);
+	friend Quaternion operator/(const Quaternion&, const float&);
+	friend Quaternion operator+(const Quaternion&, const Quaternion&);
+	friend Quaternion operator-(const Quaternion&, const Quaternion&);
+	friend std::ostream& operator<<(std::ostream&, const Quaternion&);
 
 	// Getter
-	float Get(int index) { return m_quaternion[index]; }
+	float Get(int index) const { return m_quaternion[index]; }
 
 private :
 
