@@ -20,6 +20,7 @@ public :
 	float Norm() const;
 
 	Quaternion MultiplyByQuaternion(Quaternion q) const;
+	Quaternion MultiplyByScalar(float s) const;
 	Quaternion Normalize() const;
 	Quaternion Conjugate() const;
 	Quaternion Inverse() const;

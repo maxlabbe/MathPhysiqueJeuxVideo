@@ -43,6 +43,11 @@ Quaternion Quaternion::MultiplyByQuaternion(Quaternion q) const
 	return Quaternion(q1q2w, q1q2xyz.getX(), q1q2xyz.getY(), q1q2xyz.getZ());
 }
 
+Quaternion Quaternion::MultiplyByScalar(float s) const
+{
+	return Quaternion(s * Get(0), s * Get(1), s * Get(2), s * Get(3));
+}
+
 Quaternion Quaternion::Normalize() const
 {
 	float norm = Norm();
@@ -76,12 +81,12 @@ Matrix3 Quaternion::ToMatrix3() const
 
 Quaternion operator*(const float& c, const Quaternion& q)
 {
-	return Quaternion(c * q.Get(0), c * q.Get(1), c * q.Get(2), c * q.Get(3));
+	return q.MultiplyByScalar(c);
 }
 
 Quaternion operator*(const Quaternion& q, const float& c)
 {
-	return Quaternion(c * q.Get(0), c * q.Get(1), c * q.Get(2), c * q.Get(3));
+	return q.MultiplyByScalar(c);
 }
 
 Quaternion operator*(const Quaternion& q1, const Quaternion& q2)
