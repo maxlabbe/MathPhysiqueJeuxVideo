@@ -29,6 +29,7 @@
     <ClInclude Include="Engine\include\ForceRegister.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
+    <ClInclude Include="Engine\include\MathTools\Matrix4.h" />
     <ClInclude Include="Engine\include\OrientationMatrix.h" />
     <ClInclude Include="Engine\include\MathTools\Matrix3.h" />
     <ClInclude Include="Engine\include\MathTools\Quaternion.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
+    <ClCompile Include="Engine\src\MathTools\Matrix4.cpp" />
     <ClCompile Include="Engine\src\OrientationMatrix.cpp" />
     <ClCompile Include="Engine\src\MathTools\Matrix3.cpp" />
     <ClCompile Include="Engine\src\MathTools\Quaternion.cpp" />
