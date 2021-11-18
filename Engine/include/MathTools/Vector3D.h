@@ -2,6 +2,7 @@
 #define VECTOR3D_H
 
 #include"Common.h"
+#include <MathTools/Matrix3.h>
 
 class Vector3D {
 
@@ -74,6 +75,11 @@ public:
 	/// <param name="vector"> Vector3 : the given vector </param>
 	/// <returns> Vector3 : the vector product's result </returns>
 	Vector3D crossProduct(const Vector3D&) const;
+
+	//
+	void LocalToWorld(Matrix3 transfoMatrix);
+
+	void WorldToLocal();
 
 	// Operator overloads
 	// * = multiply a vector by a scalar or scalar product of two vectors
