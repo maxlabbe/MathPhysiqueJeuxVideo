@@ -34,7 +34,7 @@ vector<ParticleContact*> ColisionDetector::detectCollisions()
 				// Generate random restitution coef because we didn't set one
 				// We can give a material to each particle and the ground with different coefs
 				int randomNum = rand() % 100;
-				float restitutionCoef = (float)randomNum / 100;
+				float restitutionCoef = (float)randomNum / 10;
 
 				// Add the contact to the list of detected contacts
 				m_detectedContacts.push_back(new ParticleContact(particles, restitutionCoef, interpenetration));
