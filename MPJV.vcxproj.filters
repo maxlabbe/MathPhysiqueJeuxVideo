@@ -39,6 +39,7 @@
     <ClCompile Include="Engine\src\OrientationMatrix.cpp" />
     <ClCompile Include="Engine\src\MathTools\Quaternion.cpp" />
     <ClCompile Include="Engine\src\MathTools\Matrix3.cpp" />
+    <ClCompile Include="Engine\src\MathTools\Matrix4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -79,6 +80,7 @@
     <ClInclude Include="Engine\include\OrientationMatrix.h" />
     <ClInclude Include="Engine\include\MathTools\Quaternion.h" />
     <ClInclude Include="Engine\include\MathTools\Matrix3.h" />
+    <ClInclude Include="Engine\include\MathTools\Matrix4.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
