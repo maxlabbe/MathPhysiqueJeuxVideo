@@ -74,20 +74,12 @@ Vector3D Vector3D::crossProduct(const Vector3D& v) const
 
 void Vector3D::LocalToWorld(Matrix3 transfoMatrix)
 {
-	Vector3D worldVector = transfoMatrix.multiplyByVector(Vector3D(m_x, m_y, m_z));
-
-	m_x = worldVector.getX();
-	m_y = worldVector.getY();
-	m_z = worldVector.getZ();
+	*this = transfoMatrix.multiplyByVector(*this);
 }
 
 void Vector3D::WorldToLocal(Matrix3 transfoMatrix)
 {
-	Vector3D worldVector = transfoMatrix.inverse().multiplyByVector(Vector3D(m_x, m_y, m_z));
-
-	m_x = worldVector.getX();
-	m_y = worldVector.getY();
-	m_z = worldVector.getZ();
+	*this = transfoMatrix.inverse().multiplyByVector(*this);
 }
 
 Vector3D operator*(const float& c, const Vector3D& v) 
