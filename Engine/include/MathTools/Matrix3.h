@@ -27,7 +27,7 @@ public:
 	/// multiply the matrix by a given vector
 	/// </summary>
 	/// <param name="vector"> Vector3D : the vector that multiply the matrix </param>
-	/// <returns> Vector3D : the new matrix </returns>
+	/// <returns> Vector3D : the new vector </returns>
 	Vector3D multiplyByVector(Vector3D vector);
 	
 	/// <summary>
