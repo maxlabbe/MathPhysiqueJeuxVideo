@@ -70,7 +70,7 @@ void RigidBody::updateValues(const float time)
 	Vector3D newPosition = m_position + (m_linearVelocity * time);
 	m_position.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 
-	Quaternion newOrientation = m_orientation.
+	//Quaternion newOrientation = m_orientation. TODO
 
 	//TODO calculer les derived data
 
