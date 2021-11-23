@@ -27,6 +27,7 @@
     <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
     <ClInclude Include="Engine\include\DragGenerator.h" />
     <ClInclude Include="Engine\include\ForceRegister.h" />
+    <ClInclude Include="Engine\include\ForceRegisterRigidBody.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\MathTools\Matrix4.h" />
@@ -70,6 +71,7 @@
     <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />
+    <ClCompile Include="Engine\src\ForceRegisterRigidBody.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\MathTools\Matrix4.cpp" />
     <ClCompile Include="Engine\src\OrientationMatrix.cpp" />
