@@ -14,7 +14,7 @@ void ForceRegisterRigidBody::updateAllForces(float duration)
 	// Iterate over all the forces registered
 	for (auto it = m_register.begin(); it != m_register.end(); ) {
 		//forcesBeforeUpdate = it->m_particle->getAccumForces();
-		it->m_forceGenerator->updateForce(it->m_rigidBody, it->m_point, duration);
+		it->m_forceGenerator->updateForce(it->m_rigidBody, duration, it->m_point);
 		//forcesAfterUpdate = it->m_particle->getAccumForces();
 
 		/* Part not implemented */

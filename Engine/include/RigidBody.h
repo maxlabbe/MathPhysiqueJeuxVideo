@@ -16,6 +16,10 @@ private:
 	//List of the summits
 	list<Vector3D> m_listSummit;
 
+	float m_height;
+	float m_width;
+	float m_depth;
+
 	// The rigid body's mass
 	float m_mass;
 
@@ -63,12 +67,22 @@ private:
 
 public:
 
+	/// Getter
+	Vector3D GetMassCenter() { return m_massCenter; }
+	float GetMass() { return m_mass; }
+
+	float GetHeight() { return m_height; }
+
+	float GetVolume();
+
 	/// <param name="angularDamping">rigid body's angular damping</param>
 
 	/// <summary>
 	/// Create a personnalized rigid body
 	/// </summary>
-	/// <param name="listSummit"> list of vertices that make up the object </param>
+	/// <param name="height"> rigid body's height </param>
+	/// <param name="width"> rigid body's width </param>
+	/// <param name="depth"> rigid body's depth </param>
 	/// <param name="mass">rigid body's mass</param>
 	/// <param name="massCenter">rigid body's mass center's position</param>
 	/// <param name="linearVelocity">rigid body's linear velocity</param>
@@ -77,7 +91,7 @@ public:
 	/// <param name="inertiaTensor">rigid body's inertia tensor</param>
 	/// <param name="linearDumping">rigid body's linear damping</param>
 	/// <param name="angularDamping">rigid body's angular damping</param>
-	RigidBody(list<Vector3D> listSummit, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping);
+	RigidBody(float height, float width, float depth, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping);
 
 	/// <summary>
 	/// Sets the list of summits composing the rigid body

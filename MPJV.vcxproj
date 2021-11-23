@@ -27,7 +27,6 @@
     <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
     <ClInclude Include="Engine\include\DragGenerator.h" />
     <ClInclude Include="Engine\include\ForceRegister.h" />
-    <ClInclude Include="Engine\include\ForceRegisterRigidBody.h" />
     <ClInclude Include="Engine\include\GravityGenerator.h" />
     <ClInclude Include="Engine\include\Logic.h" />
     <ClInclude Include="Engine\include\MathTools\Matrix4.h" />
@@ -46,7 +45,10 @@
     <ClInclude Include="Engine\include\Plane.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\MathTools\Vector3D.h" />
+    <ClInclude Include="Engine\include\RB_BungeeGenerator.h" />
+    <ClInclude Include="Engine\include\RB_Buoyancy.h" />
     <ClInclude Include="Engine\include\RB_ForceGenerator.h" />
+    <ClInclude Include="Engine\include\RB_GravityGenerator.h" />
     <ClInclude Include="Engine\include\RigidBody.h" />
     <ClInclude Include="Engine\include\World.h" />
     <ClInclude Include="Graphics\include\Camera.h" />
@@ -72,7 +74,6 @@
     <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />
-    <ClCompile Include="Engine\src\ForceRegisterRigidBody.cpp" />
     <ClCompile Include="Engine\src\Logic.cpp" />
     <ClCompile Include="Engine\src\MathTools\Matrix4.cpp" />
     <ClCompile Include="Engine\src\OrientationMatrix.cpp" />
@@ -88,7 +89,10 @@
     <ClCompile Include="Engine\src\Plane.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
     <ClCompile Include="Engine\src\MathTools\Vector3D.cpp" />
+    <ClCompile Include="Engine\src\RB_BungeeGenerator.cpp" />
+    <ClCompile Include="Engine\src\RB_Buoyancy.cpp" />
     <ClCompile Include="Engine\src\RB_ForceGenerator.cpp" />
+    <ClCompile Include="Engine\src\RB_GravityGenerator.cpp" />
     <ClCompile Include="Engine\src\RigidBody.cpp" />
     <ClCompile Include="Engine\src\World.cpp" />
     <ClCompile Include="Graphics\src\Camera.cpp" />
@@ -107,6 +111,7 @@
     <ClCompile Include="Graphics\src\VBO.cpp" />
     <ClCompile Include="Engine\src\GravityGenerator.cpp" />
     <ClCompile Include="Inputs\src\InputsHandler.cpp" />
+    <ClCompile Include="Engine\src\RB_SpringGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
