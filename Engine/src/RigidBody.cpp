@@ -47,7 +47,8 @@ void RigidBody::clearAccumulators()
 void RigidBody::updateValues(const float time)
 {
 	m_linearAcceleration = m_accumForce * m_inverseMass;
-	//m_angularAcceleration =  TODO
+
+	m_angularAcceleration = m_inverseInertiaTensor.multiplyByVector(m_accumTorque);
 
 	Vector3D newLinearVelocity = m_linearVelocity + (m_linearAcceleration * time);
 	m_linearVelocity.set(newLinearVelocity.getX(), newLinearVelocity.getY(), newLinearVelocity.getZ());
@@ -60,7 +61,7 @@ void RigidBody::updateValues(const float time)
 	Vector3D newPosition = m_position + (m_linearVelocity * time);
 	m_position.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 
-	//Vector3D newOrientation = m_orientation 
+	//Vector3D newOrientation = TODO
 
 	//TODO calculer les derived data
 
