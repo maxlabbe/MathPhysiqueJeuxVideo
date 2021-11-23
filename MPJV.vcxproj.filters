@@ -46,6 +46,7 @@
     <ClCompile Include="Engine\src\RB_BungeeGenerator.cpp" />
     <ClCompile Include="Engine\src\RB_Buoyancy.cpp" />
     <ClCompile Include="Engine\src\RB_GravityGenerator.cpp" />
+    <ClCompile Include="Engine\src\RB_SpringGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -93,6 +94,7 @@
     <ClInclude Include="Engine\include\RB_BungeeGenerator.h" />
     <ClInclude Include="Engine\include\RB_Buoyancy.h" />
     <ClInclude Include="Engine\include\RB_GravityGenerator.h" />
+    <ClInclude Include="Engine\include\RB_SpringGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

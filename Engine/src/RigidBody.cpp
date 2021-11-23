@@ -102,6 +102,12 @@ void RigidBody::updateValues(const float time)
 	Matrix3 inverseInertiaTensorInWorld(m_orientation.ToMatrix3().multiplyByMatrix(m_inverseInertiaTensor).multiplyByMatrix(m_orientation.ToMatrix3().inverse()));
 	m_transformMatrix.setMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter));
 
+	// Update all object positions
+	for (auto vertex : m_listSummit)
+	{
+		vertex = m_transformMatrix.multiplyByVector(vertex);
+	}
+
 	clearAccumulators();
 }
 
