@@ -35,7 +35,7 @@ private:
 	typedef struct ForceRegistrationStruct {
 		RigidBody* m_rigidBody;
 		IRB_ForceGenerator* m_forceGenerator;
-		Vector3D m_point;	// Peut être changer en liste de point
+		Vector3D* m_point;
 	} ForceRegistration;
 
 	// the type Register
