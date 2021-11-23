@@ -7,7 +7,6 @@ RigidBody::RigidBody(float mass, Vector3D position, Vector3D linearVelocity, Vec
 	m_position = Vector3D(position);
 	m_linearVelocity = Vector3D(linearVelocity);
 	m_angularVelocity = Vector3D(angularVelocity);
-	m_rotation = Vector3D(rotation);
 	m_orientation = Quaternion(orientation);
 	m_angularDamping = angularDamping;
 }
@@ -50,18 +49,28 @@ void RigidBody::updateValues(const float time)
 
 	m_angularAcceleration = m_inverseInertiaTensor.multiplyByVector(m_accumTorque);
 
+	// v' = new linear velocity
+	// v = current linear velocity
+	// a = linear acceleration
+	// D = linear damping
+	// v' = v + a.time
 	Vector3D newLinearVelocity = m_linearVelocity + (m_linearAcceleration * time);
 	m_linearVelocity.set(newLinearVelocity.getX(), newLinearVelocity.getY(), newLinearVelocity.getZ());
 
-	//Vector3D newAngularVelocity = TODO
-	//m_angularVelocity.set(newAngularVelocity.getX(), newAngularVelocity.getY(), newAngularVelocity.getZ())
+	// v' = new angular velocity
+	// v = current angular velocity
+	// a = angular acceleration
+	// D = angular damping
+	// v' = v + a.time
+	Vector3D newAngularVelocity = (m_angularVelocity * powf(m_angularDamping, time)) + (m_angularAcceleration * time);
+	m_angularVelocity.set(newAngularVelocity.getX(), newAngularVelocity.getY(), newAngularVelocity.getZ());
 	
 	//TODO add drag
 
 	Vector3D newPosition = m_position + (m_linearVelocity * time);
 	m_position.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 
-	//Vector3D newOrientation = TODO
+	Quaternion newOrientation = m_orientation.
 
 	//TODO calculer les derived data
 

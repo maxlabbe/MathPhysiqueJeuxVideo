@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RIGIDBODY_H
+#define RIGIDBODY_H
 
 #include <list>
 #include "Particle.h"
@@ -27,14 +28,11 @@ private:
 	// The rigid body's linear velocity
 	Vector3D m_linearVelocity;
 
-	// The rigid body's angular velocity
+	// The rigid body's angular velocity, ie rotation
 	Vector3D m_angularVelocity;
 
 	// The rigid body's orientation
 	Quaternion m_orientation;
-
-	// The rigid body's rotation
-	Vector3D m_rotation;
 
 	// The inversed matrix of inertia of the rigid body
 	Matrix3 m_inverseInertiaTensor;
@@ -118,3 +116,5 @@ public:
 	/// <param name="time"> float : the current time when the function is call</param>
 	void updateValues(const float time);
 };
+
+#endif
