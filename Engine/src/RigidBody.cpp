@@ -1,18 +1,5 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(list<Vector3D> listSummit, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping)
-	:m_listSummit(listSummit), m_mass(mass), m_inverseMass(1 / mass), m_massCenter(massCenter),
-	m_linearVelocity(linearVelocity), m_angularVelocity(angularVelocity),
-	m_orientation(initialOrientation),	m_initialOrientation(initialOrientation),
-	m_inverseInertiaTensor(inertiaTensor.inverse()), m_accumForce(Vector3D(0,0,0)), m_accumTorque(Vector3D(0,0,0)), m_linearAcceleration(Vector3D(0,0,0)), m_angularAcceleration(Vector3D(0, 0, 0)),
-	m_linearDumping(linearDumping), m_angularDamping(angularDamping), m_transformMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter))
-{
-	for (auto vertex : m_listSummit)
-	{
-		vertex.LocalToWorld(m_transformMatrix);
-	}
-}
-
 RigidBody::RigidBody(float height, float width, float depth, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping)
 	: m_mass(mass), m_inverseMass(1 / mass), m_massCenter(massCenter),
 	m_linearVelocity(linearVelocity), m_angularVelocity(angularVelocity),
