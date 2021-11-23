@@ -41,6 +41,7 @@
     <ClCompile Include="Engine\src\MathTools\Matrix3.cpp" />
     <ClCompile Include="Engine\src\MathTools\Matrix4.cpp" />
     <ClCompile Include="Engine\src\RB_ForceGenerator.cpp" />
+    <ClCompile Include="Engine\src\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -83,6 +84,7 @@
     <ClInclude Include="Engine\include\MathTools\Matrix3.h" />
     <ClInclude Include="Engine\include\MathTools\Matrix4.h" />
     <ClInclude Include="Engine\include\RB_ForceGenerator.h" />
+    <ClInclude Include="Engine\include\RigidBody.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
