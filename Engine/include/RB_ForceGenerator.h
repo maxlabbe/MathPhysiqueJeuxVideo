@@ -10,7 +10,7 @@ private:
 public:
 	/*Vector3D GetApplicationPoint();
 	void SetApplicationPoint(Vector3D applicationPoint);*/
-	virtual void updateForce(RigidBody* rigidBody, Vector3D apllicationPoint, float duration) = 0;
+	virtual void updateForce(RigidBody* rigidBody, Vector3D* apllicationPoint, float duration) = 0;
 };
 
 #endif

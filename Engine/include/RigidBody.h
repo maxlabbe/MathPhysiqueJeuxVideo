@@ -5,7 +5,7 @@
 #include "Particle.h"
 #include "MathTools/Vector3D.h"
 #include "MathTools/Matrix3.h"
-//#include "MathTools/Matrix4.h"
+#include "MathTools/Matrix4.h"
 #include "MathTools/Quaternion.h"
 
 
@@ -14,7 +14,7 @@ class RigidBody
 private:
 
 	//List of the summits
-	list<Vector3D> listSummit;
+	list<Vector3D> m_listSummit;
 
 	// The rigid body's mass
 	float m_mass;
@@ -23,7 +23,7 @@ private:
 	float m_inverseMass;
 
 	// The rigid body's position
-	Vector3D m_position;
+	Vector3D m_massCenter;
 
 	// The rigid body's linear velocity
 	Vector3D m_linearVelocity;
@@ -33,6 +33,9 @@ private:
 
 	// The rigid body's orientation
 	Quaternion m_orientation;
+
+	// The rigid body's first orientation
+	Quaternion m_initialOrientation;
 
 	// The inversed matrix of inertia of the rigid body
 	Matrix3 m_inverseInertiaTensor;
@@ -49,35 +52,44 @@ private:
 	// The angular acceleration of the rigid body
 	Vector3D m_angularAcceleration;
 
+	//The linear damping of the rigid body, that curbs the linear velocity
+	float m_linearDumping;
+
 	// The angular damping of the rigid body, that curbs the angular velocity
 	float m_angularDamping;
 
+	// The matrix that allowed to convert vector from local to world and world to local
+	Matrix4 m_transformMatrix;
+
 public:
 
+	/// <param name="angularDamping">rigid body's angular damping</param>
+
 	/// <summary>
-	/// Ctor
 	/// Create a personnalized rigid body
 	/// </summary>
+	/// <param name="listSummit"> list of vertices that make up the object </param>
 	/// <param name="mass">rigid body's mass</param>
-	/// <param name="position">rigid body's position</param>
+	/// <param name="massCenter">rigid body's mass center's position</param>
 	/// <param name="linearVelocity">rigid body's linear velocity</param>
 	/// <param name="angularVelocity">rigid body's angular velocity</param>
-	/// <param name="rotation">rigid body's rotation</param>
-	/// <param name="orientation">rigid body's orientation</param>
+	/// <param name="initialOrientation">rigid body's initial orientation</param>
+	/// <param name="inertiaTensor">rigid body's inertia tensor</param>
+	/// <param name="linearDumping">rigid body's linear damping</param>
 	/// <param name="angularDamping">rigid body's angular damping</param>
-	RigidBody(float mass, Vector3D position, Vector3D linearVelocity, Vector3D angularVelocity, Vector3D rotation, Quaternion orientation, float angularDamping);
+	RigidBody(list<Vector3D> listSummit, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping);
 
 	/// <summary>
 	/// Sets the list of summits composing the rigid body
 	/// </summary>
 	/// <param name="summits"></param>
-	void SetListSommet(list<Vector3D> summits) { listSummit = summits; }
+	void SetListSommet(list<Vector3D> summits) { m_listSummit = summits; }
 
 	/// <summary>
 	/// Returns the list of summits of the rigid body
 	/// </summary>
 	/// <returns>List of the position of each summit</returns>
-	list<Vector3D> GetListSommet() { return listSummit; }
+	list<Vector3D> GetListSommet() { return m_listSummit; }
 
 	/// <summary>
 	/// Applies the force to a precise point of the rigid body

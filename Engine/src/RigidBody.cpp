@@ -1,30 +1,35 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(float mass, Vector3D position, Vector3D linearVelocity, Vector3D angularVelocity, Vector3D rotation, Quaternion orientation, float angularDamping)
+RigidBody::RigidBody(list<Vector3D> listSummit, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping)
+	:m_listSummit(listSummit), m_mass(mass), m_inverseMass(1 / mass), m_massCenter(massCenter),
+	m_linearVelocity(linearVelocity), m_angularVelocity(angularVelocity),
+	m_orientation(initialOrientation),	m_initialOrientation(initialOrientation),
+	m_inverseInertiaTensor(inertiaTensor.inverse()), m_accumForce(Vector3D(0,0,0)), m_accumTorque(Vector3D(0,0,0)), m_linearAcceleration(Vector3D(0,0,0)), m_angularAcceleration(Vector3D(0, 0, 0)),
+	m_linearDumping(linearDumping), m_angularDamping(angularDamping), m_transformMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter))
 {
-	m_mass = mass;
-	m_inverseMass = 1 / mass;
-	m_position = Vector3D(position);
-	m_linearVelocity = Vector3D(linearVelocity);
-	m_angularVelocity = Vector3D(angularVelocity);
-	m_orientation = Quaternion(orientation);
-	m_angularDamping = angularDamping;
+	for (auto vertex : m_listSummit)
+	{
+		vertex.LocalToWorld(m_transformMatrix);
+	}
 }
 
 void RigidBody::addForceAtPoint(Vector3D force, Vector3D point)
 {
 	// Modify the coordinates based on the mass center
-	Vector3D contactPoint = m_position.subtract(point);
-
+	point.WorldToLocal(m_transformMatrix);
 	forceAccumulator(force);
 
-	Vector3D torque = force.crossProduct(contactPoint);
+	Vector3D torque = force.crossProduct(point);
 	torqueAccumulator(torque);
 }
 
 void RigidBody::addForceAtBodyPoint(Vector3D force, Vector3D point)
 {
-	//TODO apparemment surtout utilisé pour les ressorts
+	//Conver the local point to his worl coordinates
+	point.LocalToWorld(m_transformMatrix);
+
+	//Apply the force at this point
+	addForceAtBodyPoint(force, point);
 }
 
 void RigidBody::forceAccumulator(Vector3D force)
@@ -54,7 +59,7 @@ void RigidBody::updateValues(const float time)
 	// a = linear acceleration
 	// D = linear damping
 	// v' = v + a.time
-	Vector3D newLinearVelocity = m_linearVelocity + (m_linearAcceleration * time);
+	Vector3D newLinearVelocity = m_linearVelocity * powf(m_linearDumping, time) + (m_linearAcceleration * time);
 	m_linearVelocity.set(newLinearVelocity.getX(), newLinearVelocity.getY(), newLinearVelocity.getZ());
 
 	// v' = new angular velocity
@@ -64,15 +69,19 @@ void RigidBody::updateValues(const float time)
 	// v' = v + a.time
 	Vector3D newAngularVelocity = (m_angularVelocity * powf(m_angularDamping, time)) + (m_angularAcceleration * time);
 	m_angularVelocity.set(newAngularVelocity.getX(), newAngularVelocity.getY(), newAngularVelocity.getZ());
-	
-	//TODO add drag
 
-	Vector3D newPosition = m_position + (m_linearVelocity * time);
-	m_position.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+	Vector3D newPosition = m_massCenter + (m_linearVelocity * time);
+	m_massCenter.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 
-	//Quaternion newOrientation = m_orientation. TODO
+	// We ant the angular velocity as a quaternion
+	Quaternion angularVelocity(0, m_angularVelocity);
 
-	//TODO calculer les derived data
+	// q'(t) = q(0) + 1/2 * angular_velocity * q(t) * t
+	m_orientation = m_initialOrientation + 0.5 * angularVelocity.MultiplyByQuaternion(m_orientation) * time;
+
+	//update all tools;
+	Matrix3 inverseInertiaTensorInWorld(m_orientation.ToMatrix3().multiplyByMatrix(m_inverseInertiaTensor).multiplyByMatrix(m_orientation.ToMatrix3().inverse()));
+	m_transformMatrix.setMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter));
 
 	clearAccumulators();
 }
