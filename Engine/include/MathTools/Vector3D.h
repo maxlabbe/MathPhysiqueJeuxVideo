@@ -2,6 +2,7 @@
 #define VECTOR3D_H
 
 #include"Common.h"
+#include <MathTools/Matrix3.h>
 
 class Vector3D {
 
@@ -74,6 +75,18 @@ public:
 	/// <param name="vector"> Vector3 : the given vector </param>
 	/// <returns> Vector3 : the vector product's result </returns>
 	Vector3D crossProduct(const Vector3D&) const;
+
+	/// <summary>
+	/// Change the vector to his value from a local perspective to a world perspective
+	/// </summary>
+	/// <param name="transfoMatrix"> Matrix3 : The orientation matrix that allow us to compute the change</param>
+	void LocalToWorld(Matrix3 transfoMatrix);
+
+	/// <summary>
+	/// Change the vector to his value from a world perspective to a local perspective
+	/// </summary>
+	/// <param name="transfoMatrix"> Matrix3 : The orientation matrix that allow us to compute the change</param>
+	void WorldToLocal(Matrix3 transfoMatrix);
 
 	// Operator overloads
 	// * = multiply a vector by a scalar or scalar product of two vectors
