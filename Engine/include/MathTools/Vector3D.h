@@ -2,7 +2,7 @@
 #define VECTOR3D_H
 
 #include"Common.h"
-#include <MathTools/Matrix3.h>
+#include <MathTools/Matrix4.h>
 
 class Vector3D {
 
@@ -79,14 +79,14 @@ public:
 	/// <summary>
 	/// Change the vector to his value from a local perspective to a world perspective
 	/// </summary>
-	/// <param name="transfoMatrix"> Matrix3 : The orientation matrix that allow us to compute the change</param>
-	void LocalToWorld(Matrix3 transfoMatrix);
+	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
+	void LocalToWorld(Matrix4 transfoMatrix);
 
 	/// <summary>
 	/// Change the vector to his value from a world perspective to a local perspective
 	/// </summary>
-	/// <param name="transfoMatrix"> Matrix3 : The orientation matrix that allow us to compute the change</param>
-	void WorldToLocal(Matrix3 transfoMatrix);
+	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
+	void WorldToLocal(Matrix4 transfoMatrix);
 
 	// Operator overloads
 	// * = multiply a vector by a scalar or scalar product of two vectors

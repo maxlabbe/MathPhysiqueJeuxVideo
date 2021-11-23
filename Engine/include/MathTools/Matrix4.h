@@ -17,6 +17,8 @@ public:
 	// Setter
 	void setMatrix(array<array<float, 4>, 4> matrix) { m_matrix = matrix; }
 
+	void setMatrix(Matrix4 matrix) { m_matrix = matrix.getMatrix(); }
+
 	/// <summary>
 	/// multiply the matrix by a scalar
 	/// </summary>

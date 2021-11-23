@@ -72,12 +72,12 @@ Vector3D Vector3D::crossProduct(const Vector3D& v) const
 	return Vector3D(m_y * v.getZ() - m_z * v.getY(), m_z * v.getX() - m_x * v.getZ(), m_x * v.getY() - m_y * v.getX());
 }
 
-void Vector3D::LocalToWorld(Matrix3 transfoMatrix)
+void Vector3D::LocalToWorld(Matrix4 transfoMatrix)
 {
 	*this = transfoMatrix.multiplyByVector(*this);
 }
 
-void Vector3D::WorldToLocal(Matrix3 transfoMatrix)
+void Vector3D::WorldToLocal(Matrix4 transfoMatrix)
 {
 	*this = transfoMatrix.inverse().multiplyByVector(*this);
 }
