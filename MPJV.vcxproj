@@ -45,6 +45,7 @@
     <ClInclude Include="Engine\include\Plane.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\MathTools\Vector3D.h" />
+    <ClInclude Include="Engine\include\RB_ForceGenerator.h" />
     <ClInclude Include="Engine\include\World.h" />
     <ClInclude Include="Graphics\include\Camera.h" />
     <ClInclude Include="Graphics\include\Display.h" />
@@ -83,6 +84,7 @@
     <ClCompile Include="Engine\src\Plane.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
     <ClCompile Include="Engine\src\MathTools\Vector3D.cpp" />
+    <ClCompile Include="Engine\src\RB_ForceGenerator.cpp" />
     <ClCompile Include="Engine\src\World.cpp" />
     <ClCompile Include="Graphics\src\Camera.cpp" />
     <ClCompile Include="Graphics\src\Display.cpp" />
