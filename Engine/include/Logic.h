@@ -20,7 +20,7 @@ public :
 	/// </summary>
 	/// <param name="window"> window which the logic is call in </param>
 	/// <param name="inputsHandler"> input that the logic need to update actions </param>
-	Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display, World& world);
+	Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display);
 
 	/// <summary>
 	/// Update the logic depend on the inuts
@@ -47,9 +47,6 @@ private :
 	// The scene's camera
 	Camera* m_camera;
 
-	// The game world
-	World m_world;
-
 	// The last time the logic was update
 	chrono::steady_clock::time_point m_lastTime;
 
@@ -63,12 +60,6 @@ private :
 	/// Move the camera
 	/// </summary>
 	void moveCamera();
-
-	/// <summary>
-	/// Update the game world
-	/// </summary>
-	void updateWorld(float duration);
-
 
 };
 

@@ -55,6 +55,7 @@
     <ClInclude Include="Graphics\include\DisplayableLine.h" />
     <ClInclude Include="Graphics\include\DisplayableParticle.h" />
     <ClInclude Include="Graphics\include\DisplayablePlane.h" />
+    <ClInclude Include="Graphics\include\DisplayableRigidBody.h" />
     <ClInclude Include="Graphics\include\EBO.h" />
     <ClInclude Include="Graphics\include\ShaderClass.h" />
     <ClInclude Include="Graphics\include\Sphere.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="Graphics\src\DisplayableLine.cpp" />
     <ClCompile Include="Graphics\src\DisplayableParticle.cpp" />
     <ClCompile Include="Graphics\src\DisplayablePlane.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableRigidBody.cpp" />
     <ClCompile Include="Graphics\src\EBO.cpp" />
     <ClCompile Include="Graphics\src\glad.c" />
     <ClCompile Include="Graphics\src\ShaderClass.cpp" />

@@ -43,6 +43,7 @@
     <ClCompile Include="Engine\src\RB_ForceGenerator.cpp" />
     <ClCompile Include="Engine\src\RigidBody.cpp" />
     <ClCompile Include="Engine\src\ForceRegisterRigidBody.cpp" />
+    <ClCompile Include="Graphics\src\DisplayableRigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -87,6 +88,7 @@
     <ClInclude Include="Engine\include\RB_ForceGenerator.h" />
     <ClInclude Include="Engine\include\RigidBody.h" />
     <ClInclude Include="Engine\include\ForceRegisterRigidBody.h" />
+    <ClInclude Include="Graphics\include\DisplayableRigidBody.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
