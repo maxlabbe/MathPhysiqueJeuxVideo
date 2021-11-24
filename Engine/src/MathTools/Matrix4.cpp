@@ -155,7 +155,7 @@ Matrix4::Matrix4(Matrix3 matrix, Vector3D vector)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			result[i][j] = m_matrix[i][j];
+			result[i][j] = secondMatrix[i][j];
 		}
 	}
 

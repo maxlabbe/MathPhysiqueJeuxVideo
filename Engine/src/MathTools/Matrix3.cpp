@@ -38,6 +38,7 @@ Matrix3 Matrix3::multiplyByMatrix(Matrix3 matrix)
 	// Get the array of the second matrix
 	array<array<float, 3>, 3> secondMatrix = matrix.getMatrix();
 
+
 	// Initialize variables
 	array<array<float, 3>, 3> result;
 

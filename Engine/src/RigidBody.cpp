@@ -8,16 +8,14 @@ RigidBody::RigidBody(float height, float width, float depth, float mass, Vector3
 	m_linearDumping(linearDumping), m_angularDamping(angularDamping),
 	m_height(height), m_width(width), m_depth(depth)
 {
-	m_listSummit = {
-		{ massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() - depth / 2 },
-		{ massCenter.getX() + width / 2, massCenter.getY() - height / 2, massCenter.getZ() - depth / 2 },
-		{ massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() - depth / 2 },
-		{ massCenter.getX() - width / 2, massCenter.getY() + height / 2, massCenter.getZ() - depth / 2 },
-		{ massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2 },
-		{ massCenter.getX() + width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2 },
-		{ massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2 },
-		{ massCenter.getX() - width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2 }
-	};
+	m_listSummit.push_back(Vector3D(massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() - depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() + width / 2, massCenter.getY() - height / 2, massCenter.getZ() - depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() - depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() - width / 2, massCenter.getY() + height / 2, massCenter.getZ() - depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() + width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2));
+	m_listSummit.push_back(Vector3D(massCenter.getX() - width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2));
 	m_transformMatrix = Matrix4(m_orientation.ToMatrix3(), m_massCenter);
 }
 
@@ -86,7 +84,6 @@ void RigidBody::updateValues(const float time)
 	// v' = v + a.time
 	Vector3D newAngularVelocity = (m_angularVelocity * powf(m_angularDamping, time)) + (m_angularAcceleration * time);
 	m_angularVelocity.set(newAngularVelocity.getX(), newAngularVelocity.getY(), newAngularVelocity.getZ());
-
 
 
 	//update all tools;

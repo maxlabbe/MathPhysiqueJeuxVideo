@@ -182,7 +182,6 @@ void Logic::updateBodies()
 		for (auto it = std::begin(m_rigidbodies); it != std::end(m_rigidbodies); ++it)
 		{
 			(*it).updateValues(diffTime.count()/1000.0f);
-			cout << (*it).GetMassCenter() << endl;
 
 			Particle* massCenter = new Particle((*it).GetMass(), (*it).GetMassCenter(), Vector3D(), Vector3D(), Vector3D(), 0.1);
 			Displayable* displayableCenter = new DisplayableParticle(*massCenter);
@@ -203,6 +202,7 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 	inertiaMatrix[1] = { 0, (1.0f / 12.0f) * mass * (height * height + width * width) , 0 };
 	inertiaMatrix[2] = { 0 , 0, (1.0f / 12.0f) * mass * (height * height + width * width) };
 	Matrix3 inertiaTensor(inertiaMatrix);
+
 
 	RigidBody* body = new RigidBody(height, width, depth, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
 
