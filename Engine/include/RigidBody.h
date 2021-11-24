@@ -141,6 +141,22 @@ public:
 	/// </summary>
 	/// <param name="time"> float : the current time when the function is call</param>
 	void updateValues(const float time);
+
+	/// <summary>
+	/// Change the vector to his value from a local perspective to a world perspective
+	/// </summary>
+	/// <param name="vector"> Vector3D : The vector to change</param>
+	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
+	Vector3D LocalToWorld(Vector3D vector, Matrix4 transfoMatrix);
+
+	/// <summary>
+	/// Change the vector to his value from a world perspective to a local perspective
+	/// </summary>
+	/// <param name="vector"> Vector3D : The vector to change</param>
+	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
+	Vector3D WorldToLocal(Vector3D vector, Matrix4 transfoMatrix);
+
+	list<Vector3D> GetWorldVertices();
 };
 
 #endif

@@ -15,7 +15,7 @@ public:
 	/// </summary>
 	/// <param name="rigidBody"> Particle*: a pointer to the rigid body </param>
 	/// <param name="forceGenerator"> IRigidBodyForceGenerator*: a pointer to the force generator </param>
-	void registerForce(RigidBody* rigidBody, Vector3D applicationPoint, IRB_ForceGenerator* forceGenerator);
+	void registerForce(RigidBody* rigidBody, Vector3D* applicationPoint, IRB_ForceGenerator* forceGenerator);
 
 	/// <summary>
 	/// Add the vector value of a force that is applied on the rigid body to the forces already applyed on the rigid body

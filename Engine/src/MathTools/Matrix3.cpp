@@ -17,7 +17,7 @@ Matrix3 Matrix3::multiplyByScalar(const float& c)
 	return Matrix3(result);
 }
 
-Vector3D Matrix3::multiplyByVector(Vector3D vector)
+Vector3D Matrix3::multiplyMatrix3ByVector(Vector3D vector)
 {
 	// Vector that will be returned
 	Vector3D result = Vector3D();
@@ -28,7 +28,7 @@ Vector3D Matrix3::multiplyByVector(Vector3D vector)
 	float z = m_matrix[2][0] * vector.getX()+ m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ();
 	
 	// Set the vector's component
-	vector.set(x, y, z);
+	result.set(x, y, z);
 
 	return result;
 }
@@ -37,6 +37,7 @@ Matrix3 Matrix3::multiplyByMatrix(Matrix3 matrix)
 {
 	// Get the array of the second matrix
 	array<array<float, 3>, 3> secondMatrix = matrix.getMatrix();
+
 
 	// Initialize variables
 	array<array<float, 3>, 3> result;

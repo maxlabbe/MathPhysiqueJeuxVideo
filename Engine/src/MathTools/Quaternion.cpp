@@ -5,10 +5,7 @@ Quaternion::Quaternion(float w, float x, float y, float z)
 	m_quaternion = { w, x, y, z };
 }
 
-Quaternion::Quaternion(float w, Vector3D vector)
-{
-	Quaternion(w, vector.getX(), vector.getY(), vector.getZ());
-}
+Quaternion::Quaternion(float w, Vector3D vector) : Quaternion(w, vector.getX(), vector.getY(), vector.getZ()) {}
 
 Quaternion::Quaternion(array<float,4> quaternion)
 {
@@ -43,6 +40,11 @@ Quaternion Quaternion::MultiplyByQuaternion(Quaternion q) const
 	return Quaternion(q1q2w, q1q2xyz.getX(), q1q2xyz.getY(), q1q2xyz.getZ());
 }
 
+Quaternion Quaternion::MultiplyByScalar(float s) const
+{
+	return Quaternion(s * Get(0), s * Get(1), s * Get(2), s * Get(3));
+}
+
 Quaternion Quaternion::Normalize() const
 {
 	float norm = Norm();
@@ -65,10 +67,10 @@ Quaternion Quaternion::Inverse() const
 
 Matrix3 Quaternion::ToMatrix3() const
 {
-	array<array<float, 3>, 3> matrix;
-	
+	array<array<float, 3>, 3> matrix = array<array<float, 3>, 3>();
+
 	matrix[0] = { 1 - 2 * (Get(2) * Get(2) + Get(3) * Get(3)),	2 * (Get(1) * Get(2) + Get(3) * Get(0))	    , 2 * (Get(1) * Get(3) - Get(2) * Get(0)) };
-	matrix[1] = { 2 * (Get(1) * Get(2) - Get(3) * Get(0))	 ,	1 - 2 * (Get(1) * Get(1) + Get(3) * Get(3)) , 2 * (Get(2) * Get(3) + Get(1) * Get(0)) }; 
+	matrix[1] = { 2 * (Get(1) * Get(2) - Get(3) * Get(0))	 ,	1 - 2 * (Get(1) * Get(1) + Get(3) * Get(3)) , 2 * (Get(2) * Get(3) + Get(1) * Get(0)) };
 	matrix[2] = { 2 * (Get(1) * Get(3) + Get(2) * Get(0))	 ,	2 * (Get(2) * Get(3) - Get(1) * Get(0))		, 1 - 2 * (Get(1) * Get(1) + Get(2) * Get(2)) };
 
 	return Matrix3(matrix);
@@ -76,12 +78,12 @@ Matrix3 Quaternion::ToMatrix3() const
 
 Quaternion operator*(const float& c, const Quaternion& q)
 {
-	return Quaternion(c * q.Get(0), c * q.Get(1), c * q.Get(2), c * q.Get(3));
+	return q.MultiplyByScalar(c);
 }
 
 Quaternion operator*(const Quaternion& q, const float& c)
 {
-	return Quaternion(c * q.Get(0), c * q.Get(1), c * q.Get(2), c * q.Get(3));
+	return q.MultiplyByScalar(c);
 }
 
 Quaternion operator*(const Quaternion& q1, const Quaternion& q2)

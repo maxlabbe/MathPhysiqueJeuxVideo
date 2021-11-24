@@ -16,7 +16,6 @@ public:
 	/// Buoyancy custom Ctor
 	/// </summary>
 	/// <param name="maxDepth"> float : Depth where the object is submerged in the liquid </param>
-	/// <param name="objectVolume"> float : The object's volume </param>
 	/// <param name="liquidHeight"> float : The liquid's height</param>
 	/// <param name="density"> float : The liquid's density </param>
 	RB_Buoyancy(float maxDepth, float liquidHeight, float density);
@@ -24,17 +23,15 @@ public:
 	/// <summary>
 	/// Compute the force and add it to the forces applied on the particle
 	/// </summary>
-	/// <param name="particle"> Particle: the particle on wich th force is applied </param>
-	/// <param name="duration"> Duration on which the force is applied </param>
+	/// <param name="rigidBody"> RigidBody*: the rigid body on wich the force is applied </param>
+	/// <param name="duration"> float: Duration on which the force is applied </param>
+	/// <param name="applicationPoint"> Vector3D*: point of the rigid body where the force is applied, by defaut on the mass center </param>
 	void updateForce(RigidBody* rigidBody, float duration, Vector3D* applicationPoint = nullptr);
 
 private:
 
 	// Depth where the object is submerged in the liquid
 	float m_maxDepth;
-
-	// The object's volume
-	float m_objectVolume;
 
 	// The liquid's height
 	float m_liquidHeight;

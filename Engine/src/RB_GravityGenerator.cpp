@@ -6,7 +6,7 @@ RB_GravityGenerator::RB_GravityGenerator(float gravityValue) : m_gravityVector(V
 
 void RB_GravityGenerator::updateForce(RigidBody* rigidBody, float duration, Vector3D* appicationPoint)
 {
-	// Apply the gravity force to the particle if the mass isn't nul
+	// Apply the gravity force to the rigid body if the mass isn't nul
 	float mass = rigidBody->GetMass();
 	if (mass != 0)
 	{

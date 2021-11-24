@@ -17,18 +17,18 @@ Matrix4 Matrix4::multiplyByScalar(const float& c)
 	return Matrix4(result);
 }
 
-Vector3D Matrix4::multiplyByVector(Vector3D vector)
+Vector3D Matrix4::multiplyMatrix4ByVector(Vector3D vector)
 {
 	// Vector that will be returned
 	Vector3D result = Vector3D();
 
 	// Calculate the vector's components
-	float x = m_matrix[0][0] * vector.getX() + m_matrix[0][1] * vector.getY() + m_matrix[0][2] * vector.getZ() + m_matrix[0][3];
-	float y = m_matrix[1][0] * vector.getX() + m_matrix[1][1] * vector.getY() + m_matrix[1][2] * vector.getZ() + m_matrix[1][3];
-	float z = m_matrix[2][0] * vector.getX() + m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ() + m_matrix[2][3];
+	float x = m_matrix[0][0] * vector.getX() + m_matrix[0][1] * vector.getY() + m_matrix[0][2] * vector.getZ() + m_matrix[0][3] * 1;
+	float y = m_matrix[1][0] * vector.getX() + m_matrix[1][1] * vector.getY() + m_matrix[1][2] * vector.getZ() + m_matrix[1][3] * 1;
+	float z = m_matrix[2][0] * vector.getX() + m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ() + m_matrix[2][3] * 1;
 
 	// Set the vector's component
-	vector.set(x, y, z);
+	result.set(x, y, z);
 
 	return result;
 }
@@ -155,7 +155,7 @@ Matrix4::Matrix4(Matrix3 matrix, Vector3D vector)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			result[i][j] = m_matrix[i][j];
+			result[i][j] = secondMatrix[i][j];
 		}
 	}
 
