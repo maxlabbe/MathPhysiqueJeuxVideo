@@ -2,7 +2,7 @@
 #define MATRIX3_H
 
 #include "Common.h"
-#include "Vector3D.h"
+#include "MathTools/Vector3D.h"
 
 #include <array>
 
@@ -28,7 +28,7 @@ public:
 	/// </summary>
 	/// <param name="vector"> Vector3D : the vector that multiply the matrix </param>
 	/// <returns> Vector3D : the new vector </returns>
-	Vector3D multiplyByVector(Vector3D vector);
+	Vector3D multiplyMatrix3ByVector(Vector3D vector);
 	
 	/// <summary>
 	/// multiply the matrix by an other matrix

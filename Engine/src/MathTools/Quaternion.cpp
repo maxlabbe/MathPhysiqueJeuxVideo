@@ -70,11 +70,22 @@ Quaternion Quaternion::Inverse() const
 
 Matrix3 Quaternion::ToMatrix3() const
 {
-	array<array<float, 3>, 3> matrix;
-	
+	array<array<float, 3>, 3> matrix = array<array<float, 3>, 3>();
+
 	matrix[0] = { 1 - 2 * (Get(2) * Get(2) + Get(3) * Get(3)),	2 * (Get(1) * Get(2) + Get(3) * Get(0))	    , 2 * (Get(1) * Get(3) - Get(2) * Get(0)) };
 	matrix[1] = { 2 * (Get(1) * Get(2) - Get(3) * Get(0))	 ,	1 - 2 * (Get(1) * Get(1) + Get(3) * Get(3)) , 2 * (Get(2) * Get(3) + Get(1) * Get(0)) }; 
 	matrix[2] = { 2 * (Get(1) * Get(3) + Get(2) * Get(0))	 ,	2 * (Get(2) * Get(3) - Get(1) * Get(0))		, 1 - 2 * (Get(1) * Get(1) + Get(2) * Get(2)) };
+	
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; i < 3; j++)
+		{
+			cout << matrix[i][j];
+		}
+		cout << endl;
+	}
+	cout << endl << endl << endl;
 
 	return Matrix3(matrix);
 }

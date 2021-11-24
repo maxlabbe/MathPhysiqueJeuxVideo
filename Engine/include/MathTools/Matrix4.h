@@ -13,7 +13,7 @@ public:
 
 	// Getter
 	array<array<float, 4>, 4> getMatrix() const { return m_matrix; }
-
+	
 	// Setter
 	void setMatrix(array<array<float, 4>, 4> matrix) { m_matrix = matrix; }
 
@@ -31,7 +31,7 @@ public:
 	/// </summary>
 	/// <param name="vector"> Vector3D : the vector that multiply the matrix </param>
 	/// <returns> Vector3D : the new vector </returns>
-	Vector3D multiplyByVector(Vector3D vector);
+	Vector3D multiplyMatrix4ByVector(Vector3D vector);
 	
 	/// <summary>
 	/// multiply the matrix by an other matrix

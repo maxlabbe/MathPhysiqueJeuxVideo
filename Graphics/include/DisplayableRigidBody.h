@@ -11,6 +11,12 @@ public:
 
 	DisplayableRigidBody(RigidBody rigidbody, vector<int> edges);
 
+	/// <summary>
+	/// Return the number of index of the rigidbody
+	/// </summary>
+	/// <returns> unsigned int : the number of index </returns>
+	unsigned int GetIndexCount() { return m_indexCount; }
+
 protected :
 
 	/// <summary>

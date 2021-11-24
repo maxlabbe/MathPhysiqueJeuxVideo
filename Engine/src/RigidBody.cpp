@@ -5,7 +5,8 @@ RigidBody::RigidBody(float height, float width, float depth, float mass, Vector3
 	m_linearVelocity(linearVelocity), m_angularVelocity(angularVelocity),
 	m_orientation(initialOrientation), m_initialOrientation(initialOrientation),
 	m_inverseInertiaTensor(inertiaTensor.inverse()), m_accumForce(Vector3D(0, 0, 0)), m_accumTorque(Vector3D(0, 0, 0)), m_linearAcceleration(Vector3D(0, 0, 0)), m_angularAcceleration(Vector3D(0, 0, 0)),
-	m_linearDumping(linearDumping), m_angularDamping(angularDamping), m_transformMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter))
+	m_linearDumping(linearDumping), m_angularDamping(angularDamping),
+	m_height(height), m_width(width), m_depth(depth)
 {
 	m_listSummit = {
 		{ massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() - depth / 2 },
@@ -15,14 +16,15 @@ RigidBody::RigidBody(float height, float width, float depth, float mass, Vector3
 		{ massCenter.getX() - width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2 },
 		{ massCenter.getX() + width / 2, massCenter.getY() - height / 2, massCenter.getZ() + depth / 2 },
 		{ massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2 },
-		{ massCenter.getX() + width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2 }
+		{ massCenter.getX() - width / 2, massCenter.getY() + height / 2, massCenter.getZ() + depth / 2 }
 	};
+	m_transformMatrix = Matrix4(m_orientation.ToMatrix3(), m_massCenter);
 }
 
 void RigidBody::addForceAtPoint(Vector3D force, Vector3D point)
 {
 	// Modify the coordinates based on the mass center
-	point.WorldToLocal(m_transformMatrix);
+	point = WorldToLocal(point, m_transformMatrix);
 	forceAccumulator(force);
 
 	Vector3D torque = force.crossProduct(point);
@@ -32,7 +34,7 @@ void RigidBody::addForceAtPoint(Vector3D force, Vector3D point)
 void RigidBody::addForceAtBodyPoint(Vector3D force, Vector3D point)
 {
 	//Conver the local point to his worl coordinates
-	point.LocalToWorld(m_transformMatrix);
+	point = LocalToWorld(point, m_transformMatrix);
 
 	//Apply the force at this point
 	addForceAtBodyPoint(force, point);
@@ -58,7 +60,16 @@ void RigidBody::updateValues(const float time)
 {
 	m_linearAcceleration = m_accumForce * m_inverseMass;
 
-	m_angularAcceleration = m_inverseInertiaTensor.multiplyByVector(m_accumTorque);
+	m_angularAcceleration = m_inverseInertiaTensor.multiplyMatrix3ByVector(m_accumTorque);
+
+	Vector3D newPosition = m_massCenter + (m_linearVelocity * time);
+	m_massCenter.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+
+	// We ant the angular velocity as a quaternion
+	Quaternion angularVelocity(0, m_angularVelocity);
+
+	// q'(t) = q(0) + 1/2 * angular_velocity * q(t) * t
+	m_orientation = m_initialOrientation + 0.5 * angularVelocity.MultiplyByQuaternion(m_orientation) * time;
 
 	// v' = new linear velocity
 	// v = current linear velocity
@@ -76,23 +87,19 @@ void RigidBody::updateValues(const float time)
 	Vector3D newAngularVelocity = (m_angularVelocity * powf(m_angularDamping, time)) + (m_angularAcceleration * time);
 	m_angularVelocity.set(newAngularVelocity.getX(), newAngularVelocity.getY(), newAngularVelocity.getZ());
 
-	Vector3D newPosition = m_massCenter + (m_linearVelocity * time);
-	m_massCenter.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 
-	// We ant the angular velocity as a quaternion
-	Quaternion angularVelocity(0, m_angularVelocity);
-
-	// q'(t) = q(0) + 1/2 * angular_velocity * q(t) * t
-	m_orientation = m_initialOrientation + 0.5 * angularVelocity.MultiplyByQuaternion(m_orientation) * time;
 
 	//update all tools;
 	Matrix3 inverseInertiaTensorInWorld(m_orientation.ToMatrix3().multiplyByMatrix(m_inverseInertiaTensor).multiplyByMatrix(m_orientation.ToMatrix3().inverse()));
 	m_transformMatrix.setMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter));
 
+	
+
 	// Update all object positions
 	for (auto vertex : m_listSummit)
 	{
-		vertex = m_transformMatrix.multiplyByVector(vertex);
+		vertex = m_transformMatrix.multiplyMatrix4ByVector(vertex);
+		cout << vertex << endl;
 	}
 
 	clearAccumulators();
@@ -101,4 +108,14 @@ void RigidBody::updateValues(const float time)
 float RigidBody::GetVolume()
 {
 	return m_height * m_width * m_depth;
+}
+
+Vector3D RigidBody::LocalToWorld(Vector3D vector, Matrix4 transfoMatrix)
+{
+	return transfoMatrix.multiplyMatrix4ByVector(vector);
+}
+
+Vector3D RigidBody::WorldToLocal(Vector3D vector, Matrix4 transfoMatrix)
+{
+	return transfoMatrix.inverse().multiplyMatrix4ByVector(vector);
 }

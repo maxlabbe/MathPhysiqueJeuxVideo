@@ -17,7 +17,7 @@ Matrix3 Matrix3::multiplyByScalar(const float& c)
 	return Matrix3(result);
 }
 
-Vector3D Matrix3::multiplyByVector(Vector3D vector)
+Vector3D Matrix3::multiplyMatrix3ByVector(Vector3D vector)
 {
 	// Vector that will be returned
 	Vector3D result = Vector3D();
