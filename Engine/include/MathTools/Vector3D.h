@@ -2,7 +2,6 @@
 #define VECTOR3D_H
 
 #include"Common.h"
-#include <MathTools/Matrix4.h>
 
 class Vector3D {
 
