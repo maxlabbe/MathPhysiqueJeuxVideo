@@ -151,7 +151,7 @@ void Logic::shoot()
 			}
 			if (m_bigBody)
 			{
-				linearVelocity = 8 * linearVelocity;
+				linearVelocity = 1.0f * linearVelocity;
 				height = 3;
 				width = 3;
 				depth = 3;
@@ -181,9 +181,9 @@ void Logic::updateBodies()
 		// Update the physic of each projectile
 		for (auto it = std::begin(m_rigidbodies); it != std::end(m_rigidbodies); ++it)
 		{
-			(*it).updateValues(diffTime.count()/1000.0f);
+			(*it)->updateValues(diffTime.count()/1000.0f);
 
-			Particle* massCenter = new Particle((*it).GetMass(), (*it).GetMassCenter(), Vector3D(), Vector3D(), Vector3D(), 0.1);
+			Particle* massCenter = new Particle((*it)->GetMass(), (*it)->GetMassCenter(), Vector3D(), Vector3D(), Vector3D(), 0.1);
 			Displayable* displayableCenter = new DisplayableParticle(*massCenter);
 			m_displayables->push_back(displayableCenter);
 		}
@@ -194,7 +194,7 @@ void Logic::updateBodies()
 
 void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan)
 {
-	Vector3D angularVelocity(0, 0, 0);
+	Vector3D angularVelocity(1.0f, 0, 0);
 	Quaternion initialOrientation(1, 0, 0 ,0);
 	array<array<float, 3>, 3> inertiaMatrix;
 
@@ -206,7 +206,7 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 
 	RigidBody* body = new RigidBody(height, width, depth, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
 
-	m_rigidbodies.push_back(*body);
+	m_rigidbodies.push_back(body);
 
 	vector<int> edges = {
 		0, 1,
@@ -223,7 +223,7 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 		6, 7
 	};
 
-	Displayable* displayableRigidBody = new DisplayableRigidBody(*body, edges);
+	Displayable* displayableRigidBody = new DisplayableRigidBody(body, edges);
 	m_displayables->push_back(displayableRigidBody);
 	
 	/*Projectile p(initPos, initVelocity, gravity, lifespan);

@@ -9,7 +9,7 @@ class DisplayableRigidBody : public Displayable
 {
 public:
 
-	DisplayableRigidBody(RigidBody rigidbody, vector<int> edges);
+	DisplayableRigidBody(RigidBody* rigidbody, vector<int> edges);
 
 	/// <summary>
 	/// Return the number of index of the rigidbody
@@ -48,7 +48,7 @@ protected :
 private:
 
 	// Rigidbody to display
-	RigidBody m_rigidbody;
+	RigidBody* m_rigidbody;
 
 	// Indices of the edges of the rigidbody
 	vector<int> m_edges;

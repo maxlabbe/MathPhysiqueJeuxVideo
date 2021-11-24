@@ -51,7 +51,7 @@ private :
 	Camera* m_camera;
 
 	// Rigidbodies on scene
-	vector<RigidBody> m_rigidbodies;
+	vector<RigidBody*> m_rigidbodies;
 	vector<Displayable*>* m_displayables;
 
 	// The last time the logic was update

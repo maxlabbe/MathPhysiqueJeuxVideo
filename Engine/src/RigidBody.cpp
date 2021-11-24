@@ -31,8 +31,8 @@ void RigidBody::addForceAtPoint(Vector3D force, Vector3D point)
 
 void RigidBody::addForceAtBodyPoint(Vector3D force, Vector3D point)
 {
-	//Conver the local point to his worl coordinates
-	point = LocalToWorld(point, m_transformMatrix);
+	//Conver the local point to his world coordinates
+	point = LocalToWorld(point, m_orientation.ToMatrix3());
 
 	//Apply the force at this point
 	addForceAtBodyPoint(force, point);
@@ -61,7 +61,9 @@ void RigidBody::updateValues(const float time)
 	m_angularAcceleration = m_inverseInertiaTensor.multiplyMatrix3ByVector(m_accumTorque);
 
 	Vector3D newPosition = m_massCenter + (m_linearVelocity * time);
+	Vector3D oldPosition = m_massCenter;
 	m_massCenter.set(newPosition.getX(), newPosition.getY(), newPosition.getZ());
+	Vector3D displacement = m_massCenter - oldPosition;
 
 	// We ant the angular velocity as a quaternion
 	Quaternion angularVelocity(0, m_angularVelocity);
@@ -88,16 +90,16 @@ void RigidBody::updateValues(const float time)
 
 	//update all tools;
 	Matrix3 inverseInertiaTensorInWorld(m_orientation.ToMatrix3().multiplyByMatrix(m_inverseInertiaTensor).multiplyByMatrix(m_orientation.ToMatrix3().inverse()));
-	m_transformMatrix.setMatrix(Matrix4(m_orientation.ToMatrix3(), m_massCenter));
+	m_transformMatrix.setMatrix(Matrix4(m_orientation.ToMatrix3(), displacement));
 
 	
 
 	// Update all object positions
-	for (auto vertex : m_listSummit)
+	for (auto it = m_listSummit.begin(); it != m_listSummit.end(); it++)
 	{
-		vertex = m_transformMatrix.multiplyMatrix4ByVector(vertex);
-		cout << vertex << endl;
+		*it = LocalToWorld(m_transformMatrix.multiplyMatrix4ByVector(*it), m_orientation.ToMatrix3());
 	}
+	cout << endl << endl << endl;
 
 	clearAccumulators();
 }
@@ -107,9 +109,9 @@ float RigidBody::GetVolume()
 	return m_height * m_width * m_depth;
 }
 
-Vector3D RigidBody::LocalToWorld(Vector3D vector, Matrix4 transfoMatrix)
+Vector3D RigidBody::LocalToWorld(Vector3D vector, Matrix3 transfoMatrix)
 {
-	return transfoMatrix.multiplyMatrix4ByVector(vector);
+	return transfoMatrix.multiplyMatrix3ByVector(vector);
 }
 
 Vector3D RigidBody::WorldToLocal(Vector3D vector, Matrix4 transfoMatrix)

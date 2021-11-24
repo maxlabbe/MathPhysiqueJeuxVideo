@@ -28,7 +28,7 @@ Vector3D Matrix4::multiplyMatrix4ByVector(Vector3D vector)
 	float z = m_matrix[2][0] * vector.getX() + m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ() + m_matrix[2][3];
 
 	// Set the vector's component
-	vector.set(x, y, z);
+	result.set(x, y, z);
 
 	return result;
 }

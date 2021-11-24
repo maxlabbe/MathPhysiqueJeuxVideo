@@ -1,11 +1,11 @@
 #include "DisplayableRigidBody.h"
 
-DisplayableRigidBody::DisplayableRigidBody(RigidBody rigidbody, vector<int> edges) : m_rigidbody(rigidbody), m_edges(edges)
+DisplayableRigidBody::DisplayableRigidBody(RigidBody* rigidbody, vector<int> edges) : m_rigidbody(rigidbody), m_edges(edges)
 {
 	p_mode = GL_LINES;
 	p_isStatic = false;
 	// 3 Vertex + 3 color RGB
-	m_vertices = new GLfloat[rigidbody.GetListSommet().size() * 6];
+	m_vertices = new GLfloat[rigidbody->GetListSommet().size() * 6];
 	// Indices
 	m_indices = new GLuint[edges.size()];
 	for (int i = 0 ; i < edges.size() ; i++)
@@ -18,7 +18,7 @@ DisplayableRigidBody::DisplayableRigidBody(RigidBody rigidbody, vector<int> edge
 
 GLfloat* DisplayableRigidBody::GetVertices()
 {
-	list<Vector3D> vertexList = m_rigidbody.GetListSommet();
+	list<Vector3D> vertexList = m_rigidbody->GetListSommet();
 	int i = 0;
 	for (list<Vector3D>::iterator vertexIt = vertexList.begin(); vertexIt != vertexList.end(); ++vertexIt) {
 		// Vertex
@@ -40,7 +40,7 @@ GLuint* DisplayableRigidBody::GetIndices()
 
 GLsizeiptr DisplayableRigidBody::GetSizeOfVertices()
 {
-	return sizeof(GLfloat) * m_rigidbody.GetListSommet().size() * 6;
+	return sizeof(GLfloat) * m_rigidbody->GetListSommet().size() * 6;
 }
 
 GLsizeiptr DisplayableRigidBody::GetSizeOfIndices()
