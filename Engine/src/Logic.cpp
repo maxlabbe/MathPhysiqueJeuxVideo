@@ -12,6 +12,8 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display)
 
 	m_displayables = new vector<Displayable*>();
 	m_display.AddDisplayables(m_displayables);
+
+	m_forceRegister = ForceRegisterRigidBody();
 }
 
 void Logic::updateLogic()
@@ -138,7 +140,7 @@ void Logic::shoot()
 				width = 1;
 				depth = 1;
 				mass = 1;
-				gravity = 1;
+				gravity = 0.1;
 			}
 			if (m_mediumBody)
 			{
@@ -147,7 +149,7 @@ void Logic::shoot()
 				width = 2;
 				depth = 2;
 				mass = 5;
-				gravity = 1;
+				gravity = 0.1;
 			}
 			if (m_bigBody)
 			{
@@ -156,7 +158,7 @@ void Logic::shoot()
 				width = 3;
 				depth = 3;
 				mass = 10;
-				gravity = 1;
+				gravity = 0.1;
 			}
 			cout << "Position initiale : " << position << " | Vitesse initiale : " << linearVelocity << " : " << linearVelocity.norm() << " m/s" << endl;
 			addBody(position, linearVelocity, height, width, depth, mass, gravity);
@@ -174,6 +176,8 @@ void Logic::updateBodies()
 	// Compute the difference between current time and the last time the physic was update
 	auto current = chrono::high_resolution_clock::now();
 	std::chrono::duration<float, std::milli> diffTime = current - m_lastTime;
+
+	m_forceRegister.updateAllForces(diffTime.count() / 1000.0f);
 
 	// Update the physic each 16ms (1/60)
 	if (diffTime.count() > 16.0f)
@@ -205,8 +209,9 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 
 
 	RigidBody* body = new RigidBody(height, width, depth, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
-
 	m_rigidbodies.push_back(body);
+	RB_GravityGenerator* gravityGen = new RB_GravityGenerator(gravity);
+	m_forceRegister.registerForce(body, &body->GetMassCenter(), gravityGen);
 
 	vector<int> edges = {
 		0, 1,

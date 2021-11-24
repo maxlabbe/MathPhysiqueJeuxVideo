@@ -40,12 +40,12 @@ void RigidBody::addForceAtBodyPoint(Vector3D force, Vector3D point)
 
 void RigidBody::forceAccumulator(Vector3D force)
 {
-	m_accumForce.add(force);
+	m_accumForce = m_accumForce.add(force);
 }
 
 void RigidBody::torqueAccumulator(Vector3D torque)
 {
-	m_accumTorque.add(torque);
+	m_accumTorque = m_accumTorque.add(torque);
 }
 
 void RigidBody::clearAccumulators()

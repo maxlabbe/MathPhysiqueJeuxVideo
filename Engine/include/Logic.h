@@ -13,6 +13,8 @@
 #include"DisplayableRigidBody.h"
 #include"MathTools/Quaternion.h"
 #include"RigidBody.h"
+#include"ForceRegisterRigidBody.h"
+#include"RB_GravityGenerator.h"
 
 class Logic
 {
@@ -53,6 +55,9 @@ private :
 	// Rigidbodies on scene
 	vector<RigidBody*> m_rigidbodies;
 	vector<Displayable*>* m_displayables;
+
+	// Force register
+	ForceRegisterRigidBody m_forceRegister;
 
 	// The last time the logic was update
 	chrono::steady_clock::time_point m_lastTime;

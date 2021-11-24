@@ -1,6 +1,6 @@
 #include "ForceRegisterRigidBody.h"
 
-void ForceRegisterRigidBody::registerForce(RigidBody* rigidBody, Vector3D applicationPoint, IRB_ForceGenerator* forceGenerator)
+void ForceRegisterRigidBody::registerForce(RigidBody* rigidBody, Vector3D* applicationPoint, IRB_ForceGenerator* forceGenerator)
 {
 	ForceRegistration forceToRegister = { rigidBody, forceGenerator, applicationPoint };
 	m_register.push_back(forceToRegister);
