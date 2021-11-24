@@ -147,7 +147,7 @@ public:
 	/// </summary>
 	/// <param name="vector"> Vector3D : The vector to change</param>
 	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
-	Vector3D LocalToWorld(Vector3D vector, Matrix3 transfoMatrix);
+	Vector3D LocalToWorld(Vector3D vector, Matrix4 transfoMatrix);
 
 	/// <summary>
 	/// Change the vector to his value from a world perspective to a local perspective
@@ -155,6 +155,8 @@ public:
 	/// <param name="vector"> Vector3D : The vector to change</param>
 	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
 	Vector3D WorldToLocal(Vector3D vector, Matrix4 transfoMatrix);
+
+	list<Vector3D> GetWorldVertices();
 };
 
 #endif

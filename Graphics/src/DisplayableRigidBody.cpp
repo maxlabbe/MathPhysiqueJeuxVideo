@@ -18,7 +18,7 @@ DisplayableRigidBody::DisplayableRigidBody(RigidBody* rigidbody, vector<int> edg
 
 GLfloat* DisplayableRigidBody::GetVertices()
 {
-	list<Vector3D> vertexList = m_rigidbody->GetListSommet();
+	list<Vector3D> vertexList = m_rigidbody->GetWorldVertices();
 	int i = 0;
 	for (list<Vector3D>::iterator vertexIt = vertexList.begin(); vertexIt != vertexList.end(); ++vertexIt) {
 		// Vertex

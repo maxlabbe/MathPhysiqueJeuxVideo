@@ -194,7 +194,7 @@ void Logic::updateBodies()
 
 void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan)
 {
-	Vector3D angularVelocity(1.0f, 0, 0);
+	Vector3D angularVelocity(1.0f, 1.0f, 0);
 	Quaternion initialOrientation(1, 0, 0 ,0);
 	array<array<float, 3>, 3> inertiaMatrix;
 

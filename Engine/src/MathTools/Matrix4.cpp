@@ -23,9 +23,9 @@ Vector3D Matrix4::multiplyMatrix4ByVector(Vector3D vector)
 	Vector3D result = Vector3D();
 
 	// Calculate the vector's components
-	float x = m_matrix[0][0] * vector.getX() + m_matrix[0][1] * vector.getY() + m_matrix[0][2] * vector.getZ() + m_matrix[0][3];
-	float y = m_matrix[1][0] * vector.getX() + m_matrix[1][1] * vector.getY() + m_matrix[1][2] * vector.getZ() + m_matrix[1][3];
-	float z = m_matrix[2][0] * vector.getX() + m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ() + m_matrix[2][3];
+	float x = m_matrix[0][0] * vector.getX() + m_matrix[0][1] * vector.getY() + m_matrix[0][2] * vector.getZ() + m_matrix[0][3] * 1;
+	float y = m_matrix[1][0] * vector.getX() + m_matrix[1][1] * vector.getY() + m_matrix[1][2] * vector.getZ() + m_matrix[1][3] * 1;
+	float z = m_matrix[2][0] * vector.getX() + m_matrix[2][1] * vector.getY() + m_matrix[2][2] * vector.getZ() + m_matrix[2][3] * 1;
 
 	// Set the vector's component
 	result.set(x, y, z);
