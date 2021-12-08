@@ -1,12 +1,12 @@
-#include "ForceRegister.h"
+#include "ForceRegisterRigidBody.h"
 
-void ForceRegister::registerForce(Particle* particle, IParticleForceGenerator* forceGenerator)
+void ForceRegisterRigidBody::registerForce(RigidBody* rigidBody, Vector3D* applicationPoint, IRB_ForceGenerator* forceGenerator)
 {
-	ForceRegistration forceToRegister = { particle, forceGenerator };
+	ForceRegistration forceToRegister = { rigidBody, forceGenerator, applicationPoint };
 	m_register.push_back(forceToRegister);
 }
 
-void ForceRegister::updateAllForces(float duration)
+void ForceRegisterRigidBody::updateAllForces(float duration)
 {
 	//Vector3D forcesBeforeUpdate;
 	//Vector3D forcesAfterUpdate;
@@ -14,21 +14,21 @@ void ForceRegister::updateAllForces(float duration)
 	// Iterate over all the forces registered
 	for (auto it = m_register.begin(); it != m_register.end(); ) {
 		//forcesBeforeUpdate = it->m_particle->getAccumForces();
-		it->m_forceGenerator->updateForce(it->m_particle, duration);
+		it->m_forceGenerator->updateForce(it->m_rigidBody, duration, it->m_point);
 		//forcesAfterUpdate = it->m_particle->getAccumForces();
 
 		/* Part not implemented */
-		// If the force didn't have any effects an the particule, the force is erased from the registered forces
+		// If the force didn't have any effects an the rigid body, the force is erased from the registered forces
 		/*if ((forcesBeforeUpdate.getX() == forcesAfterUpdate.getX()) && (forcesBeforeUpdate.getY() == forcesAfterUpdate.getY()) && (forcesBeforeUpdate.getZ() == forcesAfterUpdate.getZ())) {
 			it = m_register.erase(it);
 		}
 		else {
-			
+
 		}*/
 		it++;
 	}
 }
 
-ForceRegister::ForceRegister(): m_register(Register(0))
+ForceRegisterRigidBody::ForceRegisterRigidBody() : m_register(Register(0))
 {
 }

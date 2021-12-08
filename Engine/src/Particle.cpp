@@ -1,5 +1,5 @@
 #include "Common.h"
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 #include "Particle.h"
 
 void Particle::integrate(const float time)

@@ -1,7 +1,7 @@
 #include <thread>
 
 #include "Common.h"
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 #include "Particle.h"
 #include "Display.h"
 #include "DisplayableParticle.h"

@@ -1,7 +1,7 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 
 class Particle {
 

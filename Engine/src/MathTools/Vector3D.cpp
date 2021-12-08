@@ -1,6 +1,6 @@
 #include "Common.h"
 
-#include "Vector3D.h"
+#include <MathTools/Vector3D.h>
 
 void Vector3D::set(float x, float y, float z)
 {
@@ -71,6 +71,7 @@ Vector3D Vector3D::crossProduct(const Vector3D& v) const
 	// vector product(y*c - z*b, z*a - x*c, x*b - y*a)
 	return Vector3D(m_y * v.getZ() - m_z * v.getY(), m_z * v.getX() - m_x * v.getZ(), m_x * v.getY() - m_y * v.getX());
 }
+
 
 Vector3D operator*(const float& c, const Vector3D& v) 
 {
