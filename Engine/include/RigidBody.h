@@ -75,6 +75,8 @@ public:
 
 	float GetVolume();
 
+	float GetMaxDimension();
+
 	/// <param name="angularDamping">rigid body's angular damping</param>
 
 	/// <summary>

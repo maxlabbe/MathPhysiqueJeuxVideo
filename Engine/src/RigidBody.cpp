@@ -100,6 +100,11 @@ float RigidBody::GetVolume()
 	return m_height * m_width * m_depth;
 }
 
+float RigidBody::GetMaxDimension()
+{
+	return fmax(fmax((float)m_height, (float)m_width), (float)m_depth);
+}
+
 Vector3D RigidBody::LocalToWorld(Vector3D vector, Matrix4 transfoMatrix)
 {
 	return transfoMatrix.multiplyMatrix4ByVector(vector);

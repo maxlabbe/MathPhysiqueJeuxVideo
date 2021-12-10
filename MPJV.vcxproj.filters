@@ -61,6 +61,7 @@
     <ClCompile Include="Engine\src\RB_GravityGenerator.cpp" />
     <ClCompile Include="Engine\src\RB_SpringGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegisterRigidBody.cpp" />
+    <ClCompile Include="Engine\src\BoundingSphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="Engine\include\RB_GravityGenerator.h" />
     <ClInclude Include="Engine\include\ForceRegisterRigidBody.h" />
     <ClInclude Include="Engine\include\RB_SpringGenerator.h" />
+    <ClInclude Include="Engine\include\BoundingSphere.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

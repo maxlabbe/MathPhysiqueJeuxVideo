@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
     <ClInclude Include="Engine\include\AnchoredSpring.h" />
+    <ClInclude Include="Engine\include\BoundingSphere.h" />
     <ClInclude Include="Engine\include\BungeeElastic.h" />
     <ClInclude Include="Engine\include\Buoyancy.h" />
     <ClInclude Include="Engine\include\ColisionDetector.h" />
@@ -70,6 +71,7 @@
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp" />
     <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
+    <ClCompile Include="Engine\src\BoundingSphere.cpp" />
     <ClCompile Include="Engine\src\BungeeElastic.cpp" />
     <ClCompile Include="Engine\src\Buoyancy.cpp" />
     <ClCompile Include="Engine\src\ColisionDetector.cpp" />
