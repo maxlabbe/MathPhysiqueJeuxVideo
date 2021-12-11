@@ -23,6 +23,13 @@ public:
 	/// <param name="rigidBody"> RigidBody*: the pointer of the rigid body to which the bouding sphere belong </param>
 	BoundingSphere(RigidBody* rigidBody);
 
+	/// <summary>
+	/// Check if the two bounding spheres collide
+	/// </summary>
+	/// <param name="sphere"> BoundingSphere*: the other bounding sphere </param>
+	/// <returns> Return true if the two bounding spheres collide, false if they don't </returns>
+	bool collides(BoundingSphere* sphere);
+
 protected:
 
 	// center
