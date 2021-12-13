@@ -1,21 +1,21 @@
 #include "RigidBody.h"
 
-RigidBody::RigidBody(float height, float width, float depth, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping)
+RigidBody::RigidBody(list<Vector3D> vertices, float mass, Vector3D massCenter, Vector3D linearVelocity, Vector3D angularVelocity, Quaternion initialOrientation, Matrix3 inertiaTensor, float linearDumping, float angularDamping)
 	: m_mass(mass), m_inverseMass(1 / mass), m_massCenter(massCenter),
 	m_linearVelocity(linearVelocity), m_angularVelocity(angularVelocity),
 	m_orientation(initialOrientation), m_initialOrientation(initialOrientation),
 	m_inverseInertiaTensor(inertiaTensor.inverse()), m_accumForce(Vector3D(0, 0, 0)), m_accumTorque(Vector3D(0, 0, 0)), m_linearAcceleration(Vector3D(0, 0, 0)), m_angularAcceleration(Vector3D(0, 0, 0)),
 	m_linearDumping(linearDumping), m_angularDamping(angularDamping),
-	m_height(height), m_width(width), m_depth(depth)
+	m_listVertices(vertices)
 {
-	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, - depth / 2));
+	/*	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, + depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, + depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, + depth / 2));
-	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));
+	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));*/
 	m_transformMatrix = Matrix4(m_orientation.ToMatrix3(), m_massCenter);
 }
 
@@ -95,15 +95,9 @@ void RigidBody::updateValues(const float time)
 	clearAccumulators();
 }
 
-float RigidBody::GetVolume()
-{
-	return m_height * m_width * m_depth;
-}
 
-float RigidBody::GetMaxDimension()
-{
-	return fmax(fmax((float)m_height, (float)m_width), (float)m_depth);
-}
+
+
 
 Vector3D RigidBody::LocalToWorld(Vector3D vector, Matrix4 transfoMatrix)
 {
@@ -118,7 +112,7 @@ Vector3D RigidBody::WorldToLocal(Vector3D vector, Matrix4 transfoMatrix)
 list<Vector3D> RigidBody::GetWorldVertices()
 {
 	list<Vector3D> worldVertices;
-	for (auto it = m_listSummit.begin(); it != m_listSummit.end(); it++)
+	for (auto it = m_listVertices.begin(); it != m_listVertices.end(); it++)
 	{
 		Vector3D worldVertex = LocalToWorld(*it, m_transformMatrix);
 		worldVertices.push_back(worldVertex);

@@ -14,9 +14,9 @@ public :
 
 	RigidBody* GetRigidBody() { return m_body; };
 
-	Vector3D LocalToWorld();
+	Vector3D LocalToWorld(Vector3D point);
 
-	Vector3D WorldToLocal();
+	Vector3D WorldToLocal(Vector3D point);
 
 protected:
 	// body to which the primitive is connected

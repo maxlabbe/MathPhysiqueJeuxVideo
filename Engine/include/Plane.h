@@ -4,7 +4,7 @@
 #include <MathTools/Vector3D.h>
 #include <Primitive.h>
 
-class Plane : Primitive
+class Plane : public Primitive
 {
 public:
 

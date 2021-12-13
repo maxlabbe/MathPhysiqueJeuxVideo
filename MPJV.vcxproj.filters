@@ -64,6 +64,10 @@
     <ClCompile Include="Engine\src\BoundingSphere.cpp" />
     <ClCompile Include="Engine\src\Octree.cpp" />
     <ClCompile Include="Engine\src\Primitive.cpp" />
+    <ClCompile Include="Engine\src\Box.cpp" />
+    <ClCompile Include="Engine\src\CollisionData.cpp" />
+    <ClCompile Include="Engine\src\Contact.cpp" />
+    <ClCompile Include="ContactDetector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -129,6 +133,10 @@
     <ClInclude Include="Engine\include\BoundingSphere.h" />
     <ClInclude Include="Engine\include\Octree.h" />
     <ClInclude Include="Engine\include\Primitive.h" />
+    <ClInclude Include="Engine\include\Box.h" />
+    <ClInclude Include="Engine\include\CollisionData.h" />
+    <ClInclude Include="Engine\include\Contact.h" />
+    <ClInclude Include="ContactDetector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />
