@@ -1,9 +1,10 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include<MathTools/Vector3D.h>
+#include <MathTools/Vector3D.h>
+#include <Primitive.h>
 
-class Plane
+class Plane : Primitive
 {
 public:
 
@@ -13,7 +14,7 @@ public:
 	/// <param name="normal">plane's normal</param>
 	/// <param name="position">position of the origin of the plane</param>
 	/// <param name="axesLength">length of the axes</param>
-	Plane(Vector3D normal, Vector3D position, Vector3D axesLength, float offset);
+	Plane(Vector3D normal, Vector3D position, Vector3D axesLength, float offset, Matrix4 transformMatrix);
 
 	// Getters
 	Vector3D GetNormal() { return m_normal; }

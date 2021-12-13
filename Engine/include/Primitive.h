@@ -13,9 +13,12 @@ public :
 	Primitive(RigidBody* body, Matrix4 offset);
 
 	RigidBody* GetRigidBody() { return m_body; };
-	void MovePrimitive();
 
-private:
+	Vector3D LocalToWorld();
+
+	Vector3D WorldToLocal();
+
+protected:
 	// body to which the primitive is connected
 	RigidBody* m_body;
 
