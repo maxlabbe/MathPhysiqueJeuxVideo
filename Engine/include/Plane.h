@@ -8,38 +8,40 @@ class Plane
 public:
 
 	/// <summary>
-	/// Creates a rectangular plane with a normal and 2 points.
-	/// The normal is one of the three axes x, y or z.
+	/// Creates a rectangular plane with a normal an origin and 2 axes.
 	/// </summary>
-	/// <param name="normal">int : normal of the plane, 0 = x, 1 = y, 2 = z</param>
-	/// <param name="bottomLeft">Vector3D : bottomLeft point of the rectangle</param>
-	/// <param name="upRight">Vector3D : upRight point of the rectangle</param>
-	Plane(int normal, Vector3D bottomLeft, Vector3D upRight);
+	/// <param name="normal">plane's normal</param>
+	/// <param name="position">position of the origin of the plane</param>
+	/// <param name="axesLength">length of the axes</param>
+	Plane(Vector3D normal, Vector3D position, Vector3D axesLength, float offset);
 
 	// Getters
+	Vector3D GetNormal() { return m_normal; }
+	Vector3D GetPosition() { return m_position; }
+	Vector3D GetAxesLength() { return m_axesLength; }
 
-	int GetNormal() { return m_normal; }
-	Vector3D GetBottomLeft() { return m_bottomLeft; }
-	Vector3D GetUpRight() { return m_upRight; }
-	Vector3D GetUpLeft() { return m_upLeft; }
-	Vector3D GetBottomRight() { return m_bottomRight; }
+	/// <summary>
+	/// Give the distance of an object and the plane
+	/// </summary>
+	/// <param name="point"> The object that we want the distance from</param>
+	/// <returns>float : the distance </returns>
+	float GetDistance(Vector3D point);
+
+
 
 private:
 
-	// int : normal of the plane, 0 = x, 1 = y, 2 = z
-	int m_normal;
+	// Vector3D : normal of the plane, 0 = x, 1 = y, 2 = z
+	Vector3D m_normal;
 
-	// Bottom left corner of the rectangle
-	Vector3D m_bottomLeft;
+	// Vector3D : position of the axe's origin point in reel world (0,0,0)
+	Vector3D m_position;
 
-	// Up right corner of the rectangle
-	Vector3D m_upRight;
+	// Vector3D : height and width of the plane
+	Vector3D m_axesLength;
 
-	// Bottom right corner of the rectangle
-	Vector3D m_bottomRight;
-
-	// Up left corner of the rectangle
-	Vector3D m_upLeft;
+	//Offset that sign the plane
+	float m_offset;
 
 };
 
