@@ -63,6 +63,7 @@
     <ClCompile Include="Engine\src\ForceRegisterRigidBody.cpp" />
     <ClCompile Include="Engine\src\BoundingSphere.cpp" />
     <ClCompile Include="Engine\src\Octree.cpp" />
+    <ClCompile Include="Engine\src\Primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="Engine\include\RB_SpringGenerator.h" />
     <ClInclude Include="Engine\include\BoundingSphere.h" />
     <ClInclude Include="Engine\include\Octree.h" />
+    <ClInclude Include="Engine\include\Primitive.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

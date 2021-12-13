@@ -46,6 +46,7 @@
     <ClInclude Include="Engine\include\ParticleRod.h" />
     <ClInclude Include="Engine\include\ParticleSpring.h" />
     <ClInclude Include="Engine\include\Plane.h" />
+    <ClInclude Include="Engine\include\Primitive.h" />
     <ClInclude Include="Engine\include\Projectile.h" />
     <ClInclude Include="Engine\include\MathTools\Vector3D.h" />
     <ClInclude Include="Engine\include\RB_BungeeGenerator.h" />
@@ -94,6 +95,7 @@
     <ClCompile Include="Engine\src\ParticleRod.cpp" />
     <ClCompile Include="Engine\src\ParticleSpring.cpp" />
     <ClCompile Include="Engine\src\Plane.cpp" />
+    <ClCompile Include="Engine\src\Primitive.cpp" />
     <ClCompile Include="Engine\src\Projectile.cpp" />
     <ClCompile Include="Engine\src\MathTools\Vector3D.cpp" />
     <ClCompile Include="Engine\src\RB_BungeeGenerator.cpp" />
