@@ -15,6 +15,9 @@
 #include"RigidBody.h"
 #include"ForceRegisterRigidBody.h"
 #include"RB_GravityGenerator.h"
+#include <Octree.h>
+#include <ContactDetector.h>
+
 
 class Logic
 {
@@ -77,6 +80,12 @@ private :
 	// flag that indicate if the big projectile is selected
 	bool m_bigBody;
 
+	// Planes that make the room
+	vector<Plane*> m_planes;
+
+	// Real collisions in the world
+	CollisionData m_collisions;
+
 	/// <summary>
 	/// Move the camera
 	/// </summary>
@@ -106,6 +115,62 @@ private :
 	/// <param name="lifespan"> float : life in ms of the projectile </param>
 	void addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan = 4000.0);
 
+	void CreateBox()
+	{
+		Vector3D normal(0, 0, -1);
+		Vector3D position(-10, -10, 10);
+		Vector3D planeHeight(0, 20, 0);
+		Vector3D planeWidth(20, 0, 0);
+		float offset = 10;
+		Plane* front = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+
+		normal = Vector3D(1, 0, 0);
+		position = Vector3D(-10, -10, -10);
+		planeHeight = Vector3D(0, 20, 0);
+		planeWidth = Vector3D(0, 0, 20);
+		Plane* left = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+		
+
+		normal = Vector3D(0, 0, 1);
+		position = Vector3D(10, -10, -10);
+		planeHeight = Vector3D(0, 20, 0);
+		planeWidth = Vector3D(-20, 0, 0);
+		Plane* back = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+		
+
+		normal = Vector3D(-1, 0, 0);
+		position = Vector3D(10, -10, 10);
+		planeHeight = Vector3D(0, 20, 0);
+		planeWidth = Vector3D(0, 0, -20);
+		Plane* right = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+
+		normal = Vector3D(0, -1, 0);
+		position = Vector3D(-10, 10, 10);
+		planeHeight = Vector3D(0, 0, -20);
+		planeWidth = Vector3D(20, 0, 0);
+		Plane* top = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+
+		normal = Vector3D(0, 1, 0);
+		position = Vector3D(-10, -10, -10);
+		planeHeight = Vector3D(0, 0, 20);
+		planeWidth = Vector3D(20, 0, 0);
+		Plane* bottom = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
+		
+
+		m_planes.push_back(front);
+		m_planes.push_back(left);
+		m_planes.push_back(back);
+		m_planes.push_back(right);
+		m_planes.push_back(top);
+		m_planes.push_back(bottom);
+
+		m_displayables->push_back(new DisplayablePlane(*front, Vector3D(0,0,1)));
+		m_displayables->push_back(new DisplayablePlane(*left, Vector3D(0, 1, 0)));
+		m_displayables->push_back(new DisplayablePlane(*back, Vector3D(1, 0, 0)));
+		m_displayables->push_back(new DisplayablePlane(*right, Vector3D(0, 1, 1)));
+		m_displayables->push_back(new DisplayablePlane(*top, Vector3D(1, 0, 1)));
+		m_displayables->push_back(new DisplayablePlane(*bottom, Vector3D(1, 1, 0)));
+	}
 };
 
 #endif

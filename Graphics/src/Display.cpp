@@ -21,9 +21,9 @@ Display::Display(GLFWwindow* window, Shader& shader) : m_shader(shader)
 	// x axis = red
 	// y axis = green
 	// z axis = blue
-	DisplayableLine* dlx = new DisplayableLine(Vector3D(-1, 0, 0), Vector3D(1, 0, 0), Vector3D(0.9, 0.0, 0.0), true);
-	DisplayableLine* dly = new DisplayableLine(Vector3D(0, -1, 0), Vector3D(0, 1, 0), Vector3D(0.0, 0.9, 0.0), true);
-	DisplayableLine* dlz = new DisplayableLine(Vector3D(0, 0, -1), Vector3D(0, 0, 1), Vector3D(0.0, 0.0, 0.9), true);
+	DisplayableLine* dlx = new DisplayableLine(Vector3D(0, 0, 0), Vector3D(1, 0, 0), Vector3D(0.9, 0.0, 0.0), true);
+	DisplayableLine* dly = new DisplayableLine(Vector3D(0, 0, 0), Vector3D(0, 1, 0), Vector3D(0.0, 0.9, 0.0), true);
+	DisplayableLine* dlz = new DisplayableLine(Vector3D(0, 0, 0), Vector3D(0, 0, 1), Vector3D(0.0, 0.0, 0.9), true);
 
 	vector<Displayable*>* axes = new vector<Displayable*>;
 	axes->push_back(dlx);

@@ -8,7 +8,7 @@ RB_Buoyancy::RB_Buoyancy(float maxDepth, float liquidHeight, float density)
 
 void RB_Buoyancy::updateForce(RigidBody* rigidBody, float duration, Vector3D* applicationPoint)
 {
-	float rigidBodyHeight = rigidBody->GetHeight();
+	float rigidBodyHeight = 0; //= rigidBody->GetHeight();
 	float rigidBodyVolume = rigidBody->GetVolume();
 
 	// If the rigid body is completely submerged

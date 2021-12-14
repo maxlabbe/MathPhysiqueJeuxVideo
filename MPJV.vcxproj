@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
-    <ClInclude Include="ContactDetector.h" />
     <ClInclude Include="Engine\include\AnchoredSpring.h" />
     <ClInclude Include="Engine\include\BoundingSphere.h" />
     <ClInclude Include="Engine\include\Box.h" />
@@ -29,6 +28,7 @@
     <ClInclude Include="Engine\include\ColisionDetector.h" />
     <ClInclude Include="Engine\include\CollisionData.h" />
     <ClInclude Include="Engine\include\Contact.h" />
+    <ClInclude Include="Engine\include\ContactDetector.h" />
     <ClInclude Include="Engine\include\DampedHarmonicMovement.h" />
     <ClInclude Include="Engine\include\DragGenerator.h" />
     <ClInclude Include="Engine\include\ForceRegister.h" />
@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Common\src\Main.cpp" />
-    <ClCompile Include="ContactDetector.cpp" />
     <ClCompile Include="Engine\src\AnchoredSpring.cpp" />
     <ClCompile Include="Engine\src\BoundingSphere.cpp" />
     <ClCompile Include="Engine\src\Box.cpp" />
@@ -85,6 +84,7 @@
     <ClCompile Include="Engine\src\ColisionDetector.cpp" />
     <ClCompile Include="Engine\src\CollisionData.cpp" />
     <ClCompile Include="Engine\src\Contact.cpp" />
+    <ClCompile Include="Engine\src\ContactDetector.cpp" />
     <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />

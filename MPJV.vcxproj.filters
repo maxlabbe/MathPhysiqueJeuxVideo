@@ -67,7 +67,7 @@
     <ClCompile Include="Engine\src\Box.cpp" />
     <ClCompile Include="Engine\src\CollisionData.cpp" />
     <ClCompile Include="Engine\src\Contact.cpp" />
-    <ClCompile Include="ContactDetector.cpp" />
+    <ClCompile Include="Engine\src\ContactDetector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />
@@ -136,7 +136,7 @@
     <ClInclude Include="Engine\include\Box.h" />
     <ClInclude Include="Engine\include\CollisionData.h" />
     <ClInclude Include="Engine\include\Contact.h" />
-    <ClInclude Include="ContactDetector.h" />
+    <ClInclude Include="Engine\include\ContactDetector.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\src\default.frag" />

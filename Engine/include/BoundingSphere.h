@@ -3,7 +3,7 @@
 
 #include "Common.h"
 #include "MathTools/Vector3D.h"
-#include "RigidBody.h"
+#include <Plane.h>
 
 class BoundingSphere
 {
@@ -29,6 +29,8 @@ public:
 	/// <param name="sphere"> BoundingSphere*: the other bounding sphere </param>
 	/// <returns> Return true if the two bounding spheres collide, false if they don't </returns>
 	bool collides(BoundingSphere* sphere);
+
+	bool collides(Plane* plane);
 
 protected:
 

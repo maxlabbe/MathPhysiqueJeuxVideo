@@ -33,6 +33,15 @@ private:
 				&& abs(m_center.getY() - centerSphere.getY()) < m_halfHeight + sphere->getRadius()
 				&& abs(m_center.getZ() - centerSphere.getZ()) < m_halfDepth + sphere->getRadius();
 		}
+
+		bool intersects(Plane* plane)
+		{
+			Vector3D halfSizes = plane->GetAxesLength().multiplyByScalar(0.5f);
+			Vector3D centerPlane = plane->GetPosition() + halfSizes;
+			return abs(m_center.getX() - centerPlane.getX()) < m_halfWidth + halfSizes.getX()
+				&& abs(m_center.getY() - centerPlane.getY()) < m_halfHeight + halfSizes.getY()
+				&& abs(m_center.getZ() - centerPlane.getZ()) < m_halfDepth + halfSizes.getZ();
+		}
 	} Bounds;
 
 	// bounds
@@ -46,6 +55,9 @@ private:
 
 	// vector containing the objects
 	vector<BoundingSphere*> m_objects;
+
+	// vector containing the planes of the scene
+	vector<Plane*> m_planes;
 
 	// max number of object by node
 	int const m_maxObjects = 5;
@@ -85,6 +97,8 @@ public:
 	/// <param name="returnedVector"> vector: vector containing the leaves of the tree </param>
 	/// <returns> Vector containing the leaves with objects </returns>
 	vector<Octree*> retreiveLeavesWithObjects(vector<Octree*> returnedVector);
+
+	void AddPlane(Plane* plane);
 };
 
 #endif

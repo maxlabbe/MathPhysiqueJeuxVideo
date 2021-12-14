@@ -5,6 +5,7 @@ Octree::Octree(int level, Bounds bounds): m_level(level), m_bounds(bounds), m_ch
 void Octree::clear()
 {
 	m_objects.clear();
+	m_planes.clear();
 
 	for (auto child : m_children)
 	{
@@ -22,7 +23,7 @@ void Octree::insert(BoundingSphere* sphere)
 	{
 		if (m_children.empty())
 		{
-			if (m_objects.size() >= m_maxObjects && m_level < m_maxLevels)
+			if (m_objects.size() + m_planes.size() >= m_maxObjects && m_level < m_maxLevels)
 			{
 				split();
 
@@ -89,4 +90,39 @@ vector<Octree*> Octree::retreiveLeavesWithObjects(vector<Octree*> returnedVector
 	}
 
 	return returnedVector;
+}
+
+void Octree::AddPlane(Plane* plane)
+{
+	if (m_bounds.intersects(plane))
+	{
+		if (m_children.empty())
+		{
+			if (m_objects.size() + m_planes.size() >= m_maxObjects && m_level < m_maxLevels)
+			{
+				split();
+
+				for (auto child : m_children)
+				{
+					for (auto object : m_objects)
+					{
+						child->AddPlane(plane);
+					}
+
+					child->AddPlane(plane);
+				}
+			}
+			else
+			{
+				m_planes.push_back(plane);
+			}
+		}
+		else
+		{
+			for (auto child : m_children)
+			{
+				child->AddPlane(plane);
+			}
+		}
+	}
 }

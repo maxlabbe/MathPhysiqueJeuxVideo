@@ -8,15 +8,26 @@ RigidBody::RigidBody(list<Vector3D> vertices, float mass, Vector3D massCenter, V
 	m_linearDumping(linearDumping), m_angularDamping(angularDamping),
 	m_listVertices(vertices)
 {
-	/*	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, - depth / 2));
-	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, - depth / 2));
-	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, - depth / 2));
-	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, - depth / 2));
-	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, + depth / 2));
-	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, + depth / 2));
-	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, + depth / 2));
-	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));*/
 	m_transformMatrix = Matrix4(m_orientation.ToMatrix3(), m_massCenter);
+}
+
+float RigidBody::GetVolume()
+{
+	return 0;
+}
+
+float RigidBody::GetMaxDimension()
+{
+	float dist = 0;
+	for (Vector3D vertice : m_listVertices)
+	{
+		if (dist < m_massCenter.subtract(vertice).norm())
+		{
+			dist = m_massCenter.subtract(vertice).norm();
+		}
+	}
+
+	return dist;
 }
 
 void RigidBody::addForceAtPoint(Vector3D force, Vector3D point)

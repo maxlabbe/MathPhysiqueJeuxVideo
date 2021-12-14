@@ -10,3 +10,8 @@ bool BoundingSphere::collides(BoundingSphere* sphere)
 
 	return sqrt(x * x + y * y + z * z) <= m_radius + sphere->getRadius();
 }
+
+bool BoundingSphere::collides(Plane* plane)
+{
+	return plane->GetDistance(m_center) <= m_radius;
+}

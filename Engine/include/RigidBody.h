@@ -93,13 +93,13 @@ public:
 	/// Sets the list of summits composing the rigid body
 	/// </summary>
 	/// <param name="summits"></param>
-	void SetListSommet(list<Vector3D> summits) { m_listSummit = summits; }
+	void SetListSommet(list<Vector3D> summits) { m_listVertices = summits; }
 
 	/// <summary>
 	/// Returns the list of summits of the rigid body
 	/// </summary>
 	/// <returns>List of the position of each summit</returns>
-	list<Vector3D> GetListSommet() { return m_listSummit; }
+	list<Vector3D> GetListSommet() { return m_listVertices; }
 
 	/// <summary>
 	/// Applies the force to a precise point of the rigid body

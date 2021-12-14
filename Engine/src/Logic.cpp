@@ -11,9 +11,12 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display)
 	m_firstRightClick = true;
 
 	m_displayables = new vector<Displayable*>();
+	m_planes = vector<Plane*>();
+	CreateBox();
 	m_display.AddDisplayables(m_displayables);
 
 	m_forceRegister = ForceRegisterRigidBody();
+	m_collisions = CollisionData();
 }
 
 void Logic::updateLogic()
@@ -187,9 +190,9 @@ void Logic::updateBodies()
 		{
 			(*it)->updateValues(diffTime.count()/1000.0f);
 
-			Particle* massCenter = new Particle((*it)->GetMass(), (*it)->GetMassCenter(), Vector3D(), Vector3D(), Vector3D(), 0.1);
-			Displayable* displayableCenter = new DisplayableParticle(*massCenter);
-			m_displayables->push_back(displayableCenter);
+			//Particle* massCenter = new Particle((*it)->GetMass(), (*it)->GetMassCenter(), Vector3D(), Vector3D(), Vector3D(), 0.1);
+			//Displayable* displayableCenter = new DisplayableParticle(*massCenter);
+			//m_displayables->push_back(displayableCenter);
 		}
 		m_lastTime = current;
 	}
@@ -206,9 +209,18 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 	inertiaMatrix[1] = { 0, (1.0f / 12.0f) * mass * (height * height + width * width) , 0 };
 	inertiaMatrix[2] = { 0 , 0, (1.0f / 12.0f) * mass * (height * height + width * width) };
 	Matrix3 inertiaTensor(inertiaMatrix);
+	list<Vector3D> m_listSummit;
 
+	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, - depth / 2));
+	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, - depth / 2));
+	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, - depth / 2));
+	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, - depth / 2));
+	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, + depth / 2));
+	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, + depth / 2));
+	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, + depth / 2));
+	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));
 
-	RigidBody* body = new RigidBody(height, width, depth, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
+	RigidBody* body = new RigidBody(m_listSummit, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
 	m_rigidbodies.push_back(body);
 	RB_GravityGenerator* gravityGen = new RB_GravityGenerator(gravity);
 	m_forceRegister.registerForce(body, &body->GetMassCenter(), gravityGen);
@@ -230,9 +242,4 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 
 	Displayable* displayableRigidBody = new DisplayableRigidBody(body, edges);
 	m_displayables->push_back(displayableRigidBody);
-	
-	/*Projectile p(initPos, initVelocity, gravity, lifespan);
-	if (m_projectiles.size() > 9)
-		m_projectiles.erase(m_projectiles.begin());
-	m_projectiles.push_back(p);*/
 }

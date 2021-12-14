@@ -14,12 +14,16 @@ public:
 	/// <param name="normal">plane's normal</param>
 	/// <param name="position">position of the origin of the plane</param>
 	/// <param name="axesLength">length of the axes</param>
-	Plane(Vector3D normal, Vector3D position, Vector3D axesLength, float offset, Matrix4 transformMatrix);
+	Plane(Vector3D normal, Vector3D position, Vector3D height, Vector3D width, float offset, Matrix4 transformMatrix);
 
 	// Getters
 	Vector3D GetNormal() { return m_normal; }
 	Vector3D GetPosition() { return m_position; }
-	Vector3D GetAxesLength() { return m_axesLength; }
+	Vector3D GetAxesLength() { return m_height; }
+	Vector3D GetUpLeft() { return m_position + m_height; };
+	Vector3D GetUpRight() { return m_position + m_height + m_width; };
+	Vector3D GetBottomLeft() { return m_position; };
+	Vector3D GetBottomRight() { return m_position + m_width; };
 
 	/// <summary>
 	/// Give the distance of an object and the plane
@@ -38,8 +42,11 @@ private:
 	// Vector3D : position of the axe's origin point in reel world (0,0,0)
 	Vector3D m_position;
 
-	// Vector3D : height and width of the plane
-	Vector3D m_axesLength;
+	// Vector3D : height of the plane
+	Vector3D m_height;
+
+	// Vector3D : width of the plane
+	Vector3D m_width;
 
 	//Offset that sign the plane
 	float m_offset;
