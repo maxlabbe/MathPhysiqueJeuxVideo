@@ -267,7 +267,7 @@ void Logic::DetectAndDisplayCollision()
 
 	vector<Octree*> octreeLeaves;
 	octree.retreiveLeavesWithObjects(octreeLeaves);
-	cout << octreeLeaves.size() << endl;
+
 	vector<pair<Box*, Plane*>> pseudoCollisions;
 	for (auto leaf : octreeLeaves)
 	{
