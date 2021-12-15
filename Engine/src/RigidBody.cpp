@@ -21,9 +21,9 @@ float RigidBody::GetMaxDimension()
 	float dist = 0;
 	for (Vector3D vertice : m_listVertices)
 	{
-		if (dist < m_massCenter.subtract(vertice).norm())
+		if (dist < vertice.norm())
 		{
-			dist = m_massCenter.subtract(vertice).norm();
+			dist = vertice.norm();
 		}
 	}
 
