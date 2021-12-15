@@ -38,9 +38,10 @@ private:
 		{
 			Vector3D halfSizes = plane->GetAxesLength().multiplyByScalar(0.5f);
 			Vector3D centerPlane = plane->GetPosition() + halfSizes;
-			return abs(m_center.getX() - centerPlane.getX()) < m_halfWidth + halfSizes.getX()
-				&& abs(m_center.getY() - centerPlane.getY()) < m_halfHeight + halfSizes.getY()
-				&& abs(m_center.getZ() - centerPlane.getZ()) < m_halfDepth + halfSizes.getZ();
+
+			return abs(m_center.getX() - centerPlane.getX()) < m_halfWidth + abs(halfSizes.getX())
+				&& abs(m_center.getY() - centerPlane.getY()) < m_halfHeight + abs(halfSizes.getY())
+				&& abs(m_center.getZ() - centerPlane.getZ()) < m_halfDepth + abs(halfSizes.getZ());
 		}
 	} Bounds;
 
@@ -60,13 +61,13 @@ private:
 	vector<Plane*> m_planes;
 
 	// max number of object by node
-	int const m_maxObjects = 5;
+	int const m_maxObjects = 2;
 
 	// max number of level in the tree
-	int const m_maxLevels = 10;
+	int const m_maxLevels = 2;
 
 public:
-
+	
 	/// <summary>
 	/// Ctor
 	/// Create a personnalize octree with bounds
@@ -74,6 +75,11 @@ public:
 	/// <param name="level"> int: level depth of the node </param>
 	/// <param name="bounds"> Bounds: bounds of the node </param>
 	Octree(int level, Bounds bounds);
+
+	// Getter
+	vector<BoundingSphere*> GetBoundingSpheres() { return m_objects; };
+	vector<Plane*> GetPlanes() { return m_planes; };
+	int GetLevel() { return m_level; };
 
 	/// <summary>
 	/// Clear the node
@@ -96,7 +102,7 @@ public:
 	/// </summary>
 	/// <param name="returnedVector"> vector: vector containing the leaves of the tree </param>
 	/// <returns> Vector containing the leaves with objects </returns>
-	vector<Octree*> retreiveLeavesWithObjects(vector<Octree*> returnedVector);
+	void retreiveLeavesWithObjects(vector<Octree*>& returnedVector);
 
 	void AddPlane(Plane* plane);
 };

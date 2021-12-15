@@ -71,6 +71,8 @@ public:
 
 	float GetMaxDimension();
 
+	Matrix4 GetIdentityMatrix() { return m_transformMatrix; };
+
 	/// <param name="angularDamping">rigid body's angular damping</param>
 
 	/// <summary>

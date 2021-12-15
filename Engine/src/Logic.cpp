@@ -14,17 +14,22 @@ Logic::Logic(GLFWwindow* window, InputsHandler& inputsHandler, Display& display)
 	m_planes = vector<Plane*>();
 	CreateBox();
 	m_display.AddDisplayables(m_displayables);
-
+	m_boundingSpheres = vector<BoundingSphere*>();
 	m_forceRegister = ForceRegisterRigidBody();
-	m_collisions = CollisionData();
+	vector<CollisionData*> m_collisions;
 }
 
 void Logic::updateLogic()
 {
 	moveCamera();
-	updateProjectileType();
-	shoot();
-	updateBodies();
+	
+	if (!m_collisionDetected)
+	{
+		updateProjectileType();
+		shoot();
+		updateBodies();
+		DetectAndDisplayCollision();
+	}
 }
 
 
@@ -163,7 +168,6 @@ void Logic::shoot()
 				mass = 10;
 				gravity = 0.1;
 			}
-			cout << "Position initiale : " << position << " | Vitesse initiale : " << linearVelocity << " : " << linearVelocity.norm() << " m/s" << endl;
 			addBody(position, linearVelocity, height, width, depth, mass, gravity);
 		}
 
@@ -221,7 +225,9 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));
 
 	RigidBody* body = new RigidBody(m_listSummit, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
+	BoundingSphere* boundingSphere = new BoundingSphere(body);
 	m_rigidbodies.push_back(body);
+	m_boundingSpheres.push_back(boundingSphere);
 	RB_GravityGenerator* gravityGen = new RB_GravityGenerator(gravity);
 	m_forceRegister.registerForce(body, &body->GetMassCenter(), gravityGen);
 
@@ -242,4 +248,58 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 
 	Displayable* displayableRigidBody = new DisplayableRigidBody(body, edges);
 	m_displayables->push_back(displayableRigidBody);
+}
+
+void Logic::DetectAndDisplayCollision()
+{
+	int firstLevel = 1;
+	Octree octree(firstLevel, { Vector3D(), 30.0f, 30.0f, 30.0f });
+	
+	for (Plane* plane : m_planes)
+	{
+		octree.AddPlane(plane);
+	}
+
+	for (BoundingSphere* boundingSphere : m_boundingSpheres)
+	{
+		octree.insert(boundingSphere);
+	}
+
+	vector<Octree*> octreeLeaves;
+	octree.retreiveLeavesWithObjects(octreeLeaves);
+	cout << octreeLeaves.size() << endl;
+	vector<pair<Box*, Plane*>> pseudoCollisions;
+	for (auto leaf : octreeLeaves)
+	{
+		for (BoundingSphere* sphere : leaf->GetBoundingSpheres())
+		{
+			for (Plane* plane : leaf->GetPlanes())
+			{
+				if (sphere->collides(plane))
+				{
+					Box* box = new Box(sphere->getRigidBody(), sphere->getRigidBody()->GetIdentityMatrix(), *std::next(sphere->getRigidBody()->GetListSommet().begin(), 6));
+					pseudoCollisions.push_back(pair<Box*, Plane*>(box, plane));
+				}
+			}
+		}
+	}
+	for (auto pseudoCollision : pseudoCollisions)
+	{
+		CollisionData* collisionData = new CollisionData();
+		ContactDetector::GenerateContacts(*pseudoCollision.first, *pseudoCollision.second, collisionData);
+		m_collisions.push_back(collisionData);
+	}
+
+	for (auto collision : m_collisions)
+	{
+		for (auto contact : collision->GetContacts())
+		{
+			contact.DisplayContact();
+			m_collisionDetected = true;
+		}
+	}
+
+	octree.clear();
+	octreeLeaves.clear();
+	m_collisions.clear();
 }

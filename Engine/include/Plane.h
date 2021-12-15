@@ -19,7 +19,7 @@ public:
 	// Getters
 	Vector3D GetNormal() { return m_normal; }
 	Vector3D GetPosition() { return m_position; }
-	Vector3D GetAxesLength() { return m_height; }
+	Vector3D GetAxesLength() { return m_height + m_width; }
 	Vector3D GetUpLeft() { return m_position + m_height; };
 	Vector3D GetUpRight() { return m_position + m_height + m_width; };
 	Vector3D GetBottomLeft() { return m_position; };

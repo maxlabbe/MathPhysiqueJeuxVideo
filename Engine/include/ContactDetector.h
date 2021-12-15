@@ -6,6 +6,8 @@
 #include <vector>
 class ContactDetector
 {
+public:
+
 	static void GenerateContacts(Box box, Plane plane, CollisionData* contacts)
 	{
 		vector<Vector3D> listBoxVertices;

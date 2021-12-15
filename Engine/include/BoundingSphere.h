@@ -10,7 +10,7 @@ class BoundingSphere
 public:
 
 	// Getters
-	Vector3D getCenter() const { return m_center; }
+	Vector3D getCenter() const { return m_rigidBody->GetMassCenter(); }
 
 	float getRadius() const { return m_radius; }
 
@@ -33,9 +33,6 @@ public:
 	bool collides(Plane* plane);
 
 protected:
-
-	// center
-	Vector3D m_center;
 
 	// radius
 	float m_radius;

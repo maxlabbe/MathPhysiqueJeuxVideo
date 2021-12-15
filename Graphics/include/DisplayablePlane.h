@@ -27,7 +27,7 @@ protected:
 	/// Give the vertices to draw the particle
 	/// </summary>
 	/// <returns> GLfloat* : the vertices </returns>
-	GLfloat* GetVertices() { cout << "test" << endl;  return m_vertices; }
+	GLfloat* GetVertices() { return m_vertices; }
 
 	/// <summary>
 	/// Give the indices to draw the particle

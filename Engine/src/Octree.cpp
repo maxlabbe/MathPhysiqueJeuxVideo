@@ -34,6 +34,11 @@ void Octree::insert(BoundingSphere* sphere)
 						child->insert(object);
 					}
 
+					for (auto plane : m_planes)
+					{
+						child->AddPlane(plane);
+					}
+
 					child->insert(sphere);
 				}
 			}
@@ -69,27 +74,23 @@ void Octree::split()
 	m_children.push_back(new Octree(m_level + 1, { Vector3D(center.getX() - halfWidth, center.getY() - halfHeight, center.getZ() + halfDepth), halfHeight, halfWidth, halfDepth }));
 }
 
-vector<Octree*> Octree::retreiveLeavesWithObjects(vector<Octree*> returnedVector)
+void Octree::retreiveLeavesWithObjects(vector<Octree*>& returnedVector)
 {
 	if (m_children.empty())
 	{
-		if (!m_objects.empty())
+		// if there is more than one object
+		if (m_objects.size() > 0)
 		{
 			returnedVector.push_back(this);
 		}
 	}
 	else
 	{
-		vector<Octree*> tmp;
-
 		for (auto child : m_children)
 		{
-			tmp = child->retreiveLeavesWithObjects(returnedVector);
-			returnedVector.insert(tmp.end(), tmp.begin(), tmp.end());
+			child->retreiveLeavesWithObjects(returnedVector);
 		}
 	}
-
-	return returnedVector;
 }
 
 void Octree::AddPlane(Plane* plane)
@@ -98,18 +99,23 @@ void Octree::AddPlane(Plane* plane)
 	{
 		if (m_children.empty())
 		{
-			if (m_objects.size() + m_planes.size() >= m_maxObjects && m_level < m_maxLevels)
+			if (m_objects.size() + m_planes.size() >= m_maxObjects  && m_level < m_maxLevels)
 			{
 				split();
 
 				for (auto child : m_children)
 				{
-					for (auto object : m_objects)
+					for (auto p : m_planes)
 					{
-						child->AddPlane(plane);
+						child->AddPlane(p);
 					}
 
 					child->AddPlane(plane);
+
+					for (auto object : m_objects)
+					{
+						child->insert(object);
+					}
 				}
 			}
 			else

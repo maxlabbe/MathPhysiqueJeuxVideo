@@ -3,6 +3,7 @@
 
 #include<vector>
 #include<chrono>
+#include<set>
 
 #include "Camera.h"
 #include"InputsHandler.h"
@@ -57,6 +58,10 @@ private :
 
 	// Rigidbodies on scene
 	vector<RigidBody*> m_rigidbodies;
+
+	// Bounding spheres on scene
+	vector<BoundingSphere*> m_boundingSpheres;
+	
 	vector<Displayable*>* m_displayables;
 
 	// Force register
@@ -84,7 +89,9 @@ private :
 	vector<Plane*> m_planes;
 
 	// Real collisions in the world
-	CollisionData m_collisions;
+	vector<CollisionData*> m_collisions;
+
+	bool m_collisionDetected = false;
 
 	/// <summary>
 	/// Move the camera
@@ -115,45 +122,47 @@ private :
 	/// <param name="lifespan"> float : life in ms of the projectile </param>
 	void addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan = 4000.0);
 
+	void DetectAndDisplayCollision();
+
 	void CreateBox()
 	{
 		Vector3D normal(0, 0, -1);
-		Vector3D position(-10, -10, 10);
-		Vector3D planeHeight(0, 20, 0);
-		Vector3D planeWidth(20, 0, 0);
-		float offset = 10;
+		Vector3D position(-20, -20, 20);
+		Vector3D planeHeight(0, 40, 0);
+		Vector3D planeWidth(40, 0, 0);
+		float offset = 20;
 		Plane* front = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 
 		normal = Vector3D(1, 0, 0);
-		position = Vector3D(-10, -10, -10);
-		planeHeight = Vector3D(0, 20, 0);
-		planeWidth = Vector3D(0, 0, 20);
+		position = Vector3D(-20, -20, -20);
+		planeHeight = Vector3D(0, 40, 0);
+		planeWidth = Vector3D(0, 0, 40);
 		Plane* left = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 		
 
 		normal = Vector3D(0, 0, 1);
-		position = Vector3D(10, -10, -10);
-		planeHeight = Vector3D(0, 20, 0);
-		planeWidth = Vector3D(-20, 0, 0);
+		position = Vector3D(20, -20, -20);
+		planeHeight = Vector3D(0, 40, 0);
+		planeWidth = Vector3D(-40, 0, 0);
 		Plane* back = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 		
 
 		normal = Vector3D(-1, 0, 0);
-		position = Vector3D(10, -10, 10);
-		planeHeight = Vector3D(0, 20, 0);
-		planeWidth = Vector3D(0, 0, -20);
+		position = Vector3D(20, -20, 20);
+		planeHeight = Vector3D(0, 40, 0);
+		planeWidth = Vector3D(0, 0, -40);
 		Plane* right = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 
 		normal = Vector3D(0, -1, 0);
-		position = Vector3D(-10, 10, 10);
-		planeHeight = Vector3D(0, 0, -20);
-		planeWidth = Vector3D(20, 0, 0);
+		position = Vector3D(-20, 20, 20);
+		planeHeight = Vector3D(0, 0, -40);
+		planeWidth = Vector3D(40, 0, 0);
 		Plane* top = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 
 		normal = Vector3D(0, 1, 0);
-		position = Vector3D(-10, -10, -10);
-		planeHeight = Vector3D(0, 0, 20);
-		planeWidth = Vector3D(20, 0, 0);
+		position = Vector3D(-20, -20, -20);
+		planeHeight = Vector3D(0, 0, 40);
+		planeWidth = Vector3D(40, 0, 0);
 		Plane* bottom = new Plane(normal, position, planeHeight, planeWidth, offset, Matrix4());
 		
 
@@ -164,12 +173,12 @@ private :
 		m_planes.push_back(top);
 		m_planes.push_back(bottom);
 
-		m_displayables->push_back(new DisplayablePlane(*front, Vector3D(0,0,1)));
-		m_displayables->push_back(new DisplayablePlane(*left, Vector3D(0, 1, 0)));
-		m_displayables->push_back(new DisplayablePlane(*back, Vector3D(1, 0, 0)));
-		m_displayables->push_back(new DisplayablePlane(*right, Vector3D(0, 1, 1)));
-		m_displayables->push_back(new DisplayablePlane(*top, Vector3D(1, 0, 1)));
-		m_displayables->push_back(new DisplayablePlane(*bottom, Vector3D(1, 1, 0)));
+		m_displayables->push_back(new DisplayablePlane(*front, Vector3D(0.22, 0.32, 0.89)));
+		m_displayables->push_back(new DisplayablePlane(*left, Vector3D(0.34, 0.88, 0.29)));
+		m_displayables->push_back(new DisplayablePlane(*back, Vector3D(0.93, 0.21, 0.21)));
+		m_displayables->push_back(new DisplayablePlane(*right, Vector3D(0.64, 0.42, 0.30)));
+		m_displayables->push_back(new DisplayablePlane(*top, Vector3D(0.96, 0.44, 0.22)));
+		m_displayables->push_back(new DisplayablePlane(*bottom, Vector3D(0.74, 0.25, 0.92)));
 	}
 };
 
