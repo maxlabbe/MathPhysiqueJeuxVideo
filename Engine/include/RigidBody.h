@@ -73,8 +73,6 @@ public:
 
 	Matrix4 GetIdentityMatrix() { return m_transformMatrix; };
 
-	/// <param name="angularDamping">rigid body's angular damping</param>
-
 	/// <summary>
 	/// Create a personnalized rigid body
 	/// </summary>
@@ -154,6 +152,10 @@ public:
 	/// <param name="transfoMatrix"> Matrix4 : The orientation matrix that allow us to compute the change</param>
 	Vector3D WorldToLocal(Vector3D vector, Matrix4 transfoMatrix);
 
+	/// <summary>
+	/// Returns the list of summits of the rigid body in the world system
+	/// </summary>
+	/// <returns>List of the position of each summit</returns>
 	list<Vector3D> GetWorldVertices();
 };
 
