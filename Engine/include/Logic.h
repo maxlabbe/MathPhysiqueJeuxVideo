@@ -91,6 +91,7 @@ private :
 	// Real collisions in the world
 	vector<CollisionData*> m_collisions;
 
+	// Boolean that tells if a collision is detected
 	bool m_collisionDetected = false;
 
 	/// <summary>
@@ -122,8 +123,14 @@ private :
 	/// <param name="lifespan"> float : life in ms of the projectile </param>
 	void addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan = 4000.0);
 
+	/// <summary>
+	/// Detect the collisions on the scene and display it
+	/// </summary>
 	void DetectAndDisplayCollision();
 
+	/// <summary>
+	/// Create a hard coded box
+	/// </summary>
 	void CreateBox()
 	{
 		Vector3D normal(0, 0, -1);

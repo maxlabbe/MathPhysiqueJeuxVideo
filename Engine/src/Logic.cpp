@@ -23,6 +23,7 @@ void Logic::updateLogic()
 {
 	moveCamera();
 	
+	// On arrèrte la simulation si une collision est détecter
 	if (!m_collisionDetected)
 	{
 		updateProjectileType();
@@ -205,6 +206,7 @@ void Logic::updateBodies()
 
 void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, float width, float depth, float mass, float gravity, float lifespan)
 {
+	//Create the attribut of the rigidbody
 	Vector3D angularVelocity(1.0f, 1.0f, 0);
 	Quaternion initialOrientation(1, 0, 0 ,0);
 	array<array<float, 3>, 3> inertiaMatrix;
@@ -215,6 +217,7 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 	Matrix3 inertiaTensor(inertiaMatrix);
 	list<Vector3D> m_listSummit;
 
+	// List of the vertices to draw the object
 	m_listSummit.push_back(Vector3D( - width / 2,  - height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  - height / 2, - depth / 2));
 	m_listSummit.push_back(Vector3D( + width / 2,  + height / 2, - depth / 2));
@@ -225,7 +228,11 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 	m_listSummit.push_back(Vector3D( - width / 2,  + height / 2, + depth / 2));
 
 	RigidBody* body = new RigidBody(m_listSummit, mass, initPos, linearVelocity, angularVelocity, initialOrientation,inertiaTensor, 1.0f, 1.0f);
+
+	// Create the bounding spher for the narrow phase
 	BoundingSphere* boundingSphere = new BoundingSphere(body);
+
+	//Add the objects and tools to the logic
 	m_rigidbodies.push_back(body);
 	m_boundingSpheres.push_back(boundingSphere);
 	RB_GravityGenerator* gravityGen = new RB_GravityGenerator(gravity);
@@ -252,22 +259,29 @@ void Logic::addBody(Vector3D initPos, Vector3D linearVelocity, float height, flo
 
 void Logic::DetectAndDisplayCollision()
 {
+	// first level of the octree
 	int firstLevel = 1;
+
+	//Create the octree with larger boundaries than those of the scene
 	Octree octree(firstLevel, { Vector3D(), 30.0f, 30.0f, 30.0f });
 	
+	// Add the planes to the octree
 	for (Plane* plane : m_planes)
 	{
 		octree.AddPlane(plane);
 	}
 
+	// Add the bounding spheres to the octree
 	for (BoundingSphere* boundingSphere : m_boundingSpheres)
 	{
 		octree.insert(boundingSphere);
 	}
 
+	// Take the octree's leaves
 	vector<Octree*> octreeLeaves;
 	octree.retreiveLeavesWithObjects(octreeLeaves);
 
+	// For each leaf we detect if there is a pseudo collision
 	vector<pair<Box*, Plane*>> pseudoCollisions;
 	for (auto leaf : octreeLeaves)
 	{
@@ -283,6 +297,8 @@ void Logic::DetectAndDisplayCollision()
 			}
 		}
 	}
+
+	// Create a contacts for each real collision detected
 	for (auto pseudoCollision : pseudoCollisions)
 	{
 		CollisionData* collisionData = new CollisionData();
@@ -290,6 +306,7 @@ void Logic::DetectAndDisplayCollision()
 		m_collisions.push_back(collisionData);
 	}
 
+	// Display the contacts
 	for (auto collision : m_collisions)
 	{
 		for (auto contact : collision->GetContacts())
@@ -299,6 +316,7 @@ void Logic::DetectAndDisplayCollision()
 		}
 	}
 
+	// Clear the tools to detect contact
 	octree.clear();
 	octreeLeaves.clear();
 	m_collisions.clear();
