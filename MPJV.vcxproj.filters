@@ -67,7 +67,6 @@
     <ClCompile Include="Engine\src\Box.cpp" />
     <ClCompile Include="Engine\src\CollisionData.cpp" />
     <ClCompile Include="Engine\src\Contact.cpp" />
-    <ClCompile Include="Engine\src\ContactDetector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\include\Common.h" />

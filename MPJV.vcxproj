@@ -84,7 +84,6 @@
     <ClCompile Include="Engine\src\ColisionDetector.cpp" />
     <ClCompile Include="Engine\src\CollisionData.cpp" />
     <ClCompile Include="Engine\src\Contact.cpp" />
-    <ClCompile Include="Engine\src\ContactDetector.cpp" />
     <ClCompile Include="Engine\src\DampedHarmonicMovement.cpp" />
     <ClCompile Include="Engine\src\DragGenerator.cpp" />
     <ClCompile Include="Engine\src\ForceRegister.cpp" />

@@ -11,9 +11,18 @@ public:
 	/// <summary>
 	/// Creates a rectangular plane with a normal an origin and 2 axes.
 	/// </summary>
+	
+	/// <param name="axesLength">length of the axes</param>
+	 
+	/// <summary>
+	/// Creates a rectangular plane with a normal an origin, height and width, an offset and a transform matrix.
+	/// </summary>
 	/// <param name="normal">plane's normal</param>
 	/// <param name="position">position of the origin of the plane</param>
-	/// <param name="axesLength">length of the axes</param>
+	/// <param name="height">height of the plan</param>
+	/// <param name="width">width of the plan</param>
+	/// <param name="offset">plane's offset</param>
+	/// <param name="transformMatrix">plane's transform matrix</param>
 	Plane(Vector3D normal, Vector3D position, Vector3D height, Vector3D width, float offset, Matrix4 transformMatrix);
 
 	// Getters
