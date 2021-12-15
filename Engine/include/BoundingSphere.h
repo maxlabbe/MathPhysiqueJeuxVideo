@@ -30,6 +30,11 @@ public:
 	/// <returns> Return true if the two bounding spheres collide, false if they don't </returns>
 	bool collides(BoundingSphere* sphere);
 
+	/// <summary>
+	/// Check if the bounding sphere collides with a plane
+	/// </summary>
+	/// <param name="plane"> Plane*: the plane </param>
+	/// <returns> Return true if the bounding sphere and the plane collide, false if they don't </returns>
 	bool collides(Plane* plane);
 
 protected:

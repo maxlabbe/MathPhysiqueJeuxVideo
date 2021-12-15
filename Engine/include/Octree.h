@@ -34,6 +34,7 @@ private:
 				&& abs(m_center.getZ() - centerSphere.getZ()) < m_halfDepth + sphere->getRadius();
 		}
 
+		// check if the plane intersects with the bounds
 		bool intersects(Plane* plane)
 		{
 			Vector3D halfSizes = plane->GetAxesLength().multiplyByScalar(0.5f);
@@ -101,9 +102,12 @@ public:
 	/// Retrieve a vector of all the leaves containing objects
 	/// </summary>
 	/// <param name="returnedVector"> vector: vector containing the leaves of the tree </param>
-	/// <returns> Vector containing the leaves with objects </returns>
 	void retreiveLeavesWithObjects(vector<Octree*>& returnedVector);
 
+	/// <summary>
+	/// Insert a plane into the tree
+	/// </summary>
+	/// <param name="plane">Plane*: the plane to add to the tree </param>
 	void AddPlane(Plane* plane);
 };
 
